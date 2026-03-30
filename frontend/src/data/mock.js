@@ -9,7 +9,8 @@ export const SCHOOL_INFO = {
   emailSecondary: "Smunin@ya.ru",
   address: "г. Раменское, Красноармейская 105",
   schedule: "Понедельник - Пятница с 8:30 до 20:00",
-  mapUrl: "https://yandex.ru/maps/?text=г.%20Раменское,%20Красноармейская%20105",
+  mapUrl: "https://yandex.ru/maps/10750/ramenskoe/house/krasnoarmeyskaya_ulitsa_105/Z0EYdAFiSEMAQFtvfXl3eX5kZw==/?ll=38.262168%2C55.568273&z=17",
+  mapEmbedUrl: "https://yandex.ru/map-widget/v1/?ll=38.262168%2C55.568273&z=17&l=map&pt=38.262168,55.568273,pm2rdm",
   social: {
     vk: "https://vk.com/drevopoznaniy_ramenskoe",
     telegram: "https://t.me/Drevopoznaniy_ramenskoe"

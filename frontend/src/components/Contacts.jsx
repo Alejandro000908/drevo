@@ -162,7 +162,7 @@ const Contacts = () => {
             {/* Map */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
               <iframe
-                src={SCHOOL_INFO.mapUrl}
+                src={SCHOOL_INFO.mapEmbedUrl}
                 width="100%"
                 height="300"
                 frameBorder="0"
@@ -170,6 +170,22 @@ const Contacts = () => {
                 className="w-full"
                 title="School location map"
               ></iframe>
+            </div>
+            
+            {/* Link to full map */}
+            <div className="mt-4 text-center">
+              <a
+                href={SCHOOL_INFO.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#009479] hover:text-[#007A64] font-medium transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Открыть карту в новой вкладке
+              </a>
             </div>
           </div>
 
