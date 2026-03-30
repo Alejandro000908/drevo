@@ -23,10 +23,10 @@ const Courses = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#F6A500]/10 text-[#F6A500] px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block bg-[#009479]/10 text-[#009479] px-4 py-2 rounded-full text-sm font-semibold mb-4">
             ПРОГРАММЫ ОБУЧЕНИЯ
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#0E2A47] mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] mb-4">
             Наши курсы
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -44,9 +44,9 @@ const Courses = () => {
                 className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
               >
                 {/* Header with icon */}
-                <div className="relative bg-gradient-to-br from-[#0E2A47] to-[#1a4d7a] p-8">
+                <div className="relative bg-gradient-to-br from-[#414141] to-[#007A64] p-8">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-16 h-16 bg-[#F6A500] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-[#009479] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <div className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
@@ -72,7 +72,7 @@ const Courses = () => {
                     {course.subjects.map((subject, idx) => (
                       <span
                         key={idx}
-                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-[#F6A500]/10 hover:text-[#F6A500] transition-colors duration-200"
+                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-[#009479]/10 hover:text-[#009479] transition-colors duration-200"
                       >
                         {subject}
                       </span>
@@ -81,7 +81,7 @@ const Courses = () => {
 
                   <Button
                     onClick={scrollToContacts}
-                    className="w-full bg-[#F6A500] hover:bg-[#d89200] text-white font-semibold py-3 rounded-lg group-hover:shadow-lg transition-all duration-300"
+                    className="w-full bg-[#009479] hover:bg-[#007A64] text-white font-semibold py-3 rounded-lg group-hover:shadow-lg transition-all duration-300"
                   >
                     Узнать подробнее
                     <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -93,9 +93,9 @@ const Courses = () => {
         </div>
 
         {/* CTA Banner */}
-        <div className="relative bg-gradient-to-r from-[#0E2A47] to-[#1a4d7a] rounded-2xl p-8 sm:p-12 overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#F6A500]/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#F6A500]/10 rounded-full blur-3xl"></div>
+        <div className="relative bg-gradient-to-r from-[#414141] to-[#007A64] rounded-2xl p-8 sm:p-12 overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#009479]/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#009479]/10 rounded-full blur-3xl"></div>
           
           <div className="relative z-10 text-center max-w-3xl mx-auto">
             <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">
@@ -106,7 +106,7 @@ const Courses = () => {
             </p>
             <Button
               onClick={scrollToContacts}
-              className="bg-[#F6A500] hover:bg-[#d89200] text-white font-semibold px-10 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="bg-[#009479] hover:bg-[#007A64] text-white font-semibold px-10 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
               Записаться на пробное занятие
             </Button>

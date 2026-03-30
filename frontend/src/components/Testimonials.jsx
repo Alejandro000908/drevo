@@ -22,10 +22,10 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#F6A500]/10 text-[#F6A500] px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block bg-[#009479]/10 text-[#009479] px-4 py-2 rounded-full text-sm font-semibold mb-4">
             ОТЗЫВЫ
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#0E2A47] mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] mb-4">
             Что говорят о нас
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -48,13 +48,13 @@ const Testimonials = () => {
                     {/* Image */}
                     <div className="md:col-span-2 flex items-center justify-center">
                       <div className="relative">
-                        <div className="absolute -inset-4 bg-[#F6A500]/20 rounded-full blur-2xl"></div>
+                        <div className="absolute -inset-4 bg-[#009479]/20 rounded-full blur-2xl"></div>
                         <img
                           src={testimonial.image}
                           alt={testimonial.name}
                           className="relative w-48 h-48 rounded-full object-cover shadow-xl border-4 border-white"
                         />
-                        <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-[#F6A500] rounded-full flex items-center justify-center shadow-lg">
+                        <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-[#009479] rounded-full flex items-center justify-center shadow-lg">
                           <Quote className="w-8 h-8 text-white" />
                         </div>
                       </div>
@@ -65,7 +65,7 @@ const Testimonials = () => {
                       {/* Stars */}
                       <div className="flex gap-1 mb-4">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-[#F6A500] text-[#F6A500]" />
+                          <Star key={i} className="w-5 h-5 fill-[#009479] text-[#009479]" />
                         ))}
                       </div>
 
@@ -76,7 +76,7 @@ const Testimonials = () => {
 
                       {/* Author */}
                       <div>
-                        <h4 className="text-lg font-bold text-[#0E2A47]">
+                        <h4 className="text-lg font-bold text-[#414141]">
                           {testimonial.name}
                         </h4>
                         <p className="text-gray-600">{testimonial.role}</p>
@@ -91,7 +91,7 @@ const Testimonials = () => {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 w-12 h-12 bg-white rounded-full shadow-xl hover:bg-[#F6A500] text-gray-700 hover:text-white transition-all duration-300 flex items-center justify-center group"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 w-12 h-12 bg-white rounded-full shadow-xl hover:bg-[#009479] text-gray-700 hover:text-white transition-all duration-300 flex items-center justify-center group"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -99,7 +99,7 @@ const Testimonials = () => {
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 w-12 h-12 bg-white rounded-full shadow-xl hover:bg-[#F6A500] text-gray-700 hover:text-white transition-all duration-300 flex items-center justify-center group"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 w-12 h-12 bg-white rounded-full shadow-xl hover:bg-[#009479] text-gray-700 hover:text-white transition-all duration-300 flex items-center justify-center group"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-6 h-6" />
@@ -113,7 +113,7 @@ const Testimonials = () => {
                 onClick={() => goToSlide(index)}
                 className={`transition-all duration-300 rounded-full ${
                   index === currentIndex
-                    ? 'w-12 h-3 bg-[#F6A500]'
+                    ? 'w-12 h-3 bg-[#009479]'
                     : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}

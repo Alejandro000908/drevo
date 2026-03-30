@@ -46,11 +46,13 @@ const Header = () => {
             className="flex items-center cursor-pointer"
             onClick={() => scrollToSection('home')}
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-[#0E2A47] to-[#1a4d7a] rounded-lg flex items-center justify-center mr-3 shadow-md">
-              <span className="text-[#F6A500] text-2xl font-bold">Д</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-[#1B5E20] to-[#2E7D32] rounded-lg flex items-center justify-center mr-3 shadow-md">
+              <svg className="w-7 h-7 text-[#81C784]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C9.24 2 7 4.24 7 7c0 1.77.93 3.32 2.33 4.21C8.52 12.23 8 13.56 8 15v7h8v-7c0-1.44-.52-2.77-1.33-3.79C16.07 10.32 17 8.77 17 7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z"/>
+              </svg>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-[#0E2A47] leading-tight">
+              <h1 className="text-xl font-bold text-[#1B5E20] leading-tight">
                 Древо Познаний
               </h1>
               <p className="text-xs text-gray-600">Частная школа</p>
@@ -63,10 +65,10 @@ const Header = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#F6A500] transition-colors duration-200 relative group"
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#2E7D32] transition-colors duration-200 relative group"
               >
                 {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#F6A500] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4CAF50] transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </nav>
@@ -74,15 +76,15 @@ const Header = () => {
           {/* CTA Button - Desktop */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+74951234567"
-              className="flex items-center gap-2 text-[#0E2A47] hover:text-[#F6A500] transition-colors"
+              href="tel:+79161222112"
+              className="flex items-center gap-2 text-[#009479] hover:text-[#007A64] transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span className="text-sm font-medium">+7 (495) 123-45-67</span>
+              <span className="text-sm font-medium">+7 (916) 122-21-12</span>
             </a>
             <Button
               onClick={() => scrollToSection('contacts')}
-              className="bg-[#F6A500] hover:bg-[#d89200] text-white font-medium px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+              className="bg-[#009479] hover:bg-[#007A64] text-white font-medium px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             >
               Записаться
             </Button>
@@ -113,22 +115,22 @@ const Header = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-left px-4 py-3 text-gray-700 hover:bg-[#F6A500]/10 hover:text-[#F6A500] rounded-lg transition-colors duration-200 font-medium"
+                className="text-left px-4 py-3 text-gray-700 hover:bg-[#009479]/10 hover:text-[#009479] rounded-lg transition-colors duration-200 font-medium"
               >
                 {link.label}
               </button>
             ))}
             <div className="pt-4 space-y-3">
               <a
-                href="tel:+74951234567"
-                className="flex items-center gap-2 px-4 py-3 text-[#0E2A47] hover:text-[#F6A500] transition-colors"
+                href="tel:+79161222112"
+                className="flex items-center gap-2 px-4 py-3 text-[#009479] hover:text-[#007A64] transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                <span className="font-medium">+7 (495) 123-45-67</span>
+                <span className="font-medium">+7 (916) 122-21-12</span>
               </a>
               <Button
                 onClick={() => scrollToSection('contacts')}
-                className="w-full bg-[#F6A500] hover:bg-[#d89200] text-white font-medium py-3 rounded-lg shadow-md"
+                className="w-full bg-[#009479] hover:bg-[#007A64] text-white font-medium py-3 rounded-lg shadow-md"
               >
                 Записаться на занятие
               </Button>

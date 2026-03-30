@@ -60,10 +60,10 @@ const Contacts = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#F6A500]/10 text-[#F6A500] px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block bg-[#009479]/10 text-[#009479] px-4 py-2 rounded-full text-sm font-semibold mb-4">
             СВЯЖИТЕСЬ С НАМИ
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#0E2A47] mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] mb-4">
             Контакты
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -74,12 +74,12 @@ const Contacts = () => {
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
           <div>
-            <div className="bg-gradient-to-br from-[#0E2A47] to-[#1a4d7a] rounded-2xl p-8 text-white mb-6">
+            <div className="bg-gradient-to-br from-[#414141] to-[#009479] rounded-2xl p-8 text-white mb-6">
               <h3 className="text-2xl font-bold mb-6">Наши контакты</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#F6A500] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-[#009479] rounded-lg flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6" />
                   </div>
                   <div>
@@ -89,14 +89,14 @@ const Contacts = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#F6A500] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-[#009479] rounded-lg flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Телефон</h4>
                     <a
                       href={`tel:${SCHOOL_INFO.phone}`}
-                      className="text-gray-200 hover:text-[#F6A500] transition-colors"
+                      className="text-gray-200 hover:text-[#009479] transition-colors"
                     >
                       {SCHOOL_INFO.phone}
                     </a>
@@ -105,7 +105,7 @@ const Contacts = () => {
                       href={`https://wa.me/${SCHOOL_INFO.whatsapp}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-[#F6A500] hover:underline mt-1 inline-block"
+                      className="text-sm text-[#009479] hover:underline mt-1 inline-block"
                     >
                       WhatsApp
                     </a>
@@ -113,39 +113,47 @@ const Contacts = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#F6A500] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-[#009479] rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Email</h4>
                     <a
                       href={`mailto:${SCHOOL_INFO.email}`}
-                      className="text-gray-200 hover:text-[#F6A500] transition-colors"
+                      className="text-gray-200 hover:text-[#009479] transition-colors block"
                     >
                       {SCHOOL_INFO.email}
+                    </a>
+                    <a
+                      href={`mailto:${SCHOOL_INFO.emailSecondary}`}
+                      className="text-gray-200 hover:text-[#009479] transition-colors block"
+                    >
+                      {SCHOOL_INFO.emailSecondary}
                     </a>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-white/20">
+                <h4 className="font-semibold mb-2">График работы</h4>
+                <p className="text-gray-200 text-sm mb-4">{SCHOOL_INFO.schedule}</p>
                 <h4 className="font-semibold mb-4">Мы в социальных сетях</h4>
                 <div className="flex gap-4">
                   <a
                     href={SCHOOL_INFO.social.vk}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white/20 hover:bg-[#F6A500] rounded-lg flex items-center justify-center transition-colors duration-300"
+                    className="w-12 h-12 bg-white/20 hover:bg-[#009479] rounded-lg flex items-center justify-center transition-colors duration-300"
                   >
                     <span className="text-lg font-bold">VK</span>
                   </a>
                   <a
-                    href={SCHOOL_INFO.social.instagram}
+                    href={SCHOOL_INFO.social.telegram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-white/20 hover:bg-[#F6A500] rounded-lg flex items-center justify-center transition-colors duration-300"
+                    className="w-12 h-12 bg-white/20 hover:bg-[#009479] rounded-lg flex items-center justify-center transition-colors duration-300"
                   >
-                    <span className="text-lg font-bold">IG</span>
+                    <span className="text-lg font-bold">TG</span>
                   </a>
                 </div>
               </div>
@@ -154,7 +162,7 @@ const Contacts = () => {
             {/* Map */}
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
               <iframe
-                src="https://yandex.ru/map-widget/v1/?ll=37.593238%2C55.751244&z=17&l=map&pt=37.593238,55.751244,pm2rdm"
+                src={SCHOOL_INFO.mapUrl}
                 width="100%"
                 height="300"
                 frameBorder="0"
@@ -167,7 +175,7 @@ const Contacts = () => {
 
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-            <h3 className="text-2xl font-bold text-[#0E2A47] mb-6">
+            <h3 className="text-2xl font-bold text-[#414141] mb-6">
               Записаться на пробное занятие
             </h3>
 
@@ -257,7 +265,7 @@ const Contacts = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#F6A500] hover:bg-[#d89200] text-white font-semibold py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[#009479] hover:bg-[#007A64] text-white font-semibold py-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   'Отправка...'

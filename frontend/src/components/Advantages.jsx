@@ -15,10 +15,10 @@ const Advantages = () => {
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-[#F6A500]/10 text-[#F6A500] px-4 py-2 rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block bg-[#009479]/10 text-[#009479] px-4 py-2 rounded-full text-sm font-semibold mb-4">
             НАШИ ПРЕИМУЩЕСТВА
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#0E2A47] mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] mb-4">
             Почему выбирают нас?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -38,14 +38,14 @@ const Advantages = () => {
               >
                 {/* Icon container */}
                 <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-[#F6A500]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#F6A500] to-[#d89200] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute inset-0 bg-[#009479]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#009479] to-[#007A64] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-[#0E2A47] mb-3 group-hover:text-[#F6A500] transition-colors duration-300">
+                <h3 className="text-xl font-bold text-[#414141] mb-3 group-hover:text-[#009479] transition-colors duration-300">
                   {advantage.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -53,7 +53,7 @@ const Advantages = () => {
                 </p>
 
                 {/* Hover border effect */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-[#F6A500] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 rounded-2xl border-2 border-[#009479] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             );
           })}

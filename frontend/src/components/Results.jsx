@@ -61,18 +61,18 @@ const Results = () => {
     <section
       id="results"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-[#0E2A47] to-[#1a4d7a] relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-[#414141] to-[#007A64] relative overflow-hidden"
     >
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#F6A500]/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F6A500]/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#009479]/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#009479]/10 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-[#F6A500]/20 backdrop-blur-sm border border-[#F6A500]/30 rounded-full px-6 py-2 mb-4">
-            <TrendingUp className="w-4 h-4 text-[#F6A500]" />
-            <span className="text-[#F6A500] font-semibold text-sm">НАШИ ДОСТИЖЕНИЯ</span>
+          <div className="inline-flex items-center gap-2 bg-[#009479]/20 backdrop-blur-sm border border-[#009479]/30 rounded-full px-6 py-2 mb-4">
+            <TrendingUp className="w-4 h-4 text-[#009479]" />
+            <span className="text-[#009479] font-semibold text-sm">НАШИ ДОСТИЖЕНИЯ</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             Результаты, которыми мы гордимся
@@ -89,10 +89,10 @@ const Results = () => {
               key={stat.id}
               className="group relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#F6A500]/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="relative z-10 text-center">
-                <div className="text-5xl sm:text-6xl font-bold text-[#F6A500] mb-2">
+                <div className="text-5xl sm:text-6xl font-bold text-[#009479] mb-2">
                   {counts[index]}
                   {stat.suffix}
                 </div>
@@ -102,7 +102,7 @@ const Results = () => {
               </div>
 
               {/* Decorative element */}
-              <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-[#F6A500]/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
+              <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-[#009479]/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
             </div>
           ))}
         </div>
@@ -111,9 +111,9 @@ const Results = () => {
         <div className="mt-16 text-center">
           <div className="inline-block bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-3xl">
             <p className="text-xl text-white leading-relaxed">
-              <span className="text-[#F6A500] font-bold">95%</span> наших выпускников поступают в{' '}
+              <span className="text-[#009479] font-bold">95%</span> наших выпускников поступают в{' '}
               <span className="font-semibold">МГУ, ВШЭ, МГТУ, СПбГУ</span> и другие ведущие вузы России на{' '}
-              <span className="text-[#F6A500] font-bold">бюджетные места</span>
+              <span className="text-[#009479] font-bold">бюджетные места</span>
             </p>
           </div>
         </div>

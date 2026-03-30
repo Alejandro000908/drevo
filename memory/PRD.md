@@ -1,155 +1,98 @@
-# Проект: Сайт частной школы «Древо Познаний»
+# Proyecto: Sitio web de la escuela privada «Древо Познаний»
 
-## Оригинальное техническое задание
+## Información de contacto real
 
-Разработка многостраничного адаптивного landing page для частной школы с подготовкой к ЕГЭ/ОГЭ.
+**Escuela:** Частная школа Древо Познаний  
+**Dirección:** г. Раменское, Красноармейская 105  
+**Teléfono:** +7 (916) 122-21-12  
+**Email:** Drevop@ya.ru; Smunin@ya.ru  
+**Horario:** Понедельник - Пятница с 8:30 до 20:00  
 
-### Основные требования:
-- Полностраничный responsive layout с вертикальными секциями
-- Фиксированная верхняя навигация с плавной прокруткой
-- Разделы: Hero, О школе, Преимущества, Курсы, Результаты, Преподаватели, Отзывы, Контакты, Footer
-- Цветовая схема: Primary #0E2A47 (темно-синий), Accent #F6A500 (теплое золото)
-- Типографика: Montserrat для заголовков, Inter для основного текста
-- Интерактивные элементы: плавная прокрутка, hover-анимации, карусель отзывов, анимированные счетчики
-- Контактная форма с валидацией
-- Интеграция карт (Yandex Maps)
+**Redes sociales:**
+- VK: https://vk.com/drevopoznaniy_ramenskoe
+- Telegram: https://t.me/Drevopoznaniy_ramenskoe
 
-## Архитектура
+## Paleta de colores (basada en el logo)
 
-**Frontend:** React + Tailwind CSS + shadcn/ui components
-**Backend:** FastAPI + Python
-**Database:** MongoDB
-**Email Service:** Nodemailer через SMTP
+**Colores principales:**
+- Turquesa principal: #009479 (del logo)
+- Gris oscuro: #414141 (texto y fondos)
+- Turquesa hover: #007A64
+- Turquesa claro: #00BFA5 (acentos)
 
-## Что реализовано (27 января 2025)
+## Equipo docente actualizado
 
-### Phase 1: Frontend с mock-данными ✅
+1. **Полина Фёдоровна** - Matemática
+2. **Михаил Иванович** - Física
+3. **Mr. Alejandro** - Informática e Inglés
+4. **Елена Анатольевна** - Escuela Primaria
+5. **Наталия Владимировна** - Escuela Primaria
 
-**Компоненты:**
-- `/app/frontend/src/components/Header.jsx` - Адаптивная навигация с hamburger меню
-- `/app/frontend/src/components/Hero.jsx` - Полноэкранный hero с градиентом и CTA
-- `/app/frontend/src/components/About.jsx` - О школе с карточками преимуществ
-- `/app/frontend/src/components/Advantages.jsx` - 4 преимущества в grid layout
-- `/app/frontend/src/components/Courses.jsx` - Курсы с предметами и CTA banner
-- `/app/frontend/src/components/Results.jsx` - Анимированные счетчики статистики
-- `/app/frontend/src/components/Teachers.jsx` - Карточки преподавателей с фото
-- `/app/frontend/src/components/Testimonials.jsx` - Карусель отзывов с навигацией
-- `/app/frontend/src/components/Contacts.jsx` - Контактная форма + карта + инфо
-- `/app/frontend/src/components/Footer.jsx` - Footer с навигацией и соцсетями
+*Nota: Todos los maestros tienen placeholders en lugar de fotos reales y campo de "lema de vida" vacío*
 
-**Mock данные:**
-- `/app/frontend/src/data/mock.js` - Все данные школы, курсов, преподавателей, отзывов
-- Mock функция `submitContactForm()` для сохранения в localStorage
+## Opiniones reales implementadas
 
-**Стили:**
-- Кастомные анимации (fade-in, slide-up, pulse)
-- Google Fonts: Montserrat + Inter
-- Smooth scrolling, hover effects, backdrop blur
-- Custom scrollbar styling
+Se integraron 5 testimonios reales de padres:
+1. Madre de estudiante de 1er año (mención a Mr. Alejandro y Elena Anatolevna)
+2. Madre con hijo en 3er año
+3. Madre cuyo hijo preparó ОГЭ exitosamente
+4. Madre de egresado (entró a universidad en presupuesto)
+5. Madre con hijo en 8vo grado (llegó en 6to)
 
-**Функционал:**
-- Плавная навигация между секциями
-- Адаптивное меню для mobile
-- Анимированные статистические счетчики
-- Работающая карусель отзывов
-- Валидация формы на frontend
-- Интеграция Yandex Maps
-- Полная адаптивность (mobile/tablet/desktop)
+## Cambios implementados (27 enero 2025)
 
-**Изображения:**
-- 14 профессиональных фото от Pexels/Unsplash
-- Hero, About, Teachers, Testimonials sections
+### 1. Actualización completa de colores
+- ✅ Todos los componentes actualizados con paleta turquesa #009479
+- ✅ Logo actualizado con árbol estilizado en turquesa
+- ✅ Gradientes actualizados (gris oscuro + turquesa)
+- ✅ Botones, badges, iconos con nuevo esquema de colores
 
-## Следующие задачи (Prioritized Backlog)
+### 2. Datos de contacto reales
+- ✅ Teléfono: +7 (916) 122-21-12
+- ✅ Emails: Drevop@ya.ru y Smunin@ya.ru
+- ✅ Dirección: Раменское, Красноармейская 105
+- ✅ Redes sociales: VK y Telegram (eliminado Instagram)
+- ✅ Horario de trabajo agregado
 
-### P0 - Backend разработка
-1. **Модель Contact Form**
-   - Схема MongoDB: name, phone, email, message, timestamp
-   - POST /api/contact - сохранение заявки
+### 3. Sección de profesores actualizada
+- ✅ Nuevos nombres de maestros reales
+- ✅ Placeholders blancos en lugar de fotos
+- ✅ Campo "lema de vida" agregado (vacío)
+- ✅ Iconos de usuario turquesa para placeholders
 
-2. **Email Integration**
-   - Настройка Nodemailer с SMTP
-   - Отправка email администратору при новой заявке
-   - Env variables: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, ADMIN_EMAIL
+### 4. Opiniones reales de padres
+- ✅ 5 testimonios auténticos integrados
+- ✅ Roles específicos (madre de estudiante X grado)
+- ✅ Menciones a maestros reales (Mr. Alejandro, Elena Anatolevna)
 
-3. **Интеграция Frontend-Backend**
-   - Заменить mock.js на реальные API calls
-   - Error handling и user feedback
-   - Loading states для формы
+## Arquitectura técnica
 
-### P1 - Дополнительные функции
-- Admin панель для управления контентом
-- Раздел "Новости" или "Блог"
-- Онлайн-расписание занятий
-- Личный кабинет учеников
-- Интеграция с платежной системой
+**Frontend:** React + Tailwind CSS + shadcn/ui  
+**Backend:** FastAPI + Python (pendiente integración)  
+**Base de datos:** MongoDB  
+**Despliegue:** Docker + Supervisor
 
-### P2 - Оптимизация
-- SEO оптимизация (meta tags, structured data)
-- Performance optimization (lazy loading, image optimization)
-- Analytics integration (Yandex Metrica)
-- A/B testing для conversion optimization
+## Estado actual
 
-## API Contracts (для Backend)
+✅ **Frontend completado** con datos reales y mock
+- Todos los componentes con colores del logo turquesa
+- Datos de contacto reales integrados
+- Maestros con nombres reales y placeholders
+- Opiniones auténticas de padres
+- Mapa de Yandex integrado
 
-### POST /api/contact
-**Request:**
-```json
-{
-  "name": "string",
-  "phone": "string",
-  "email": "string",
-  "message": "string"
-}
-```
+⏳ **Pendiente:**
+- Desarrollo de backend
+- Integración de formulario de contacto con email
+- Testing end-to-end
 
-**Response (Success):**
-```json
-{
-  "status": "submitted",
-  "message": "Спасибо! Мы свяжемся с вами в ближайшее время."
-}
-```
+## Próximos pasos
 
-**Response (Error):**
-```json
-{
-  "detail": "Error message"
-}
-```
-
-## User Personas
-
-1. **Родитель школьника**
-   - Ищет качественную подготовку к ЕГЭ/ОГЭ
-   - Важны: результаты, квалификация преподавателей, цена
-   - Хочет: бесплатное пробное занятие
-
-2. **Выпускник/старшеклассник**
-   - Нужна подготовка к экзаменам
-   - Важны: удобное расписание, современные методы
-   - Хочет: гарантированный результат
-
-## Технические детали
-
-**Используемые библиотеки:**
-- lucide-react для иконок
-- shadcn/ui components (Button, Input, Textarea, etc.)
-- Google Fonts API
-- Yandex Maps iframe embed
-
-**Цветовая палитра:**
-- Primary: #0E2A47 (navy)
-- Accent: #F6A500 (gold)
-- Background: white, #F7F9FC (light gray)
-- Text: #0E2A47, gray variants
-
-**Breakpoints:**
-- Mobile: < 640px
-- Tablet: 640px - 1024px
-- Desktop: > 1024px
+1. Desarrollo de backend (API endpoints, MongoDB models)
+2. Integración de servicio de email (Nodemailer)
+3. Testing completo con testing_agent_v3
+4. Optimización SEO y performance
 
 ---
 
-**Дата создания:** 27 января 2025
-**Последнее обновление:** 27 января 2025
+**Última actualización:** 27 enero 2025

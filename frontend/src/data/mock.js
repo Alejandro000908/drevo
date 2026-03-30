@@ -3,14 +3,16 @@
 export const SCHOOL_INFO = {
   name: "Древо Познаний",
   tagline: "Частная школа с индивидуальным подходом",
-  phone: "+7 (495) 123-45-67",
-  whatsapp: "+79001234567",
-  email: "info@drevo-poznanii.ru",
-  address: "Москва, ул. Арбат, д. 25, стр. 1",
-  mapUrl: "https://yandex.ru/maps/?pt=37.593238,55.751244&z=17&l=map",
+  phone: "+7 (916) 122-21-12",
+  whatsapp: "+79161222112",
+  email: "Drevop@ya.ru",
+  emailSecondary: "Smunin@ya.ru",
+  address: "г. Раменское, Красноармейская 105",
+  schedule: "Понедельник - Пятница с 8:30 до 20:00",
+  mapUrl: "https://yandex.ru/maps/?text=г.%20Раменское,%20Красноармейская%20105",
   social: {
-    vk: "https://vk.com/drevpoznaniy",
-    instagram: "https://instagram.com/drevo_poznaniy"
+    vk: "https://vk.com/drevopoznaniy_ramenskoe",
+    telegram: "https://t.me/Drevopoznaniy_ramenskoe"
   }
 };
 
@@ -117,71 +119,90 @@ export const STATS = [
 export const TEACHERS = [
   {
     id: 1,
-    name: "Елена Викторовна Смирнова",
-    subject: "Математика, ЕГЭ",
-    bio: "15 лет опыта. Кандидат педагогических наук. Средний балл учеников — 92.",
-    image: "https://images.pexels.com/photos/5905753/pexels-photo-5905753.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    name: "Полина Фёдоровна",
+    subject: "Математика",
+    bio: "Опытный преподаватель математики. Помогает ученикам полюбить точные науки и достигать высоких результатов.",
+    motto: "",
+    image: null
   },
   {
     id: 2,
-    name: "Дмитрий Александрович Петров",
-    subject: "Физика, ЕГЭ и ОГЭ",
-    bio: "12 лет опыта. Преподаватель МГУ. Автор методических пособий.",
-    image: "https://images.unsplash.com/photo-1584554376766-ac0f2c65e949?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjB0ZWFjaGVyJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzc0ODI1NzcyfDA&ixlib=rb-4.1.0&q=85"
+    name: "Михаил Иванович",
+    subject: "Физика",
+    bio: "Преподаватель физики с многолетним опытом. Делает сложные темы понятными и интересными.",
+    motto: "",
+    image: null
   },
   {
     id: 3,
-    name: "Ольга Игоревна Козлова",
-    subject: "Русский язык, Литература",
-    bio: "10 лет опыта. Эксперт ЕГЭ. 98% учеников сдают на 85+ баллов.",
-    image: "https://images.unsplash.com/photo-1544972917-3529b113a469?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjB0ZWFjaGVyJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzc0ODI1NzcyfDA&ixlib=rb-4.1.0&q=85"
+    name: "Mr. Alejandro",
+    subject: "Информатика и Английский язык",
+    bio: "Международный преподаватель. Ведёт занятия по информатике и английскому языку, раскрывая потенциал каждого ученика.",
+    motto: "",
+    image: null
   },
   {
     id: 4,
-    name: "Анна Сергеевна Волкова",
-    subject: "Английский язык",
-    bio: "8 лет опыта. Сертификат CELTA. Носитель уровня C2.",
-    image: "https://images.unsplash.com/photo-1758685734511-4f49ce9a382b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjB0ZWFjaGVyJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzc0ODI1NzcyfDA&ixlib=rb-4.1.0&q=85"
+    name: "Елена Анатольевна",
+    subject: "Начальная школа",
+    bio: "Учитель начальных классов. Тот ПЕРВЫЙ учитель, которого дети будут вспоминать с большим теплом.",
+    motto: "",
+    image: null
   },
   {
     id: 5,
-    name: "Игорь Владимирович Соколов",
-    subject: "Химия, Биология",
-    bio: "14 лет опыта. Победитель конкурса «Учитель года». Средний балл — 89.",
-    image: "https://images.unsplash.com/photo-1758685845906-6f705cde4fb7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjB0ZWFjaGVyJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzc0ODI1NzcyfDA&ixlib=rb-4.1.0&q=85"
-  },
-  {
-    id: 6,
-    name: "Мария Николаевна Иванова",
-    subject: "История, Обществознание",
-    bio: "11 лет опыта. Эксперт ОГЭ. Автор курса по истории России.",
-    image: "https://images.pexels.com/photos/5212321/pexels-photo-5212321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    name: "Наталия Владимировна",
+    subject: "Начальная школа",
+    bio: "Учитель начальных классов. Создаёт тёплую атмосферу и помогает детям раскрыть свои способности.",
+    motto: "",
+    image: null
   }
 ];
 
 export const TESTIMONIALS = [
   {
     id: 1,
-    name: "Мария Кузнецова",
-    role: "Выпускница 2024",
-    text: "Благодаря «Древу Познаний» я сдала ЕГЭ по математике на 98 баллов и поступила в МГУ на бюджет! Преподаватели объясняют сложные темы просто и понятно.",
-    image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxoYXBweSUyMHN0dWRlbnRzfGVufDB8fHx8MTc3NDgyNTc3Nnww&ixlib=rb-4.1.0&q=85",
-    rating: 5
-  },
-  {
-    id: 2,
-    name: "Ирина Степановна",
-    role: "Мама ученика",
-    text: "Мой сын учится в школе уже второй год. Его успеваемость значительно выросла, появилась уверенность в себе. Огромное спасибо педагогам!",
+    name: "Родитель",
+    role: "Мама ученика 1 класса",
+    type: "parent",
+    text: "Вот и пролетел первый год в нашей школе. На одном дыхании и для нас, родителей, и для ребёнка. Интересные уроки мотивируют и завлекают. Английский с мистером Алехандро раскрыл потенциал о котором я даже не догадывалась))) а наша Елена Анатольевна, тот ПЕРВЫЙ учитель, которого дети будут вспоминать с большим теплом. Ну а сделанные в школе уроки - это бесценно)))) С огромной благодарностью ко всем учителям и администрации. Ждём осени))))",
     image: "https://images.pexels.com/photos/7683898/pexels-photo-7683898.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     rating: 5
   },
   {
+    id: 2,
+    name: "Родитель",
+    role: "Мама ученика",
+    type: "parent",
+    text: "Потрясающая школа. Ребенок будет учиться третий год, ему очень нравится. Учителя замечательные! Атмосфера как большая семья. Обучение направлено, чтобы вызвать у детей интерес к учебе, а не как в других школах. Это огромный плюс. Ребенок с радостью посещает школу и если заболеет грустит, что пропускает учебу. Обучение в «древо познаний» это как ежедневный праздник для детей. В общем, отдав ребенка сюда вы ни на секунду не пожалеете, что сделали выбор в пользу древо познаний! Однозначно рекомендую",
+    image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxoYXBweSUyMHN0dWRlbnRzfGVufDB8fHx8MTc3NDgyNTc3Nnww&ixlib=rb-4.1.0&q=85",
+    rating: 5
+  },
+  {
     id: 3,
-    name: "Александр Новиков",
-    role: "Выпускник 2023",
-    text: "Лучшая подготовка к ЕГЭ! Индивидуальный подход, современные методы обучения. Сдал физику и математику на 95+ баллов.",
+    name: "Родитель",
+    role: "Мама выпускника",
+    type: "parent",
+    text: "Огромное спасибо преподавателям, за один год смогли подготовить моего сына к сдаче ОГЭ. Были пробелы в знаниях, всё было успешно восстановлено. Огромная благодарность учителям Математики, Русского языка и Информатики. Сын успешно сдал все экзамены и перешёл в 10 класс. Надеюсь, что воспользуемся репетиторами для сдачи ЕГЭ",
     image: "https://images.unsplash.com/photo-1542868796-20f2ddc9d41f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwxfHxoYXBweSUyMHN0dWRlbnRzfGVufDB8fHx8MTc3NDgyNTc3Nnww&ixlib=rb-4.1.0&q=85",
+    rating: 5
+  },
+  {
+    id: 4,
+    name: "Родитель",
+    role: "Мама выпускника",
+    type: "parent",
+    text: "Сын закончил школу Древо познаний в прошлом году. Остались очень тёплые, хорошие воспоминания. Школа дала не только глубокие знания (поступил на бюджет в тот ВУЗ, в который планировал), но и сама атмосфера была очень дружелюбной, по семейному тёплой. Много разнообразных элективных занятий из которых каждый может выбрать то, что ему ближе и интереснее",
+    image: "https://images.pexels.com/photos/7683898/pexels-photo-7683898.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    rating: 5
+  },
+  {
+    id: 5,
+    name: "Родитель",
+    role: "Мама ученика 8 класса",
+    type: "parent",
+    text: "Сын учится в 8 классе, пришли в 6 классе. Индивидуальный подход к каждому ребенку, система образования устроена так, что предметы даются более углубленно, прекрасный преподавательский состав и административный. Директор школы Елена Александровна всегда доступна для каждого родителя. Сын и в подростковом возрасте идет с радостью каждый день. Всем у кого есть возможность рекомендую данную школу для качественного образования ребенка. Дополнительные занятия не требуются идет целенаправленная подготовка для поступления в ВУЗ. Очень довольна, что дома не надо контролировать уроки, это делают в школе. Организовано питание и досуг! 💕🌹🌹🌹",
+    image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwyfHxoYXBweSUyMHN0dWRlbnRzfGVufDB8fHx8MTc3NDgyNTc3Nnww&ixlib=rb-4.1.0&q=85",
     rating: 5
   }
 ];
