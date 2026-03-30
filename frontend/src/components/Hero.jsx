@@ -18,8 +18,8 @@ const Hero = () => {
         <img
           src={HERO.image}
           alt="Modern classroom"
-          className="w-full h-full object-cover"
-        />
+          className="w-full h-full object-cover" />
+
         <div className="absolute inset-0 bg-gradient-to-r from-[#414141]/95 via-[#414141]/85 to-[#009479]/70"></div>
       </div>
 
@@ -29,8 +29,8 @@ const Hero = () => {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-[#009479]/20 backdrop-blur-sm border border-[#009479]/30 rounded-full px-6 py-2 mb-8 animate-fade-in">
             <div className="w-2 h-2 bg-[#009479] rounded-full animate-pulse"></div>
-            <span className="text-white font-medium text-sm">
-              Запись на 2025-2026 учебный год открыта
+            <span className="text-white font-medium text-sm">Запись на 2026-2027 учебный год открыта
+
             </span>
           </div>
 
@@ -48,16 +48,16 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
             <Button
               onClick={() => scrollToSection('contacts')}
-              className="bg-[#4CAF50] hover:bg-[#388E3C] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group"
-            >
+              className="bg-[#4CAF50] hover:bg-[#388E3C] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+
               {HERO.ctaPrimary}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               onClick={() => scrollToSection('about')}
               variant="outline"
-              className="bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:bg-white/20 text-white font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300 group"
-            >
+              className="bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:bg-white/20 text-white font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300 group">
+
               <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
               {HERO.ctaSecondary}
             </Button>
@@ -89,8 +89,8 @@ const Hero = () => {
 
       {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-10"></div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default Hero;
