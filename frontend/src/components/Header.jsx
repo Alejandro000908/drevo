@@ -47,16 +47,11 @@ const Header = () => {
             onClick={() => scrollToSection('home')}
           >
             <div className="w-14 h-14 flex items-center justify-center mr-3">
-              <svg className="w-14 h-14" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 115 L30 125 L90 125 L90 115 L85 115 L85 110 L35 110 L35 115 Z" fill="#009479"/>
-                <path d="M40 112 L80 112 L80 115 L40 115 Z" fill="#009479" opacity="0.8"/>
-                <path d="M55 110 L55 75 L65 75 L65 110" fill="#009479"/>
-                <path d="M60 75 C 50 75 42 68 42 58 C 42 52 45 47 48 44 C 46 41 45 38 45 35 C 45 28 50 22 57 20 C 58 15 62 10 68 10 C 72 10 75 12 77 15 C 79 13 82 12 85 12 C 90 12 94 15 96 19 C 99 20 102 23 103 27 C 105 28 106 30 106 33 C 106 36 104 39 101 40 C 102 42 103 45 103 48 C 103 54 99 59 94 62 C 95 65 95 68 94 71 C 92 76 87 80 81 80 C 78 80 75 79 73 77 C 71 79 68 80 65 80 C 61 80 58 78 56 75 Z" fill="#009479"/>
-                <path d="M50 50 Q 55 45 60 50 Q 65 45 70 50" stroke="#007A64" strokeWidth="2" fill="none"/>
-                <path d="M75 55 Q 78 52 81 55" stroke="#007A64" strokeWidth="2" fill="none"/>
-                <path d="M52 60 Q 56 58 60 62" stroke="#007A64" strokeWidth="1.5" fill="none"/>
-                <path d="M65 65 Q 70 63 74 67" stroke="#007A64" strokeWidth="1.5" fill="none"/>
-              </svg>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jnyen9xy_diploma.jpg" 
+                alt="Древо Познаний Logo"
+                className="w-14 h-14 object-contain"
+              />
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold text-[#009479] leading-tight">
