@@ -21,15 +21,42 @@ export const HERO = {
   subtext: "Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Малые группы до 6 человек. Опытные преподаватели.",
   ctaPrimary: "Записаться на пробное занятие",
   ctaSecondary: "Узнать больше",
-  image: "https://images.pexels.com/photos/5212329/pexels-photo-5212329.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pyjpj7ng_n3LEFeUqka_FyO2v4FHv_ehXQKcINz2u7xDZgeRYIDL_4WLprgjm86FlIyiF2ABWYPuo3-b__VV-C2nH3Ru0UwW7.jpg"
 };
 
 export const ABOUT = {
   title: "О нашей школе",
   mission: "Мы создаем образовательную среду, где каждый ученик получает персональное внимание и поддержку. Наша цель — не просто подготовить к экзаменам, но и воспитать любовь к знаниям.",
   vision: "«Древо Познаний» — это место, где дети учатся мыслить критически, работать самостоятельно и достигать высоких результатов. Мы верим, что качественное образование доступно каждому.",
-  image: "https://images.pexels.com/photos/8423430/pexels-photo-8423430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/icffr31q_wfz4G9l8D1kRgXvBvLqKu6o867WaKfxzZi73rVz_u3m7wF-vAxRMpkt_3zsx7qMNonzYzz_uuGuP1eKzFrBJIWH7.jpg"
 };
+
+export const SCHOOL_LIFE = [
+  {
+    id: 1,
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/k43iyvwv_QkZFmUsG6pNYjG2Wz_MFmu2IvwLcIeRC74V0yMPHv_lG71IUBE7nC2i1RXSS7iaQENWbbllX4CySCz40MfreszFR.jpg",
+    title: "Интерактивные занятия",
+    description: "Современные методы обучения в малых группах"
+  },
+  {
+    id: 2,
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/iw6q8w5k_La1h7dhngnixBCecqSy88rhA4Ipo-EqgQyP9iyKGcWyqlDomJO18ZIzJNv9mINdXKNfVghbU9zudh9MYwJem_FHd.jpg",
+    title: "Праздники и достижения",
+    description: "Отмечаем успехи каждого ученика"
+  },
+  {
+    id: 3,
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/8t1ryxyc_KsuaN8x9fH_BROtidYdgXu5DV_dtGKFDTjSEVL4xdWMhaFl7I-GEEo7do8eRUhS3lLoZrOopEAbhG-fAvgk4d4Am.jpg",
+    title: "Творческое развитие",
+    description: "Раскрываем потенциал через искусство"
+  },
+  {
+    id: 4,
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/iwwijnqe_Y9zNG8kVgqQPLgoqMa4zH0BEkITy-YO3ylmHU0Aeueh4EME8dtLFVJcROd-bqizNrQ3dUrKZrQ7b_R_4z5pI01-7.jpg",
+    title: "Практические занятия",
+    description: "Учимся через творчество и эксперименты"
+  }
+];
 
 export const ADVANTAGES = [
   {
