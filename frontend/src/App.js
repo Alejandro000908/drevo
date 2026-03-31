@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import Facilities from './components/Facilities';
 import Advantages from './components/Advantages';
 import Courses from './components/Courses';
 import Results from './components/Results';
@@ -19,6 +20,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Facilities />
         <Advantages />
         <Courses />
         <Results />
