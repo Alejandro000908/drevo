@@ -160,15 +160,15 @@ const Contacts = () => {
             </div>
 
             {/* Map */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100" style={{ height: '400px' }}>
               <iframe
-                src={SCHOOL_INFO.mapEmbedUrl}
+                src="https://yandex.ru/map-widget/v1/?ll=38.262168%2C55.568273&z=17&l=map&pt=38.262168,55.568273,pm2rdm"
                 width="100%"
-                height="300"
+                height="400"
                 frameBorder="0"
-                allowFullScreen
-                className="w-full"
-                title="School location map"
+                allowFullScreen={true}
+                style={{ position: 'relative', border: 'none' }}
+                title="Yandex Map - School location"
               ></iframe>
             </div>
             
