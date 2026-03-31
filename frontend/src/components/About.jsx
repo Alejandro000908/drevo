@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CheckCircle, Heart, Target } from 'lucide-react';
 import { ABOUT } from '../data/mock';
 
 const About = () => {
-  useEffect(() => {
-    // Load model-viewer dynamically
-    if (typeof window !== 'undefined' && !customElements.get('model-viewer')) {
-      import('@google/model-viewer');
-    }
-  }, []);
+  // Model viewer is loaded via CDN in index.html
 
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-white to-gray-50">
