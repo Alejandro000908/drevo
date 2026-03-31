@@ -80,19 +80,72 @@ Se integraron 5 testimonios reales de padres:
 - Maestros con nombres reales y placeholders
 - Opiniones auténticas de padres
 - Mapa de Yandex integrado
+- **Sección "Vida Escolar" con fotos reales de niños**
+- **Sección "Instalaciones" con fotos del interior**
+- **Logos de universidades de egresados**
+
+✅ **Backend implementado**
+- API REST con FastAPI
+- Endpoint `/api/contact` (POST y GET)
+- Integración con MongoDB para guardar contactos
+- Validación de datos con Pydantic
+- CORS configurado correctamente
 
 ⏳ **Pendiente:**
-- Desarrollo de backend
-- Integración de formulario de contacto con email
-- Testing end-to-end
+- Integración de servicio de email para notificaciones
+- Testing end-to-end completo
+- Panel de administración para revisar contactos
+
+## API Endpoints
+
+### POST /api/contact
+Envía un formulario de contacto
+
+**Request Body:**
+```json
+{
+  "name": "string",
+  "phone": "string",
+  "email": "string (email válido)",
+  "message": "string"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Спасибо! Мы свяжемся с вами в ближайшее время.",
+  "contact_id": "uuid"
+}
+```
+
+### GET /api/contact
+Obtiene todos los contactos (endpoint de administración)
+
+**Response:**
+```json
+[
+  {
+    "id": "uuid",
+    "name": "string",
+    "phone": "string",
+    "email": "string",
+    "message": "string",
+    "created_at": "ISO datetime",
+    "status": "pending|contacted|closed"
+  }
+]
+```
 
 ## Próximos pasos
 
-1. Desarrollo de backend (API endpoints, MongoDB models)
-2. Integración de servicio de email (Nodemailer)
+1. ✅ ~~Desarrollo de backend (API endpoints, MongoDB models)~~
+2. Integración de servicio de email (Resend, SendGrid, o Gmail SMTP)
 3. Testing completo con testing_agent_v3
-4. Optimización SEO y performance
+4. Panel de administración para gestionar contactos
+5. Optimización SEO y performance
 
 ---
 
-**Última actualización:** 27 enero 2025
+**Última actualización:** 31 marzo 2026

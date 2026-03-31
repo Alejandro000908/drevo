@@ -3,7 +3,9 @@ import { MapPin, Phone, Mail, Send, CheckCircle, AlertCircle } from 'lucide-reac
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
-import { SCHOOL_INFO, submitContactForm } from '../data/mock';
+import { SCHOOL_INFO } from '../data/mock';
+
+const API_URL = process.env.REACT_APP_BACKEND_URL;
 
 const Contacts = () => {
   const [formData, setFormData] = useState({
@@ -36,16 +38,30 @@ const Contacts = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const result = await submitContactForm(formData);
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
       
-      if (result.success) {
+      if (response.ok && result.success) {
         setStatus({
           type: 'success',
           message: result.message
         });
         setFormData({ name: '', phone: '', email: '', message: '' });
+      } else {
+        setStatus({
+          type: 'error',
+          message: result.detail || 'Произошла ошибка. Попробуйте позже.'
+        });
       }
     } catch (error) {
+      console.error('Error submitting form:', error);
       setStatus({
         type: 'error',
         message: 'Произошла ошибка. Попробуйте позже.'
