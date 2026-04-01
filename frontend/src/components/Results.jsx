@@ -213,51 +213,6 @@ const Results = () => {
             ))}
           </div>
         </div>
-
-        {/* Modern Stats Banner with 3D Effect */}
-        <div className="mt-20 relative">
-          <div 
-            className="relative bg-gradient-to-br from-[#009479]/20 to-[#00BFA5]/20 backdrop-blur-2xl rounded-3xl p-10 sm:p-16 overflow-hidden border border-white/20 shadow-2xl shadow-[#009479]/30"
-            style={{
-              transform: 'perspective(1000px)',
-              transformStyle: 'preserve-3d'
-            }}
-          >
-            {/* Animated background gradients */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-[#00BFA5]/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-[#009479]/30 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-            
-            <div className="relative z-10 grid sm:grid-cols-3 gap-10 text-center">
-              {/* Happy Parents */}
-              <div className="group">
-                <div className="text-5xl sm:text-6xl font-black bg-gradient-to-br from-[#00BFA5] to-[#009479] bg-clip-text text-transparent mb-3 transition-transform duration-500 group-hover:scale-110 drop-shadow-lg">
-                  100%
-                </div>
-                <div className="text-white text-lg font-semibold tracking-wide">Счастливых родителей</div>
-              </div>
-              
-              {/* Years of Experience */}
-              <div className="group">
-                <div className="text-5xl sm:text-6xl font-black bg-gradient-to-br from-[#009479] to-[#00BFA5] bg-clip-text text-transparent mb-3 transition-transform duration-500 group-hover:scale-110 drop-shadow-lg">
-                  12
-                </div>
-                <div className="text-white text-lg font-semibold tracking-wide">Лет успешной работы</div>
-              </div>
-              
-              {/* Graduates */}
-              <div className="group">
-                <div className="text-5xl sm:text-6xl font-black bg-gradient-to-br from-[#00BFA5] to-[#009479] bg-clip-text text-transparent mb-3 transition-transform duration-500 group-hover:scale-110 drop-shadow-lg">
-                  240+
-                </div>
-                <div className="text-white text-lg font-semibold tracking-wide">Успешных выпускников</div>
-              </div>
-            </div>
-
-            {/* Decorative corner elements */}
-            <div className="absolute top-0 left-0 w-32 h-32 border-t-4 border-l-4 border-[#00BFA5]/30 rounded-tl-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 border-b-4 border-r-4 border-[#009479]/30 rounded-br-3xl"></div>
-          </div>
-        </div>
       </div>
     </section>
   );
