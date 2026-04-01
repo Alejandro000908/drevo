@@ -28,7 +28,8 @@ const Header = () => {
     { id: 'courses', label: 'Курсы' },
     { id: 'results', label: 'Результаты' },
     { id: 'news', label: 'Новости' },
-    { id: 'reviews', label: 'Отзывы' },
+    { id: 'vacancies', label: 'Вакансии' },
+    { id: 'faq', label: 'FAQ' },
     { id: 'contacts', label: 'Контакты' }
   ];
 

@@ -10,6 +10,8 @@ import SchoolLife from './components/SchoolLife';
 import SchoolNews from './components/SchoolNews';
 import Teachers from './components/Teachers';
 import Testimonials from './components/Testimonials';
+import Vacancies from './components/Vacancies';
+import FAQ from './components/FAQ';
 import Contacts from './components/Contacts';
 import Footer from './components/Footer';
 import './App.css';
@@ -29,6 +31,8 @@ function App() {
         <SchoolNews />
         <Teachers />
         <Testimonials />
+        <Vacancies />
+        <FAQ />
         <Contacts />
       </main>
       <Footer />
