@@ -89,113 +89,173 @@ const Results = () => {
     <section
       id="results"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-[#414141] to-[#007A64] relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] relative overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#009479]/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#009479]/10 rounded-full blur-3xl"></div>
+      {/* Animated background elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-[#009479]/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#00BFA5]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#009479]/5 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-[#009479]/20 backdrop-blur-sm border border-[#009479]/30 rounded-full px-6 py-2 mb-4">
-            <TrendingUp className="w-4 h-4 text-[#009479]" />
-            <span className="text-[#009479] font-semibold text-sm">НАШИ ДОСТИЖЕНИЯ</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#009479]/30 to-[#00BFA5]/30 backdrop-blur-xl border border-[#009479]/50 rounded-full px-6 py-2 mb-4 shadow-lg shadow-[#009479]/20">
+            <TrendingUp className="w-4 h-4 text-[#00BFA5]" />
+            <span className="text-[#00BFA5] font-semibold text-sm">НАШИ ДОСТИЖЕНИЯ И ВЫПУСКНИКИ</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
             Результаты, которыми мы гордимся
           </h2>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Цифры говорят сами за себя — наши ученики достигают впечатляющих успехов
           </p>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Stats Grid with 3D Effect */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {STATS.map((stat, index) => (
             <div
               key={stat.id}
-              className="group relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105"
+              className="group relative"
+              style={{
+                transform: 'perspective(1000px)',
+                transformStyle: 'preserve-3d'
+              }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              <div className="relative z-10 text-center">
-                <div className="text-5xl sm:text-6xl font-bold text-[#009479] mb-2">
-                  {counts[index]}
-                  {stat.suffix}
+              {/* 3D Card */}
+              <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/20 transition-all duration-500 hover:shadow-2xl hover:shadow-[#009479]/30"
+                style={{
+                  transform: 'rotateX(0deg) rotateY(0deg)',
+                  transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'rotateX(-5deg) rotateY(5deg) translateZ(20px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+                }}
+              >
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/30 via-transparent to-[#00BFA5]/30 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                
+                {/* Content */}
+                <div className="relative z-10 text-center">
+                  <div className="text-6xl sm:text-7xl font-black bg-gradient-to-br from-[#00BFA5] via-[#009479] to-[#00796B] bg-clip-text text-transparent mb-3 drop-shadow-lg">
+                    {counts[index]}
+                    {stat.suffix}
+                  </div>
+                  <div className="text-white text-lg font-semibold tracking-wide">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-white text-lg font-medium">
-                  {stat.label}
-                </div>
-              </div>
 
-              {/* Decorative element */}
-              <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-[#009479]/20 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
+                {/* Decorative corner accents */}
+                <div className="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-[#00BFA5]/50 rounded-tl-3xl"></div>
+                <div className="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-[#009479]/50 rounded-br-3xl"></div>
+                
+                {/* Floating glow orb */}
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Additional info */}
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-3xl">
-            <p className="text-xl text-white leading-relaxed">
-              <span className="text-[#009479] font-bold">95%</span> наших выпускников поступают в{' '}
-              <span className="font-semibold">МГУ, ВШЭ, МГТУ, СПбГУ</span> и другие ведущие вузы России на{' '}
-              <span className="text-[#009479] font-bold">бюджетные места</span>
-            </p>
-          </div>
-        </div>
-
-        {/* Universities Section */}
+        {/* Universities Section with 3D Grid */}
         <div className="mt-20">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              <GraduationCap className="w-5 h-5 text-[#009479]" />
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#009479]/30 to-[#00BFA5]/30 backdrop-blur-xl border border-white/20 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg shadow-[#009479]/20">
+              <GraduationCap className="w-5 h-5 text-[#00BFA5]" />
               <span className="text-white">НАШИ ВЫПУСКНИКИ</span>
             </div>
-            <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 drop-shadow-xl">
               Куда поступают наши выпускники
             </h3>
-            <p className="text-gray-200 max-w-2xl mx-auto">
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
               Престижные высшие учебные заведения России
             </p>
           </div>
 
-          {/* University Logos Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
-            {UNIVERSITIES.map((university) => (
+          {/* University Logos with 3D hover */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {UNIVERSITIES.map((university, index) => (
               <div
                 key={university.id}
-                className="group relative bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 w-full h-32 flex items-center justify-center"
+                className="group relative"
+                style={{
+                  transform: 'perspective(1000px)',
+                  transformStyle: 'preserve-3d',
+                  animationDelay: `${index * 100}ms`
+                }}
               >
-                <img
-                  src={university.logo}
-                  alt={university.name}
-                  className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 transition-all duration-300"
-                />
+                <div
+                  className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/20 h-32 flex items-center justify-center transition-all duration-500 hover:shadow-2xl hover:shadow-[#00BFA5]/30"
+                  style={{
+                    transform: 'translateZ(0px)',
+                    transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(30px) rotateY(5deg)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(0px) rotateY(0deg)';
+                  }}
+                >
+                  <img
+                    src={university.logo}
+                    alt={university.name}
+                    className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
+                  />
+                  
+                  {/* Glow behind logo */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/20 to-[#00BFA5]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"></div>
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Experience Banner */}
-        <div className="mt-16 relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 sm:p-12 overflow-hidden border border-white/20">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#009479]/20 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#009479]/20 rounded-full blur-3xl"></div>
-          
-          <div className="relative z-10 grid sm:grid-cols-3 gap-8 text-center text-white">
-            <div>
-              <div className="text-4xl sm:text-5xl font-bold mb-2 text-[#009479]">100%</div>
-              <div className="text-lg">Счастливых родителей</div>
+        {/* Modern Stats Banner with 3D Effect */}
+        <div className="mt-20 relative">
+          <div 
+            className="relative bg-gradient-to-br from-[#009479]/20 to-[#00BFA5]/20 backdrop-blur-2xl rounded-3xl p-10 sm:p-16 overflow-hidden border border-white/20 shadow-2xl shadow-[#009479]/30"
+            style={{
+              transform: 'perspective(1000px)',
+              transformStyle: 'preserve-3d'
+            }}
+          >
+            {/* Animated background gradients */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-[#00BFA5]/30 to-transparent rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-[#009479]/30 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            
+            <div className="relative z-10 grid sm:grid-cols-3 gap-10 text-center">
+              {/* Happy Parents */}
+              <div className="group">
+                <div className="text-5xl sm:text-6xl font-black bg-gradient-to-br from-[#00BFA5] to-[#009479] bg-clip-text text-transparent mb-3 transition-transform duration-500 group-hover:scale-110 drop-shadow-lg">
+                  100%
+                </div>
+                <div className="text-white text-lg font-semibold tracking-wide">Счастливых родителей</div>
+              </div>
+              
+              {/* Years of Experience */}
+              <div className="group">
+                <div className="text-5xl sm:text-6xl font-black bg-gradient-to-br from-[#009479] to-[#00BFA5] bg-clip-text text-transparent mb-3 transition-transform duration-500 group-hover:scale-110 drop-shadow-lg">
+                  12
+                </div>
+                <div className="text-white text-lg font-semibold tracking-wide">Лет успешной работы</div>
+              </div>
+              
+              {/* Graduates */}
+              <div className="group">
+                <div className="text-5xl sm:text-6xl font-black bg-gradient-to-br from-[#00BFA5] to-[#009479] bg-clip-text text-transparent mb-3 transition-transform duration-500 group-hover:scale-110 drop-shadow-lg">
+                  240+
+                </div>
+                <div className="text-white text-lg font-semibold tracking-wide">Успешных выпускников</div>
+              </div>
             </div>
-            <div>
-              <div className="text-4xl sm:text-5xl font-bold mb-2 text-[#009479]">12</div>
-              <div className="text-lg">Лет опыта</div>
-            </div>
-            <div>
-              <div className="text-4xl sm:text-5xl font-bold mb-2 text-[#009479]">240+</div>
-              <div className="text-lg">Выпускников</div>
-            </div>
+
+            {/* Decorative corner elements */}
+            <div className="absolute top-0 left-0 w-32 h-32 border-t-4 border-l-4 border-[#00BFA5]/30 rounded-tl-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-32 h-32 border-b-4 border-r-4 border-[#009479]/30 rounded-br-3xl"></div>
           </div>
         </div>
       </div>
