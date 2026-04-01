@@ -3,7 +3,6 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import Facilities from '../components/Facilities';
 import Advantages from '../components/Advantages';
-import Courses from '../components/Courses';
 import Results from '../components/Results';
 import SchoolLife from '../components/SchoolLife';
 import SchoolNews from '../components/SchoolNews';
@@ -19,7 +18,6 @@ const HomePage = () => {
       <About />
       <Facilities />
       <Advantages />
-      <Courses />
       <Results />
       <SchoolLife />
       <SchoolNews />
