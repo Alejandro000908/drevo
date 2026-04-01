@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,15 +24,30 @@ const Header = () => {
     }
   };
 
+  const handleNavigation = (link) => {
+    if (link.external) {
+      // External page navigation will be handled by Link component
+      setIsMenuOpen(false);
+    } else {
+      // Scroll to section on current page
+      if (location.pathname !== '/') {
+        // If not on home page, navigate to home first
+        window.location.href = '/#' + link.id;
+      } else {
+        scrollToSection(link.id);
+      }
+    }
+  };
+
   const navLinks = [
-    { id: 'home', label: 'Главная' },
-    { id: 'about', label: 'О школе' },
-    { id: 'courses', label: 'Курсы' },
-    { id: 'results', label: 'Результаты' },
-    { id: 'news', label: 'Новости' },
-    { id: 'vacancies', label: 'Вакансии' },
-    { id: 'faq', label: 'FAQ' },
-    { id: 'contacts', label: 'Контакты' }
+    { id: 'home', label: 'Главная', external: false },
+    { id: 'about', label: 'О школе', external: false },
+    { id: 'courses', label: 'Курсы', external: false },
+    { id: 'results', label: 'Результаты', external: false },
+    { id: 'news', label: 'Новости', external: false },
+    { id: 'vacancies', label: 'Вакансии', path: '/vacancies', external: true },
+    { id: 'faq', label: 'FAQ', external: false },
+    { id: 'contacts', label: 'Контакты', external: false }
   ];
 
   return (
@@ -44,9 +61,9 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div
+          <Link
+            to="/"
             className="flex items-center cursor-pointer"
-            onClick={() => scrollToSection('home')}
           >
             <div className="w-14 h-14 flex items-center justify-center mr-3">
               <img 
@@ -61,19 +78,30 @@ const Header = () => {
               </h1>
               <p className="text-xs text-gray-600">Частная школа</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#2E7D32] transition-colors duration-200 relative group"
-              >
-                {link.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4CAF50] transition-all duration-300 group-hover:w-full"></span>
-              </button>
+              link.external ? (
+                <Link
+                  key={link.id}
+                  to={link.path}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#2E7D32] transition-colors duration-200 relative group"
+                >
+                  {link.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4CAF50] transition-all duration-300 group-hover:w-full"></span>
+                </Link>
+              ) : (
+                <button
+                  key={link.id}
+                  onClick={() => handleNavigation(link)}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#2E7D32] transition-colors duration-200 relative group"
+                >
+                  {link.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#4CAF50] transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              )
             ))}
           </nav>
 
@@ -116,13 +144,24 @@ const Header = () => {
         >
           <nav className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
             {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="text-left px-4 py-3 text-gray-700 hover:bg-[#009479]/10 hover:text-[#009479] rounded-lg transition-colors duration-200 font-medium"
-              >
-                {link.label}
-              </button>
+              link.external ? (
+                <Link
+                  key={link.id}
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-left px-4 py-3 text-gray-700 hover:bg-[#009479]/10 hover:text-[#009479] rounded-lg transition-colors duration-200 font-medium"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.id}
+                  onClick={() => handleNavigation(link)}
+                  className="text-left px-4 py-3 text-gray-700 hover:bg-[#009479]/10 hover:text-[#009479] rounded-lg transition-colors duration-200 font-medium"
+                >
+                  {link.label}
+                </button>
+              )
             ))}
             <div className="pt-4 space-y-3">
               <a
@@ -133,7 +172,13 @@ const Header = () => {
                 <span className="font-medium">+7 (916) 122-21-12</span>
               </a>
               <Button
-                onClick={() => scrollToSection('contacts')}
+                onClick={() => {
+                  if (location.pathname !== '/') {
+                    window.location.href = '/#contacts';
+                  } else {
+                    scrollToSection('contacts');
+                  }
+                }}
                 className="w-full bg-[#009479] hover:bg-[#007A64] text-white font-medium py-3 rounded-lg shadow-md"
               >
                 Записаться на занятие

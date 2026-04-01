@@ -1,42 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Facilities from './components/Facilities';
-import Advantages from './components/Advantages';
-import Courses from './components/Courses';
-import Results from './components/Results';
-import SchoolLife from './components/SchoolLife';
-import SchoolNews from './components/SchoolNews';
-import Teachers from './components/Teachers';
-import Testimonials from './components/Testimonials';
-import Vacancies from './components/Vacancies';
-import FAQ from './components/FAQ';
-import Contacts from './components/Contacts';
 import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import VacanciesPage from './pages/VacanciesPage';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Facilities />
-        <Advantages />
-        <Courses />
-        <Results />
-        <SchoolLife />
-        <SchoolNews />
-        <Teachers />
-        <Testimonials />
-        <Vacancies />
-        <FAQ />
-        <Contacts />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/vacancies" element={<VacanciesPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
