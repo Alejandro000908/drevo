@@ -53,7 +53,7 @@ const VacanciesPage = () => {
                 <div className="w-12 h-12 bg-[#009479]/10 rounded-full flex items-center justify-center mb-4">
                   <span className="text-2xl">📊</span>
                 </div>
-                <h3 className="text-xl font-bold text-[#414141] mb-3">Малые группы</h3>
+                <h3 className="text-xl font-bold text-[#414141] mb-3">Небольшие классы до 12 человек</h3>
                 <p className="text-gray-600 leading-relaxed">
                   До 12 учеников в классе - это позволяет уделить внимание каждому ребенку и достичь максимальных результатов.
                 </p>

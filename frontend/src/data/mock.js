@@ -19,7 +19,7 @@ export const SCHOOL_INFO = {
 
 export const HERO = {
   headline: "Частная школа «Древо Познаний» — индивидуальный подход и реальные результаты",
-  subtext: "\u041F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430 \u043A \u0415\u0413\u042D \u0438 \u041E\u0413\u042D \u0441 \u0433\u0430\u0440\u0430\u043D\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u043C \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442\u043E\u043C. \u041C\u0430\u043B\u044B\u0435 \u0433\u0440\u0443\u043F\u043F\u044B \u0434\u043E 12 \u0447\u0435\u043B\u043E\u0432\u0435\u043A. \u041E\u043F\u044B\u0442\u043D\u044B\u0435 \u043F\u0440\u0435\u043F\u043E\u0434\u0430\u0432\u0430\u0442\u0435\u043B\u0438.",
+  subtext: "Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Небольшие классы до 12 человек. Опытные преподаватели.",
   ctaPrimary: "Записаться на пробное занятие",
   ctaSecondary: "Узнать больше",
   image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pyjpj7ng_n3LEFeUqka_FyO2v4FHv_ehXQKcINz2u7xDZgeRYIDL_4WLprgjm86FlIyiF2ABWYPuo3-b__VV-C2nH3Ru0UwW7.jpg"
@@ -62,8 +62,8 @@ export const SCHOOL_LIFE = [
 export const ADVANTAGES = [
 {
   id: 1,
-  title: "Малые группы",
-  description: "До 6 человек в группе — преподаватель уделяет внимание каждому ученику",
+  title: "Небольшие классы до 12 человек",
+  description: "До 12 человек в классе — преподаватель уделяет внимание каждому ученику",
   icon: "users"
 },
 {
