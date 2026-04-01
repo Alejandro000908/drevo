@@ -13,7 +13,8 @@ export const SCHOOL_INFO = {
   mapEmbedUrl: "https://yandex.ru/map-widget/v1/?ll=38.262168%2C55.568273&z=17&l=map&pt=38.262168,55.568273,pm2rdm",
   social: {
     vk: "https://vk.com/drevopoznaniy_ramenskoe",
-    telegram: "https://t.me/Drevopoznaniy_ramenskoe"
+    telegram: "https://t.me/Drevopoznaniy_ramenskoe",
+    instagram: "https://www.instagram.com/drevopoznaniy_ramenskoe/"
   }
 };
 
