@@ -1,6 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp, GraduationCap } from 'lucide-react';
 import { STATS } from '../data/mock';
+
+const UNIVERSITIES = [
+  {
+    id: 1,
+    name: "МГУ",
+    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/23ailkew_i.jpg"
+  },
+  {
+    id: 2,
+    name: "ВШЭ",
+    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/6k8xovdj_logoSVGblueWordnoColor.svg"
+  },
+  {
+    id: 3,
+    name: "РХТУ им. Менделеева",
+    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/govi5wbn_Mendeleev_University.jpg"
+  },
+  {
+    id: 4,
+    name: "МГТУ",
+    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/1cf9o27u_513dcc22399ddea3cf9d0e6f712c93fb.jpg"
+  },
+  {
+    id: 5,
+    name: "РГУ",
+    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/qneou6fv_rgu_3_novoe.png"
+  }
+];
 
 const Results = () => {
   const [counts, setCounts] = useState(STATS.map(() => 0));
@@ -115,6 +143,59 @@ const Results = () => {
               <span className="font-semibold">МГУ, ВШЭ, МГТУ, СПбГУ</span> и другие ведущие вузы России на{' '}
               <span className="text-[#009479] font-bold">бюджетные места</span>
             </p>
+          </div>
+        </div>
+
+        {/* Universities Section */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <GraduationCap className="w-5 h-5 text-[#009479]" />
+              <span className="text-white">НАШИ ВЫПУСКНИКИ</span>
+            </div>
+            <h3 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Куда поступают наши выпускники
+            </h3>
+            <p className="text-gray-200 max-w-2xl mx-auto">
+              Престижные высшие учебные заведения России
+            </p>
+          </div>
+
+          {/* University Logos Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+            {UNIVERSITIES.map((university) => (
+              <div
+                key={university.id}
+                className="group relative bg-white/10 backdrop-blur-lg rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 w-full h-32 flex items-center justify-center"
+              >
+                <img
+                  src={university.logo}
+                  alt={university.name}
+                  className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-80 group-hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Experience Banner */}
+        <div className="mt-16 relative bg-white/10 backdrop-blur-lg rounded-2xl p-8 sm:p-12 overflow-hidden border border-white/20">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#009479]/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#009479]/20 rounded-full blur-3xl"></div>
+          
+          <div className="relative z-10 grid sm:grid-cols-3 gap-8 text-center text-white">
+            <div>
+              <div className="text-4xl sm:text-5xl font-bold mb-2 text-[#009479]">100%</div>
+              <div className="text-lg">Счастливых родителей</div>
+            </div>
+            <div>
+              <div className="text-4xl sm:text-5xl font-bold mb-2 text-[#009479]">12</div>
+              <div className="text-lg">Лет опыта</div>
+            </div>
+            <div>
+              <div className="text-4xl sm:text-5xl font-bold mb-2 text-[#009479]">240+</div>
+              <div className="text-lg">Выпускников</div>
+            </div>
           </div>
         </div>
       </div>
