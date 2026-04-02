@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Calendar, Camera, Award, Users, ChevronRight, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Calendar, Camera, Award, Users, ChevronRight, Clock, ArrowRight } from 'lucide-react';
 
 // Mock data - esto se puede conectar con MongoDB después
 const NEWS_CATEGORIES = [
@@ -68,11 +69,13 @@ const SCHOOL_NEWS = [
 
 const SchoolNews = () => {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [visibleNews, setVisibleNews] = useState(6);
 
   const filteredNews = activeCategory === 'all' 
     ? SCHOOL_NEWS 
     : SCHOOL_NEWS.filter(news => news.category === activeCategory);
+
+  // Show only latest 6 news on homepage
+  const displayedNews = filteredNews.slice(0, 6);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -141,10 +144,11 @@ const SchoolNews = () => {
 
         {/* News Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {filteredNews.slice(0, visibleNews).map((newsItem, index) => (
-            <article
+          {displayedNews.map((newsItem, index) => (
+            <Link
               key={newsItem.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              to="/school-life"
+              className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 block"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Image */}
@@ -191,33 +195,31 @@ const SchoolNews = () => {
                 </p>
                 
                 {/* Date Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="text-xs text-gray-500 flex items-center gap-1">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                  <span className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
                     <Calendar className="w-3 h-3" />
                     {formatDate(newsItem.date)}
                   </span>
-                  <button className="text-[#009479] hover:text-[#007A64] font-medium text-sm flex items-center gap-1 transition-colors">
+                  <span className="text-[#009479] dark:text-[#00BFA5] hover:text-[#007A64] dark:hover:text-[#009479] font-medium text-sm flex items-center gap-1 transition-colors">
                     Подробнее
                     <ChevronRight className="w-4 h-4" />
-                  </button>
+                  </span>
                 </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
-        {/* Load More Button */}
-        {filteredNews.length > visibleNews && (
-          <div className="text-center">
-            <button
-              onClick={() => setVisibleNews(prev => prev + 3)}
-              className="inline-flex items-center gap-2 bg-[#009479] hover:bg-[#007A64] text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              Показать больше
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        )}
+        {/* View All Button */}
+        <div className="text-center">
+          <Link
+            to="/school-life"
+            className="inline-flex items-center gap-2 bg-[#009479] hover:bg-[#007A64] dark:bg-[#00BFA5] dark:hover:bg-[#009479] text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+          >
+            Смотреть все новости
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
 
         {/* CTA Banner */}
         <div className="mt-16 bg-gradient-to-r from-[#009479] to-[#007A64] rounded-2xl p-8 text-white text-center shadow-xl">

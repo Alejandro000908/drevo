@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import VacanciesPage from './pages/VacanciesPage';
+import SchoolLifePage from './pages/SchoolLifePage';
 import DarkModeToggle from './components/DarkModeToggle';
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
+          <Route path="/school-life" element={<SchoolLifePage />} />
         </Routes>
         <Footer />
         <DarkModeToggle />
