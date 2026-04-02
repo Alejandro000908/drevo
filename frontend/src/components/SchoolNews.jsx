@@ -74,8 +74,10 @@ const SchoolNews = () => {
     ? SCHOOL_NEWS 
     : SCHOOL_NEWS.filter(news => news.category === activeCategory);
 
-  // Show only latest 6 news on homepage
-  const displayedNews = filteredNews.slice(0, 6);
+  // Sort by date (newest first) and show only latest 6 news on homepage
+  const displayedNews = [...filteredNews]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 6);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
