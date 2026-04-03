@@ -188,45 +188,51 @@ const Results = () => {
                 }}
               >
                 <div
-                  className="relative bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/30 h-32 flex items-center justify-center transition-all duration-500 hover:shadow-2xl hover:shadow-[#00BFA5]/40 hover:border-[#00BFA5]/60 overflow-hidden cursor-pointer"
+                  className="relative bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/40 h-32 flex items-center justify-center transition-all duration-500 hover:shadow-2xl hover:shadow-[#00BFA5]/50 hover:border-[#00BFA5]/80 overflow-hidden cursor-pointer group"
                   style={{
                     transform: 'translateZ(0px)',
                     transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateZ(30px) rotateY(5deg) scale(1.05)';
+                    e.currentTarget.style.transform = 'translateZ(40px) rotateY(8deg) scale(1.08)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateZ(0px) rotateY(0deg) scale(1)';
                   }}
                 >
-                  {/* Background gradient glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/0 via-[#00BFA5]/0 to-[#009479]/0 group-hover:from-[#009479]/20 group-hover:via-[#00BFA5]/15 group-hover:to-[#009479]/20 transition-all duration-700 rounded-2xl"></div>
+                  {/* Animated gradient background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/10 via-transparent to-[#00BFA5]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                   
-                  {/* University Logo */}
-                  <img
-                    src={university.logo}
-                    alt={university.name}
-                    className="relative z-10 max-w-full max-h-20 object-contain transition-all duration-500 group-hover:scale-110"
-                    style={{
-                      opacity: 0.95
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.opacity = '1';
-                      e.target.style.filter = 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.3)) brightness(1.1)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.opacity = '0.95';
-                      e.target.style.filter = 'none';
-                    }}
-                  />
+                  {/* White background for logo */}
+                  <div className="relative z-10 bg-white rounded-xl p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 w-full h-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50">
+                    {/* Logo */}
+                    <img
+                      src={university.logo}
+                      alt={university.name}
+                      className="max-w-full max-h-full object-contain transition-all duration-500 group-hover:scale-105"
+                      style={{
+                        filter: 'contrast(1.1) saturate(1.1)'
+                      }}
+                    />
+                  </div>
                   
-                  {/* Decorative corner accents */}
-                  <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-[#00BFA5]/40 group-hover:border-[#00BFA5]/80 rounded-tr-2xl transition-all duration-500"></div>
-                  <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-[#009479]/40 group-hover:border-[#009479]/80 rounded-bl-2xl transition-all duration-500"></div>
+                  {/* Premium corner frames */}
+                  <div className="absolute top-0 left-0 w-16 h-16">
+                    <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-[#00BFA5] to-transparent"></div>
+                    <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-[#00BFA5] to-transparent"></div>
+                  </div>
+                  <div className="absolute bottom-0 right-0 w-16 h-16">
+                    <div className="absolute bottom-0 right-0 w-full h-0.5 bg-gradient-to-l from-[#009479] to-transparent"></div>
+                    <div className="absolute bottom-0 right-0 w-0.5 h-full bg-gradient-to-t from-[#009479] to-transparent"></div>
+                  </div>
                   
-                  {/* Animated glow orb */}
-                  <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-[#009479]/30 to-[#00BFA5]/30 rounded-full blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-700"></div>
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-[#00BFA5]/20 via-transparent to-[#009479]/20 blur-xl"></div>
+                  
+                  {/* Shine effect on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-700">
+                    <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white to-transparent skew-x-12 group-hover:left-full transition-all duration-1000"></div>
+                  </div>
                 </div>
               </div>
             ))}
