@@ -79,38 +79,30 @@ const ProgramsPage = () => {
               onMouseEnter={() => setHoveredStep('plan')}
               onMouseLeave={() => setHoveredStep(null)}
             >
-              <div className={`relative bg-gradient-to-br from-[#00BFA5] to-[#009479] rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ${
-                hoveredStep === 'plan' ? 'scale-105 shadow-[#009479]/60' : ''
+              <div className={`relative bg-gradient-to-br from-[#00BFA5] to-[#009479] rounded-3xl p-6 shadow-2xl transition-all duration-700 ${
+                hoveredStep === 'plan' ? 'scale-110 shadow-[#009479]/60' : ''
               }`}>
                 {/* 3D depth layers */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#009479] to-[#00796B] rounded-3xl transform translate-y-2 translate-x-2 -z-10"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00796B] to-[#00695C] rounded-3xl transform translate-y-4 translate-x-4 -z-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#009479] to-[#00796B] rounded-3xl transform translate-y-2 -z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00796B] to-[#00695C] rounded-3xl transform translate-y-4 -z-20"></div>
                 
-                <div className="relative z-10">
-                  {/* LARGE Image for Учебный план */}
-                  <div className="relative h-[450px] overflow-hidden rounded-3xl">
-                    <img
-                      src={STUDY_PLAN.image}
-                      alt={STUDY_PLAN.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                    
-                    {/* Title overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-10">
-                      <h3 className="text-5xl md:text-6xl font-black text-white mb-6 drop-shadow-2xl">{STUDY_PLAN.title}</h3>
-                      <div className="flex items-center gap-3 text-white/90 font-medium text-xl">
-                        <Download className="w-7 h-7" />
-                        <span>Скачать учебный план</span>
-                      </div>
+                <div className="relative z-10 flex items-center gap-6">
+                  <img
+                    src={STUDY_PLAN.image}
+                    alt={STUDY_PLAN.title}
+                    className="w-32 h-32 object-cover rounded-xl shadow-lg"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-2">{STUDY_PLAN.title}</h3>
+                    <div className="flex items-center gap-2 text-white font-semibold">
+                      <Download className="w-5 h-5" />
+                      <span>Скачать план</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Shine effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 overflow-hidden rounded-3xl">
-                  <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 group-hover:left-full transition-all duration-1000"></div>
-                </div>
+                {/* Glow effect */}
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
             </div>
           </div>
@@ -124,15 +116,15 @@ const ProgramsPage = () => {
               return (
                 <div
                   key={program.id}
-                  className="step-wrapper mb-16 animate-slide-in-stair"
+                  className="step-wrapper mb-12 animate-slide-in-stair"
                   style={{
                     animationDelay: `${(index + 1) * 200}ms`,
-                    marginLeft: `${index * 100}px`,
+                    marginLeft: `${index * 80}px`,
                     transform: `perspective(1500px) rotateX(${5 - index * 2}deg) translateZ(${index * 20}px)`
                   }}
                 >
                   <div
-                    className="relative group cursor-pointer max-w-4xl"
+                    className="relative group cursor-pointer"
                     style={{
                       transformStyle: 'preserve-3d',
                       transition: 'all 0.7s cubic-bezier(0.23, 1, 0.32, 1)'
@@ -143,42 +135,39 @@ const ProgramsPage = () => {
                   >
                     {/* Main step card */}
                     <div 
-                      className={`relative bg-gradient-to-br ${program.color} rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 ${
+                      className={`relative bg-gradient-to-br ${program.color} rounded-3xl p-6 shadow-2xl transition-all duration-700 ${
                         isHovered ? 'scale-105 shadow-[#009479]/60' : ''
                       }`}
                       style={{
-                        transform: isHovered ? 'translateY(-15px) translateZ(40px)' : 'translateY(0) translateZ(0)'
+                        transform: isHovered ? 'translateY(-10px) translateZ(30px)' : 'translateY(0) translateZ(0)'
                       }}
                     >
                       {/* 3D depth layers */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-80 rounded-3xl transform translate-y-3 translate-x-3 -z-10`}></div>
-                      <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-60 rounded-3xl transform translate-y-6 translate-x-6 -z-20`}></div>
-                      <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-40 rounded-3xl transform translate-y-9 translate-x-9 -z-30`}></div>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-80 rounded-3xl transform translate-y-2 translate-x-2 -z-10`}></div>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-60 rounded-3xl transform translate-y-4 translate-x-4 -z-20`}></div>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-40 rounded-3xl transform translate-y-6 translate-x-6 -z-30`}></div>
 
-                      <div className="relative z-10">
-                        {/* Step number badge - smaller and in corner */}
-                        <div className="absolute top-4 left-4 z-20 w-16 h-16 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl border-2 border-[#009479]/30">
+                      <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                        {/* Step number badge */}
+                        <div className="absolute -top-4 -left-4 w-16 h-16 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-xl border-4 border-white/50 dark:border-gray-700/50">
                           <span className="text-3xl font-black bg-gradient-to-br from-[#009479] to-[#00BFA5] bg-clip-text text-transparent">
                             {stepNumber}
                           </span>
                         </div>
 
-                        {/* LARGE Image - The protagonist */}
-                        <div className="relative h-[500px] overflow-hidden rounded-3xl">
-                          <img
-                            src={program.image}
-                            alt={program.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
-                          
-                          {/* Title overlay - minimal text */}
-                          <div className="absolute bottom-0 left-0 right-0 p-10">
-                            <h3 className="text-5xl md:text-6xl font-black text-white mb-6 drop-shadow-2xl">{program.title}</h3>
-                            <div className="flex items-center gap-3 text-white/90 font-medium text-xl">
-                              <span>Открыть программу</span>
-                              <ChevronRight className="w-7 h-7 transition-transform group-hover:translate-x-3" />
-                            </div>
+                        {/* Image */}
+                        <img
+                          src={program.image}
+                          alt={program.title}
+                          className="w-full md:w-48 h-48 object-cover rounded-xl shadow-xl transition-transform duration-700 group-hover:scale-105"
+                        />
+
+                        {/* Content */}
+                        <div className="flex-1 text-white">
+                          <h3 className="text-2xl md:text-3xl font-bold mb-3">{program.title}</h3>
+                          <div className="flex items-center gap-2 font-semibold">
+                            <span>Открыть программу</span>
+                            <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
                           </div>
                         </div>
                       </div>
