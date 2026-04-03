@@ -42,6 +42,7 @@ const Header = () => {
   const navLinks = [
     { id: 'home', label: 'Главная', external: false },
     { id: 'about', label: 'О школе', external: false },
+    { id: 'programs', label: 'Программы', path: '/programs', external: true },
     { id: 'results', label: 'Результаты', external: false },
     { id: 'news', label: 'Новости', external: false },
     { id: 'vacancies', label: 'Вакансии', path: '/vacancies', external: true },
