@@ -5,28 +5,33 @@ import { STATS } from '../data/mock';
 const UNIVERSITIES = [
   {
     id: 1,
-    name: "МГУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/23ailkew_i.jpg"
+    name: "МГУ им. Ломоносова",
+    shortName: "МГУ",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Moscow_State_University_2.svg/1200px-Moscow_State_University_2.svg.png"
   },
   {
     id: 2,
-    name: "ВШЭ",
+    name: "РЭУ им. Г.В. Плеханова",
+    shortName: "РЭУ",
     logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/6k8xovdj_logoSVGblueWordnoColor.svg"
   },
   {
     id: 3,
     name: "РХТУ им. Менделеева",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/govi5wbn_Mendeleev_University.jpg"
+    shortName: "РХТУ",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Mendeleev_University_of_Chemical_Technology_of_Russia_%28emblem%29.svg/1200px-Mendeleev_University_of_Chemical_Technology_of_Russia_%28emblem%29.svg.png"
   },
   {
     id: 4,
-    name: "МГТУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/1cf9o27u_513dcc22399ddea3cf9d0e6f712c93fb.jpg"
+    name: "МГТУ им. Баумана",
+    shortName: "МГТУ",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Bauman_Moscow_State_Technical_University_transparent.svg/1200px-Bauman_Moscow_State_Technical_University_transparent.svg.png"
   },
   {
     id: 5,
-    name: "РГУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/qneou6fv_rgu_3_novoe.png"
+    name: "МФТИ",
+    shortName: "МФТИ",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Moscow_Institute_of_Physics_and_Technology_logo.svg/1200px-Moscow_Institute_of_Physics_and_Technology_logo.svg.png"
   }
 ];
 
@@ -175,7 +180,7 @@ const Results = () => {
             </p>
           </div>
 
-          {/* University Logos with 3D hover */}
+          {/* University Cards with modern design */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {UNIVERSITIES.map((university, index) => (
               <div
@@ -188,26 +193,37 @@ const Results = () => {
                 }}
               >
                 <div
-                  className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/20 h-32 flex items-center justify-center transition-all duration-500 hover:shadow-2xl hover:shadow-[#00BFA5]/30"
+                  className="relative bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/30 h-32 flex flex-col items-center justify-center transition-all duration-500 hover:shadow-2xl hover:shadow-[#00BFA5]/40 hover:border-[#00BFA5]/50 overflow-hidden group cursor-pointer"
                   style={{
                     transform: 'translateZ(0px)',
                     transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateZ(30px) rotateY(5deg)';
+                    e.currentTarget.style.transform = 'translateZ(30px) rotateY(5deg) scale(1.05)';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateZ(0px) rotateY(0deg)';
+                    e.currentTarget.style.transform = 'translateZ(0px) rotateY(0deg) scale(1)';
                   }}
                 >
-                  <img
-                    src={university.logo}
-                    alt={university.name}
-                    className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110"
-                  />
+                  {/* Background gradient animation */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/0 via-[#00BFA5]/0 to-[#009479]/0 group-hover:from-[#009479]/20 group-hover:via-[#00BFA5]/10 group-hover:to-[#009479]/20 transition-all duration-700"></div>
                   
-                  {/* Glow behind logo */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/20 to-[#00BFA5]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"></div>
+                  {/* University short name */}
+                  <div className="relative z-10 text-center">
+                    <div className="text-3xl font-black text-white/90 group-hover:text-white mb-1 group-hover:scale-110 transition-all duration-500 tracking-tight">
+                      {university.shortName}
+                    </div>
+                    <div className="text-xs text-gray-300/70 group-hover:text-gray-200 font-medium transition-colors duration-500 px-2">
+                      {university.name}
+                    </div>
+                  </div>
+                  
+                  {/* Decorative corner accent */}
+                  <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[#00BFA5]/30 group-hover:border-[#00BFA5]/70 rounded-tr-2xl transition-colors duration-500"></div>
+                  <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#009479]/30 group-hover:border-[#009479]/70 rounded-bl-2xl transition-colors duration-500"></div>
+                  
+                  {/* Glow orb */}
+                  <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-gradient-to-br from-[#009479]/30 to-[#00BFA5]/30 rounded-full blur-2xl opacity-0 group-hover:opacity-60 transition-opacity duration-700"></div>
                 </div>
               </div>
             ))}
