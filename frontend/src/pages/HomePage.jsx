@@ -8,7 +8,6 @@ import SchoolLife from '../components/SchoolLife';
 import SchoolNews from '../components/SchoolNews';
 import Teachers from '../components/Teachers';
 import Testimonials from '../components/Testimonials';
-import DocumentsSection from '../components/DocumentsSection';
 import FAQ from '../components/FAQ';
 import Contacts from '../components/Contacts';
 
@@ -24,7 +23,6 @@ const HomePage = () => {
       <SchoolNews />
       <Teachers />
       <Testimonials />
-      <DocumentsSection />
       <FAQ />
       <Contacts />
     </main>
