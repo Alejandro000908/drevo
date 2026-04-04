@@ -65,7 +65,7 @@ const DocumentsPage = () => {
         {/* Tree Visualization */}
         <div className="relative max-w-7xl mx-auto">
           {/* Tree Container */}
-          <div className="relative flex justify-center items-end" style={{ minHeight: '1200px' }}>
+          <div className="relative flex justify-center items-end" style={{ minHeight: '1500px' }}>
             {/* Roots (bottom) */}
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full">
               <svg className="w-full h-32 opacity-30" viewBox="0 0 400 100" preserveAspectRatio="xMidYMid meet">
@@ -89,10 +89,10 @@ const DocumentsPage = () => {
             </div>
 
             {/* Left Branches (12 documents) */}
-            <div className="absolute left-0 bottom-32 w-1/2 h-[600px]">
+            <div className="absolute left-0 bottom-32 w-1/2 h-[800px]">
               {leftBranches.map((doc, index) => {
-                const topOffset = (index * 50) + 50;
-                const horizontalOffset = 50 + (index * 15);
+                const topOffset = (index * 65) + 30;
+                const horizontalOffset = 80 + (index * 20);
                 
                 return (
                   <div
@@ -105,9 +105,9 @@ const DocumentsPage = () => {
                     }}
                   >
                     {/* Branch SVG */}
-                    <svg className="absolute right-0 top-0" width={horizontalOffset + 100} height="60" style={{ transform: 'translateY(-30px)' }}>
+                    <svg className="absolute right-0 top-0" width={horizontalOffset + 120} height="80" style={{ transform: 'translateY(-40px)' }}>
                       <path
-                        d={`M ${horizontalOffset + 100} 30 Q ${horizontalOffset + 50} 30, 0 30`}
+                        d={`M ${horizontalOffset + 120} 40 Q ${horizontalOffset + 70} ${35 + (index % 3) * 5}, 0 40`}
                         stroke="currentColor"
                         strokeWidth="3"
                         fill="none"
@@ -121,13 +121,13 @@ const DocumentsPage = () => {
                       className={`relative group cursor-pointer animate-fade-in-leaf`}
                       style={{ 
                         animationDelay: `${(index * 0.1) + 0.5}s`,
-                        marginRight: `${horizontalOffset + 100}px`
+                        marginRight: `${horizontalOffset + 120}px`
                       }}
                       onMouseEnter={() => setHoveredBranch(doc.id)}
                       onMouseLeave={() => setHoveredBranch(null)}
                       onClick={() => handleDownload(doc.link)}
                     >
-                      <div className={`bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 dark:from-[#00BFA5]/30 dark:to-[#009479]/30 backdrop-blur-sm border-2 border-[#009479]/40 rounded-2xl p-4 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-[#009479]/40 hover:scale-105 hover:-translate-y-2 ${
+                      <div className={`bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 dark:from-[#00BFA5]/30 dark:to-[#009479]/30 backdrop-blur-sm border-2 border-[#009479]/40 rounded-2xl p-4 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-[#009479]/40 hover:scale-110 hover:-translate-y-3 min-w-[320px] ${
                         hoveredBranch === doc.id ? 'border-[#00BFA5] bg-gradient-to-br from-[#00BFA5]/30 to-[#009479]/30' : ''
                       }`}>
                         <div className="flex items-start gap-3">
@@ -155,10 +155,10 @@ const DocumentsPage = () => {
             </div>
 
             {/* Right Branches (12 documents) */}
-            <div className="absolute right-0 bottom-32 w-1/2 h-[600px]">
+            <div className="absolute right-0 bottom-32 w-1/2 h-[800px]">
               {rightBranches.map((doc, index) => {
-                const topOffset = (index * 50) + 50;
-                const horizontalOffset = 50 + (index * 15);
+                const topOffset = (index * 65) + 30;
+                const horizontalOffset = 80 + (index * 20);
                 
                 return (
                   <div
@@ -171,9 +171,9 @@ const DocumentsPage = () => {
                     }}
                   >
                     {/* Branch SVG */}
-                    <svg className="absolute left-0 top-0" width={horizontalOffset + 100} height="60" style={{ transform: 'translateY(-30px)' }}>
+                    <svg className="absolute left-0 top-0" width={horizontalOffset + 120} height="80" style={{ transform: 'translateY(-40px)' }}>
                       <path
-                        d={`M 0 30 Q ${horizontalOffset + 50} 30, ${horizontalOffset + 100} 30`}
+                        d={`M 0 40 Q ${horizontalOffset + 70} ${35 + (index % 3) * 5}, ${horizontalOffset + 120} 40`}
                         stroke="currentColor"
                         strokeWidth="3"
                         fill="none"
@@ -187,13 +187,13 @@ const DocumentsPage = () => {
                       className={`relative group cursor-pointer animate-fade-in-leaf`}
                       style={{ 
                         animationDelay: `${((index + 12) * 0.1) + 0.5}s`,
-                        marginLeft: `${horizontalOffset + 100}px`
+                        marginLeft: `${horizontalOffset + 120}px`
                       }}
                       onMouseEnter={() => setHoveredBranch(doc.id)}
                       onMouseLeave={() => setHoveredBranch(null)}
                       onClick={() => handleDownload(doc.link)}
                     >
-                      <div className={`bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 dark:from-[#00BFA5]/30 dark:to-[#009479]/30 backdrop-blur-sm border-2 border-[#009479]/40 rounded-2xl p-4 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-[#009479]/40 hover:scale-105 hover:-translate-y-2 ${
+                      <div className={`bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 dark:from-[#00BFA5]/30 dark:to-[#009479]/30 backdrop-blur-sm border-2 border-[#009479]/40 rounded-2xl p-4 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-[#009479]/40 hover:scale-110 hover:-translate-y-3 min-w-[320px] ${
                         hoveredBranch === doc.id ? 'border-[#00BFA5] bg-gradient-to-br from-[#00BFA5]/30 to-[#009479]/30' : ''
                       }`}>
                         <div className="flex items-start gap-3">
