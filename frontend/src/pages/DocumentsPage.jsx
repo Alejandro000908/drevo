@@ -36,10 +36,6 @@ const DocumentsPage = () => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
 
-  // Distribute documents across branches (left and right)
-  const leftBranches = DOCUMENTS.slice(0, 12);
-  const rightBranches = DOCUMENTS.slice(12, 24);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20 pb-20">
       <div className="container mx-auto px-4 sm:px-6">
@@ -64,184 +60,109 @@ const DocumentsPage = () => {
 
         {/* Tree Visualization */}
         <div className="relative max-w-7xl mx-auto">
-          {/* Tree Container */}
-          <div className="relative flex justify-center items-end" style={{ minHeight: '1500px' }}>
-            {/* Roots (bottom) */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full">
-              <svg className="w-full h-32 opacity-30" viewBox="0 0 400 100" preserveAspectRatio="xMidYMid meet">
-                {/* Root paths */}
-                <path d="M 200 0 Q 150 50, 100 100" stroke="currentColor" strokeWidth="3" fill="none" className="text-[#009479] animate-draw-root" style={{ animationDelay: '0s' }} />
-                <path d="M 200 0 Q 180 50, 140 100" stroke="currentColor" strokeWidth="2.5" fill="none" className="text-[#009479] animate-draw-root" style={{ animationDelay: '0.1s' }} />
-                <path d="M 200 0 Q 220 50, 260 100" stroke="currentColor" strokeWidth="2.5" fill="none" className="text-[#009479] animate-draw-root" style={{ animationDelay: '0.2s' }} />
-                <path d="M 200 0 Q 250 50, 300 100" stroke="currentColor" strokeWidth="3" fill="none" className="text-[#009479] animate-draw-root" style={{ animationDelay: '0.3s' }} />
-              </svg>
-            </div>
-
-            {/* Main Trunk */}
-            <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2">
-              <div className="w-16 h-96 bg-gradient-to-b from-[#8B4513] to-[#654321] rounded-t-full shadow-2xl relative overflow-hidden">
+          {/* Main Trunk at Top */}
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <div className="w-20 h-24 bg-gradient-to-b from-[#8B4513] to-[#654321] rounded-b-xl shadow-2xl relative overflow-hidden">
                 {/* Trunk texture */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
-                <div className="absolute top-10 left-2 w-8 h-2 bg-black/20 rounded-full"></div>
-                <div className="absolute top-32 right-2 w-6 h-2 bg-black/20 rounded-full"></div>
-                <div className="absolute top-56 left-3 w-7 h-2 bg-black/20 rounded-full"></div>
+                <div className="absolute top-4 left-3 w-10 h-2 bg-black/20 rounded-full"></div>
+                <div className="absolute top-10 right-3 w-8 h-2 bg-black/20 rounded-full"></div>
+                <div className="absolute top-16 left-4 w-9 h-2 bg-black/20 rounded-full"></div>
               </div>
+              
+              {/* Roots at bottom */}
+              <svg className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-40 h-12 opacity-40" viewBox="0 0 160 50">
+                <path d="M 80 0 Q 60 25, 40 50" stroke="#654321" strokeWidth="3" fill="none" className="animate-draw-root" />
+                <path d="M 80 0 Q 70 25, 55 50" stroke="#654321" strokeWidth="2" fill="none" className="animate-draw-root" style={{ animationDelay: '0.1s' }} />
+                <path d="M 80 0 Q 90 25, 105 50" stroke="#654321" strokeWidth="2" fill="none" className="animate-draw-root" style={{ animationDelay: '0.2s' }} />
+                <path d="M 80 0 Q 100 25, 120 50" stroke="#654321" strokeWidth="3" fill="none" className="animate-draw-root" style={{ animationDelay: '0.3s' }} />
+              </svg>
             </div>
+          </div>
 
-            {/* Left Branches (12 documents) */}
-            <div className="absolute left-0 bottom-32 w-1/2 h-[800px]">
-              {leftBranches.map((doc, index) => {
-                const topOffset = (index * 65) + 30;
-                const horizontalOffset = 80 + (index * 20);
-                
-                return (
+          {/* Organized Grid of Documents */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+            {DOCUMENTS.map((doc, index) => {
+              const isHovered = hoveredBranch === doc.id;
+              
+              return (
+                <div
+                  key={doc.id}
+                  className="relative group animate-fade-in-card"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  {/* Branch connector */}
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-0.5 h-8 bg-gradient-to-b from-[#654321] to-transparent animate-grow-down" style={{ animationDelay: `${index * 0.05}s` }}></div>
+                  
+                  {/* Document Card */}
                   <div
-                    key={doc.id}
-                    className="absolute"
-                    style={{
-                      top: `${topOffset}px`,
-                      right: `-${horizontalOffset}px`,
-                      animationDelay: `${index * 0.1}s`
-                    }}
+                    className={`relative bg-white dark:bg-gray-800 rounded-2xl p-5 border-2 transition-all duration-500 cursor-pointer ${
+                      isHovered 
+                        ? 'border-[#00BFA5] shadow-2xl shadow-[#009479]/40 scale-105 -translate-y-2' 
+                        : 'border-gray-200 dark:border-gray-700 shadow-lg hover:border-[#009479] hover:shadow-xl'
+                    }`}
+                    onMouseEnter={() => setHoveredBranch(doc.id)}
+                    onMouseLeave={() => setHoveredBranch(null)}
+                    onClick={() => handleDownload(doc.link)}
                   >
-                    {/* Branch SVG */}
-                    <svg className="absolute right-0 top-0" width={horizontalOffset + 120} height="80" style={{ transform: 'translateY(-40px)' }}>
-                      <path
-                        d={`M ${horizontalOffset + 120} 40 Q ${horizontalOffset + 70} ${35 + (index % 3) * 5}, 0 40`}
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        fill="none"
-                        className="text-[#654321] animate-draw-branch"
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                      />
-                    </svg>
+                    {/* Branch number badge */}
+                    <div className="absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-gray-900 z-10">
+                      <span className="text-white font-bold text-sm">{index + 1}</span>
+                    </div>
 
-                    {/* Leaf (Document Card) */}
-                    <div
-                      className={`relative group cursor-pointer animate-fade-in-leaf`}
-                      style={{ 
-                        animationDelay: `${(index * 0.1) + 0.5}s`,
-                        marginRight: `${horizontalOffset + 120}px`
-                      }}
-                      onMouseEnter={() => setHoveredBranch(doc.id)}
-                      onMouseLeave={() => setHoveredBranch(null)}
-                      onClick={() => handleDownload(doc.link)}
-                    >
-                      <div className={`bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 dark:from-[#00BFA5]/30 dark:to-[#009479]/30 backdrop-blur-sm border-2 border-[#009479]/40 rounded-2xl p-4 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-[#009479]/40 hover:scale-110 hover:-translate-y-3 min-w-[320px] ${
-                        hoveredBranch === doc.id ? 'border-[#00BFA5] bg-gradient-to-br from-[#00BFA5]/30 to-[#009479]/30' : ''
+                    <div className="flex items-start gap-4">
+                      {/* Icon */}
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md transition-all duration-300 ${
+                        isHovered 
+                          ? 'bg-gradient-to-br from-[#00BFA5] to-[#009479] scale-110' 
+                          : 'bg-gradient-to-br from-[#009479]/20 to-[#00BFA5]/20'
                       }`}>
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-[#009479] rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:bg-[#00BFA5] transition-colors">
-                            <FileText className="w-5 h-5 text-white" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-[#414141] dark:text-white line-clamp-2 mb-2">
-                              {doc.title}
-                            </p>
-                            <div className="flex items-center gap-1 text-xs text-[#009479] dark:text-[#00BFA5] font-medium">
-                              <Download className="w-3 h-3" />
-                              <span>Скачать</span>
-                            </div>
-                          </div>
-                        </div>
+                        <FileText className={`w-6 h-6 transition-colors ${isHovered ? 'text-white' : 'text-[#009479]'}`} />
+                      </div>
 
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"></div>
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm font-bold text-[#414141] dark:text-white mb-3 leading-tight">
+                          {doc.title}
+                        </h3>
+                        
+                        <button className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                          isHovered
+                            ? 'bg-gradient-to-r from-[#009479] to-[#00BFA5] text-white shadow-lg scale-105'
+                            : 'bg-gray-100 dark:bg-gray-700 text-[#009479] dark:text-[#00BFA5] hover:bg-gray-200 dark:hover:bg-gray-600'
+                        }`}>
+                          <Download className="w-4 h-4" />
+                          <span>Скачать</span>
+                        </button>
                       </div>
                     </div>
+
+                    {/* Decorative elements */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#00BFA5]/5 to-transparent rounded-bl-full"></div>
+                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#009479]/5 to-transparent rounded-tr-full"></div>
+
+                    {/* Glow effect */}
+                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br from-[#00BFA5]/10 to-[#009479]/10 transition-opacity duration-500 -z-10 blur-xl ${
+                      isHovered ? 'opacity-100' : 'opacity-0'
+                    }`}></div>
                   </div>
-                );
-              })}
-            </div>
-
-            {/* Right Branches (12 documents) */}
-            <div className="absolute right-0 bottom-32 w-1/2 h-[800px]">
-              {rightBranches.map((doc, index) => {
-                const topOffset = (index * 65) + 30;
-                const horizontalOffset = 80 + (index * 20);
-                
-                return (
-                  <div
-                    key={doc.id}
-                    className="absolute"
-                    style={{
-                      top: `${topOffset}px`,
-                      left: `-${horizontalOffset}px`,
-                      animationDelay: `${(index + 12) * 0.1}s`
-                    }}
-                  >
-                    {/* Branch SVG */}
-                    <svg className="absolute left-0 top-0" width={horizontalOffset + 120} height="80" style={{ transform: 'translateY(-40px)' }}>
-                      <path
-                        d={`M 0 40 Q ${horizontalOffset + 70} ${35 + (index % 3) * 5}, ${horizontalOffset + 120} 40`}
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        fill="none"
-                        className="text-[#654321] animate-draw-branch"
-                        style={{ animationDelay: `${(index + 12) * 0.1}s` }}
-                      />
-                    </svg>
-
-                    {/* Leaf (Document Card) */}
-                    <div
-                      className={`relative group cursor-pointer animate-fade-in-leaf`}
-                      style={{ 
-                        animationDelay: `${((index + 12) * 0.1) + 0.5}s`,
-                        marginLeft: `${horizontalOffset + 120}px`
-                      }}
-                      onMouseEnter={() => setHoveredBranch(doc.id)}
-                      onMouseLeave={() => setHoveredBranch(null)}
-                      onClick={() => handleDownload(doc.link)}
-                    >
-                      <div className={`bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 dark:from-[#00BFA5]/30 dark:to-[#009479]/30 backdrop-blur-sm border-2 border-[#009479]/40 rounded-2xl p-4 shadow-lg transition-all duration-500 hover:shadow-2xl hover:shadow-[#009479]/40 hover:scale-110 hover:-translate-y-3 min-w-[320px] ${
-                        hoveredBranch === doc.id ? 'border-[#00BFA5] bg-gradient-to-br from-[#00BFA5]/30 to-[#009479]/30' : ''
-                      }`}>
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 bg-[#009479] rounded-lg flex items-center justify-center flex-shrink-0 shadow-md group-hover:bg-[#00BFA5] transition-colors">
-                            <FileText className="w-5 h-5 text-white" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-[#414141] dark:text-white line-clamp-2 mb-2">
-                              {doc.title}
-                            </p>
-                            <div className="flex items-center gap-1 text-xs text-[#009479] dark:text-[#00BFA5] font-medium">
-                              <Download className="w-3 h-3" />
-                              <span>Скачать</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10"></div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(-10px); }
+        @keyframes fade-in-card {
+          from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes draw-root {
-          from { stroke-dasharray: 200; stroke-dashoffset: 200; }
-          to { stroke-dasharray: 200; stroke-dashoffset: 0; }
-        }
-
-        @keyframes draw-branch {
-          from { stroke-dasharray: 300; stroke-dashoffset: 300; }
-          to { stroke-dasharray: 300; stroke-dashoffset: 0; }
-        }
-
-        @keyframes fade-in-leaf {
-          from { opacity: 0; transform: scale(0.8) translateY(20px); }
-          to { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes grow-down {
+          from { height: 0; }
+          to { height: 2rem; }
         }
 
         .animate-fade-in {
@@ -252,13 +173,13 @@ const DocumentsPage = () => {
           animation: draw-root 1.5s ease-out forwards;
         }
 
-        .animate-draw-branch {
-          animation: draw-branch 1s ease-out forwards;
+        .animate-fade-in-card {
+          opacity: 0;
+          animation: fade-in-card 0.6s ease-out forwards;
         }
 
-        .animate-fade-in-leaf {
-          opacity: 0;
-          animation: fade-in-leaf 0.6s ease-out forwards;
+        .animate-grow-down {
+          animation: grow-down 0.8s ease-out forwards;
         }
       `}</style>
     </div>
