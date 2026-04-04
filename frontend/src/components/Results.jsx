@@ -193,7 +193,7 @@ const Results = () => {
                 }}
               >
                 <div
-                  className="relative bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/40 h-32 flex items-center justify-center transition-all duration-500 hover:shadow-2xl hover:shadow-[#00BFA5]/50 hover:border-[#00BFA5]/80 overflow-hidden cursor-pointer group"
+                  className="relative bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/40 h-48 flex items-center justify-center transition-all duration-500 hover:shadow-2xl hover:shadow-[#00BFA5]/50 hover:border-[#00BFA5]/80 overflow-hidden cursor-pointer group"
                   style={{
                     transform: 'translateZ(0px)',
                     transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'
@@ -209,14 +209,16 @@ const Results = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#009479]/10 via-transparent to-[#00BFA5]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                   
                   {/* White background for logo */}
-                  <div className="relative z-10 bg-white rounded-xl p-3 shadow-xl group-hover:shadow-2xl transition-all duration-500 w-full h-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50">
+                  <div className="relative z-10 bg-white rounded-xl p-4 shadow-xl group-hover:shadow-2xl transition-all duration-500 w-full h-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50">
                     {/* Logo */}
                     <img
                       src={university.logo}
                       alt={university.name}
-                      className="max-w-full max-h-full object-contain transition-all duration-500 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-all duration-500 group-hover:scale-105"
                       style={{
-                        filter: 'contrast(1.1) saturate(1.1)'
+                        filter: 'contrast(1.1) saturate(1.1)',
+                        maxWidth: '100%',
+                        maxHeight: '100%'
                       }}
                     />
                   </div>
