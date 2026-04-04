@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import VacanciesPage from './pages/VacanciesPage';
 import SchoolLifePage from './pages/SchoolLifePage';
 import ProgramsPage from './pages/ProgramsPage';
+import DocumentsPage from './pages/DocumentsPage';
 import DarkModeToggle from './components/DarkModeToggle';
 import './App.css';
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="/school-life" element={<SchoolLifePage />} />
           <Route path="/programs" element={<ProgramsPage />} />
+          <Route path="/documents" element={<DocumentsPage />} />
         </Routes>
         <Footer />
         <DarkModeToggle />

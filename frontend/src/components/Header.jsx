@@ -45,6 +45,7 @@ const Header = () => {
     { id: 'programs', label: 'Программы', path: '/programs', external: true },
     { id: 'results', label: 'Результаты', external: false },
     { id: 'news', label: 'Новости', external: false },
+    { id: 'documents', label: 'Документы', path: '/documents', external: true },
     { id: 'vacancies', label: 'Вакансии', path: '/vacancies', external: true },
     { id: 'faq', label: 'FAQ', external: false },
     { id: 'contacts', label: 'Контакты', external: false }
