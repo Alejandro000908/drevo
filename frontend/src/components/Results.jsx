@@ -27,6 +27,11 @@ const UNIVERSITIES = [
     id: 5,
     name: "РГУ",
     logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5z2rreod_rgu_3_novoe.png"
+  },
+  {
+    id: 6,
+    name: "Сеченовский Университет",
+    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/p9nahwks_logo-sechenov-new-itog-03.png"
   }
 ];
 
@@ -176,7 +181,7 @@ const Results = () => {
           </div>
 
           {/* University Logos with 3D hover */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {UNIVERSITIES.map((university, index) => (
               <div
                 key={university.id}
