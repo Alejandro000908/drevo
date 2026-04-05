@@ -14,27 +14,41 @@ import VisitModal from '../components/VisitModal';
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [hasShownInitially, setHasShownInitially] = useState(false);
 
   useEffect(() => {
-    // Show modal after 5 seconds or on scroll past 50% of page
-    const timer = setTimeout(() => {
-      setShowModal(true);
-    }, 5000);
-
-    const handleScroll = () => {
-      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPercent > 50 && !showModal) {
+    // Show modal initially after 5 seconds or on scroll past 50% of page
+    if (!hasShownInitially) {
+      const timer = setTimeout(() => {
         setShowModal(true);
-      }
-    };
+        setHasShownInitially(true);
+      }, 5000);
 
-    window.addEventListener('scroll', handleScroll);
+      const handleScroll = () => {
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        if (scrollPercent > 50 && !showModal && !hasShownInitially) {
+          setShowModal(true);
+          setHasShownInitially(true);
+        }
+      };
 
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [showModal]);
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [showModal, hasShownInitially]);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    
+    // Show modal again after 40 seconds
+    setTimeout(() => {
+      setShowModal(true);
+    }, 40000); // 40 seconds
+  };
 
   return (
     <main>
@@ -50,7 +64,7 @@ const HomePage = () => {
       <FAQ />
       <Contacts />
       
-      <VisitModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <VisitModal isOpen={showModal} onClose={handleCloseModal} />
     </main>
   );
 };
