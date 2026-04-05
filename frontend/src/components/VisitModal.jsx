@@ -129,11 +129,11 @@ const VisitModal = ({ isOpen, onClose }) => {
             
             {/* School Logo Overlay */}
             <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm rounded-2xl p-3 shadow-xl">
-              <svg className="w-12 h-12 text-[#009479]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.2"/>
-                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/0th67ovy_%D0%BB%D0%BE%D0%B3%D0%BE.png"
+                alt="Древо Познаний"
+                className="w-16 h-16 object-contain"
+              />
             </div>
             
             {/* Overlay Quote */}
