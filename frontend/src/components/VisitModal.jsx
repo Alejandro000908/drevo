@@ -121,11 +121,20 @@ const VisitModal = ({ isOpen, onClose }) => {
           {/* Left Side - Image */}
           <div className="relative h-64 md:h-full overflow-hidden">
             <img
-              src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5fyuhaj5_5303056761474453987.jpg"
-              alt="Classroom"
+              src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/aoft9uwa_5240250668726029488.jpg"
+              alt="Happy student"
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/40"></div>
+            
+            {/* School Logo Overlay */}
+            <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm rounded-2xl p-3 shadow-xl">
+              <svg className="w-12 h-12 text-[#009479]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="currentColor" fillOpacity="0.2"/>
+                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
             
             {/* Overlay Quote */}
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
