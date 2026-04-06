@@ -74,7 +74,7 @@ const Results = () => {
         observer.unobserve(currentRef);
       }
     };
-  }, [hasAnimated]);
+  }, []);
 
   const animateCounters = () => {
     STATS.forEach((stat, index) => {
