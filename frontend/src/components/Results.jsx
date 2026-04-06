@@ -6,7 +6,7 @@ const UNIVERSITIES = [
   {
     id: 1,
     name: "МГУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/s1mzp1nl_i.jpg"
+    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/l4ie6wy2_rus_logo_0111ff8a858158750f01898bc480af25bebeea25.jpg"
   },
   {
     id: 2,
@@ -40,7 +40,8 @@ const GRADUATE_PHOTOS = [
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/z8gvo7l0_5474537471111982456.jpg",
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/gq4jy3fv_5377591903102112432.jpg",
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pp1v51al_5350409351434725932.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/7i0eq0q4_5350409351434725921.jpg"
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/7i0eq0q4_5350409351434725921.jpg",
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/aazsg4cp_5377591903102112444.jpg"
 ];
 
 const Results = () => {
@@ -114,9 +115,9 @@ const Results = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#009479]/30 to-[#00BFA5]/30 backdrop-blur-xl border border-[#009479]/50 rounded-full px-6 py-2 mb-4 shadow-lg shadow-[#009479]/20">
-            <TrendingUp className="w-4 h-4 text-[#00BFA5]" />
-            <span className="text-[#00BFA5] font-semibold text-sm">НАШИ ДОСТИЖЕНИЯ И ВЫПУСКНИКИ</span>
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-6 py-2 mb-4 shadow-lg">
+            <TrendingUp className="w-4 h-4 text-white" />
+            <span className="text-white font-semibold text-sm">НАШИ ДОСТИЖЕНИЯ И ВЫПУСКНИКИ</span>
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
             Результаты, которыми мы гордимся
@@ -258,6 +259,20 @@ const Results = () => {
             </div>
           </div>
 
+          {/* University Section Header - Below Carousel */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-white/20 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg">
+              <GraduationCap className="w-5 h-5 text-white" />
+              <span className="text-white">НАШИ ВЫПУСКНИКИ</span>
+            </div>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 drop-shadow-xl">
+              Куда поступают наши выпускники
+            </h3>
+            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+              Престижные высшие учебные заведения России
+            </p>
+          </div>
+
           {/* University Logos with 3D hover */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {UNIVERSITIES.map((university, index) => (
@@ -330,12 +345,12 @@ const Results = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-288px * 5 - 32px * 5));
+            transform: translateX(calc(-288px * 6 - 32px * 6));
           }
         }
 
         .animate-infinite-scroll {
-          animation: infinite-scroll 30s linear infinite;
+          animation: infinite-scroll 35s linear infinite;
         }
 
         .animate-infinite-scroll:hover {

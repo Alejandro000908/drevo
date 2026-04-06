@@ -85,12 +85,6 @@ const HomePage = () => {
         alignment="center" 
       />
       
-      {/* Quote 5 - About Academic Standards */}
-      <QuoteDivider 
-        quote="Высокие академические стандарты сочетаются с вниманием к индивидуальности." 
-        alignment="left" 
-      />
-      
       <Results />
       
       {/* Quote 6 - About Culture of Thinking */}
@@ -110,13 +104,7 @@ const HomePage = () => {
       
       <Teachers />
       
-      {/* Quote 8 - About Partnership */}
-      <QuoteDivider 
-        quote="Мы становимся надёжным партнёром семьи в воспитании будущего поколения." 
-        alignment="left" 
-      />
-      
-      {/* Quote 9 - About Daily Trust */}
+      {/* Quote 8 - About Daily Trust */}
       <QuoteDivider 
         quote="Вы доверяете нам самое важное — и мы оправдываем это доверие каждый день." 
         alignment="right" 
@@ -124,21 +112,15 @@ const HomePage = () => {
       
       <Testimonials />
       
-      {/* Quote 10 - About Potential */}
+      {/* Quote 9 - About Potential */}
       <QuoteDivider 
         quote="Каждый ученик раскрывает свой потенциал в атмосфере уважения и поддержки." 
         alignment="center" 
       />
       
-      {/* Quote 11 - About Exceeding Expectations */}
-      <QuoteDivider 
-        quote="Мы помогаем детям не только достигать, но и превосходить ожидания." 
-        alignment="left" 
-      />
-      
       <FAQ />
       
-      {/* Quote 12 - About Leadership & Culture */}
+      {/* Quote 10 - About Leadership & Culture */}
       <QuoteDivider 
         quote="Здесь формируются уверенность, лидерство и внутренняя культура личности." 
         alignment="center" 
