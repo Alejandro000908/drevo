@@ -86,7 +86,7 @@ const Teachers = () => {
             }}
             className="bg-[#009479] hover:bg-[#007A64] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
           >
-            Записаться на пробное занятие
+            Записаться на пробный день
           </button>
         </div>
       </div>

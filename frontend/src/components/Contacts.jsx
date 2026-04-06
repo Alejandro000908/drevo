@@ -230,7 +230,7 @@ const Contacts = () => {
           {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
             <h3 className="text-2xl font-bold text-[#414141] mb-6">
-              Записаться на пробное занятие
+              Записаться на пробный день
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">

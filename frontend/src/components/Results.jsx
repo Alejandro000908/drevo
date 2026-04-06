@@ -41,7 +41,9 @@ const GRADUATE_PHOTOS = [
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/gq4jy3fv_5377591903102112432.jpg",
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pp1v51al_5350409351434725932.jpg",
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/7i0eq0q4_5350409351434725921.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/aazsg4cp_5377591903102112444.jpg"
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/aazsg4cp_5377591903102112444.jpg",
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/gki4d06w_5303499907606375226.jpg",
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/35xsctr2_5303499907606375283.jpg"
 ];
 
 const Results = () => {
@@ -76,6 +78,11 @@ const Results = () => {
 
   const animateCounters = () => {
     STATS.forEach((stat, index) => {
+      // Skip animation for text-only stats
+      if (stat.isText) {
+        return;
+      }
+      
       let start = 0;
       const end = stat.value;
       const duration = 2000;
@@ -156,13 +163,21 @@ const Results = () => {
                 
                 {/* Content */}
                 <div className="relative z-10 text-center">
-                  <div className="text-6xl sm:text-7xl font-black bg-gradient-to-br from-[#00BFA5] via-[#009479] to-[#00796B] bg-clip-text text-transparent mb-3 drop-shadow-lg">
-                    {counts[index]}
-                    {stat.suffix}
-                  </div>
-                  <div className="text-white text-lg font-semibold tracking-wide">
-                    {stat.label}
-                  </div>
+                  {stat.isText ? (
+                    <div className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                      {stat.label}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="text-6xl sm:text-7xl font-black bg-gradient-to-br from-[#00BFA5] via-[#009479] to-[#00796B] bg-clip-text text-transparent mb-3 drop-shadow-lg">
+                        {counts[index]}
+                        {stat.suffix}
+                      </div>
+                      <div className="text-white text-lg font-semibold tracking-wide">
+                        {stat.label}
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 {/* Decorative corner accents */}
@@ -345,12 +360,12 @@ const Results = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-288px * 6 - 32px * 6));
+            transform: translateX(calc(-288px * 8 - 32px * 8));
           }
         }
 
         .animate-infinite-scroll {
-          animation: infinite-scroll 35s linear infinite;
+          animation: infinite-scroll 45s linear infinite;
         }
 
         .animate-infinite-scroll:hover {

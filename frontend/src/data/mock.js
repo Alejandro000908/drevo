@@ -20,8 +20,8 @@ export const SCHOOL_INFO = {
 
 export const HERO = {
   headline: "Частная школа «Древо Познаний» — индивидуальный подход и реальные результаты",
-  subtext: "Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Небольшие классы до 12 человек. Опытные преподаватели.",
-  ctaPrimary: "Записаться на пробное занятие",
+  subtext: "Обучение с 1 по 11 класс. Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Небольшие классы до 12 человек. Опытные преподаватели.",
+  ctaPrimary: "Записаться на пробный день",
   ctaSecondary: "Узнать больше",
   image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pyjpj7ng_n3LEFeUqka_FyO2v4FHv_ehXQKcINz2u7xDZgeRYIDL_4WLprgjm86FlIyiF2ABWYPuo3-b__VV-C2nH3Ru0UwW7.jpg"
 };
@@ -139,9 +139,10 @@ export const STATS = [
 },
 {
   id: 4,
-  value: 240,
-  label: "Выпускников",
-  suffix: "+"
+  value: 0,
+  label: "Обучение с уверенностью и вдохновением",
+  suffix: "",
+  isText: true
 }];
 
 

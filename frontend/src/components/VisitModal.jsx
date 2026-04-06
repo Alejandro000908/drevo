@@ -1,16 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import { X, User, Phone, Mail, Calendar, CheckCircle } from 'lucide-react';
+import { X, User, Phone, Calendar, CheckCircle } from 'lucide-react';
+
+// Array of modal variants with different images and quotes
+const MODAL_VARIANTS = [
+  {
+    id: 1,
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/x3b01hae_5240250668726029486.jpg",
+    quote: "Дайте вашему ребенку возможность учиться с улыбкой"
+  },
+  {
+    id: 2,
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ei0pscay_5350409351434725926.jpg",
+    quote: "Вместе мы создаём будущее, полное возможностей"
+  },
+  {
+    id: 3,
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/aoft9uwa_5240250668726029488.jpg",
+    quote: "Развиваем таланты с первых шагов в школе"
+  }
+];
 
 const VisitModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
-    email: '',
     visitDate: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errors, setErrors] = useState({});
+  const [currentVariant, setCurrentVariant] = useState(0);
+
+  // Rotate modal variant each time it opens
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentVariant((prev) => (prev + 1) % MODAL_VARIANTS.length);
+    }
+  }, [isOpen]);
+
+  const variant = MODAL_VARIANTS[currentVariant];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,12 +60,6 @@ const VisitModal = ({ isOpen, onClose }) => {
       newErrors.phone = 'Пожалуйста, введите телефон';
     } else if (!/^\+?[\d\s\-()]+$/.test(formData.phone)) {
       newErrors.phone = 'Неверный формат телефона';
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Пожалуйста, введите email';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Неверный формат email';
     }
     
     if (!formData.visitDate) {
@@ -66,7 +88,7 @@ const VisitModal = ({ isOpen, onClose }) => {
       
       if (response.ok) {
         setIsSuccess(true);
-        setFormData({ fullName: '', phone: '', email: '', visitDate: '' });
+        setFormData({ fullName: '', phone: '', visitDate: '' });
         
         // Close modal after 3 seconds
         setTimeout(() => {
@@ -121,8 +143,8 @@ const VisitModal = ({ isOpen, onClose }) => {
           {/* Left Side - Image */}
           <div className="relative h-64 md:h-full overflow-hidden">
             <img
-              src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/aoft9uwa_5240250668726029488.jpg"
-              alt="Happy student"
+              src={variant.image}
+              alt="Древо Познаний"
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/40"></div>
@@ -130,7 +152,7 @@ const VisitModal = ({ isOpen, onClose }) => {
             {/* School Logo Overlay */}
             <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm rounded-2xl p-3 shadow-xl">
               <img 
-                src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/0th67ovy_%D0%BB%D0%BE%D0%B3%D0%BE.png"
+                src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/kep5ft9s_%D0%BB%D0%BE%D0%B3%D0%BE.png"
                 alt="Древо Познаний"
                 className="w-16 h-16 object-contain"
               />
@@ -139,7 +161,7 @@ const VisitModal = ({ isOpen, onClose }) => {
             {/* Overlay Quote */}
             <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
               <p className="text-white text-xl md:text-2xl font-light italic leading-relaxed">
-                "Дайте вашему ребенку возможность учиться с улыбкой"
+                "{variant.quote}"
               </p>
             </div>
           </div>
@@ -197,26 +219,6 @@ const VisitModal = ({ isOpen, onClose }) => {
                     />
                     {errors.phone && (
                       <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-                    )}
-                  </div>
-
-                  {/* Email */}
-                  <div className="relative">
-                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Email"
-                      className={`w-full pl-12 pr-4 py-4 bg-gray-50 dark:bg-gray-800 border-2 rounded-xl text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-[#009479]/20 transition-all duration-300 ${
-                        errors.email ? 'border-red-500' : 'border-gray-200 dark:border-gray-700 focus:border-[#009479]'
-                      }`}
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-red-500">{errors.email}</p>
                     )}
                   </div>
 

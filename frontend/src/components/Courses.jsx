@@ -108,7 +108,7 @@ const Courses = () => {
               onClick={scrollToContacts}
               className="bg-[#009479] hover:bg-[#007A64] text-white font-semibold px-10 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
-              Записаться на пробное занятие
+              Записаться на пробный день
             </Button>
           </div>
         </div>
