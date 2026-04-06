@@ -225,7 +225,7 @@ const SchoolNews = () => {
 
         {/* CTA Banner */}
         <div className="mt-16 bg-gradient-to-r from-[#009479] to-[#007A64] rounded-2xl p-8 text-white text-center shadow-xl">
-          <h3 className="text-2xl font-bold mb-3">Хотите быть в курсе всех событий?</h3>
+          <h3 className="text-2xl font-bold mb-3">Оставайтесь в курсе всех событий!</h3>
           <p className="text-white/90 mb-6 max-w-2xl mx-auto">
             Подписывайтесь на наши социальные сети и не пропускайте интересные новости и фотографии из жизни школы
           </p>

@@ -134,7 +134,7 @@ export const STATS = [
 {
   id: 3,
   value: 12,
-  label: "Лет опыта",
+  label: "Медалистов",
   suffix: ""
 },
 {

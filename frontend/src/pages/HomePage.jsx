@@ -11,6 +11,7 @@ import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Contacts from '../components/Contacts';
 import VisitModal from '../components/VisitModal';
+import QuoteDivider from '../components/QuoteDivider';
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -44,24 +45,105 @@ const HomePage = () => {
   const handleCloseModal = () => {
     setShowModal(false);
     
-    // Show modal again after 40 seconds
+    // Show modal again after 1 min 40 seconds (100 seconds)
     setTimeout(() => {
       setShowModal(true);
-    }, 40000); // 40 seconds
+    }, 100000); // 100 seconds
   };
 
   return (
     <main>
       <Hero />
+      
+      {/* Quote 1 - About Leadership */}
+      <QuoteDivider 
+        quote="Школа — это пространство, где формируется будущее лидеров." 
+        alignment="center" 
+      />
+      
       <About />
+      
+      {/* Quote 2 - About Strong Foundation */}
+      <QuoteDivider 
+        quote="Выбирая сильную школу, вы закладываете фундамент выдающегося будущего." 
+        alignment="left" 
+      />
+      
       <Facilities />
+      
+      {/* Quote 3 - About Personality */}
+      <QuoteDivider 
+        quote="Настоящее образование начинается там, где ценят личность каждого ребёнка." 
+        alignment="right" 
+      />
+      
       <Advantages />
+      
+      {/* Quote 4 - About Harmonious Development */}
+      <QuoteDivider 
+        quote="Мы создаём среду, в которой интеллект, характер и ценности развиваются гармонично." 
+        alignment="center" 
+      />
+      
+      {/* Quote 5 - About Academic Standards */}
+      <QuoteDivider 
+        quote="Высокие академические стандарты сочетаются с вниманием к индивидуальности." 
+        alignment="left" 
+      />
+      
       <Results />
+      
+      {/* Quote 6 - About Culture of Thinking */}
+      <QuoteDivider 
+        quote="Образование здесь — это не только знания, но и культура мышления." 
+        alignment="right" 
+      />
+      
       <SchoolLife />
       <SchoolNews />
+      
+      {/* Quote 7 - About Trust */}
+      <QuoteDivider 
+        quote="Доверие родителей — наша главная ценность и ответственность." 
+        alignment="center" 
+      />
+      
       <Teachers />
+      
+      {/* Quote 8 - About Partnership */}
+      <QuoteDivider 
+        quote="Мы становимся надёжным партнёром семьи в воспитании будущего поколения." 
+        alignment="left" 
+      />
+      
+      {/* Quote 9 - About Daily Trust */}
+      <QuoteDivider 
+        quote="Вы доверяете нам самое важное — и мы оправдываем это доверие каждый день." 
+        alignment="right" 
+      />
+      
       <Testimonials />
+      
+      {/* Quote 10 - About Potential */}
+      <QuoteDivider 
+        quote="Каждый ученик раскрывает свой потенциал в атмосфере уважения и поддержки." 
+        alignment="center" 
+      />
+      
+      {/* Quote 11 - About Exceeding Expectations */}
+      <QuoteDivider 
+        quote="Мы помогаем детям не только достигать, но и превосходить ожидания." 
+        alignment="left" 
+      />
+      
       <FAQ />
+      
+      {/* Quote 12 - About Leadership & Culture */}
+      <QuoteDivider 
+        quote="Здесь формируются уверенность, лидерство и внутренняя культура личности." 
+        alignment="center" 
+      />
+      
       <Contacts />
       
       <VisitModal isOpen={showModal} onClose={handleCloseModal} />

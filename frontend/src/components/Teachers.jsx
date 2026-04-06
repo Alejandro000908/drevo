@@ -77,7 +77,7 @@ const Teachers = () => {
         {/* CTA */}
         <div className="mt-16 text-center">
           <p className="text-lg text-gray-600 mb-6">
-            Хотите дать своему ребёнку образование у лучших преподавателей?
+            Дайте своему ребёнку образование у лучших преподавателей!
           </p>
           <button
             onClick={() => {
