@@ -139,10 +139,9 @@ export const STATS = [
 },
 {
   id: 4,
-  value: 0,
-  label: "Обучение с уверенностью и вдохновением",
-  suffix: "",
-  isText: true
+  value: 240,
+  label: "Выпускников",
+  suffix: "+"
 }];
 
 

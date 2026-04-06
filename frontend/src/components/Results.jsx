@@ -78,11 +78,6 @@ const Results = () => {
 
   const animateCounters = () => {
     STATS.forEach((stat, index) => {
-      // Skip animation for text-only stats
-      if (stat.isText) {
-        return;
-      }
-      
       let start = 0;
       const end = stat.value;
       const duration = 2000;
@@ -163,21 +158,13 @@ const Results = () => {
                 
                 {/* Content */}
                 <div className="relative z-10 text-center">
-                  {stat.isText ? (
-                    <div className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                      {stat.label}
-                    </div>
-                  ) : (
-                    <>
-                      <div className="text-6xl sm:text-7xl font-black bg-gradient-to-br from-[#00BFA5] via-[#009479] to-[#00796B] bg-clip-text text-transparent mb-3 drop-shadow-lg">
-                        {counts[index]}
-                        {stat.suffix}
-                      </div>
-                      <div className="text-white text-lg font-semibold tracking-wide">
-                        {stat.label}
-                      </div>
-                    </>
-                  )}
+                  <div className="text-6xl sm:text-7xl font-black bg-gradient-to-br from-[#00BFA5] via-[#009479] to-[#00796B] bg-clip-text text-transparent mb-3 drop-shadow-lg">
+                    {counts[index]}
+                    {stat.suffix}
+                  </div>
+                  <div className="text-white text-lg font-semibold tracking-wide">
+                    {stat.label}
+                  </div>
                 </div>
 
                 {/* Decorative corner accents */}
@@ -193,19 +180,6 @@ const Results = () => {
 
         {/* Universities Section with 3D Grid */}
         <div className="mt-20">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#009479]/30 to-[#00BFA5]/30 backdrop-blur-xl border border-white/20 px-6 py-3 rounded-full text-sm font-semibold mb-6 shadow-lg shadow-[#009479]/20">
-              <GraduationCap className="w-5 h-5 text-[#00BFA5]" />
-              <span className="text-white">НАШИ ВЫПУСКНИКИ</span>
-            </div>
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 drop-shadow-xl">
-              Куда поступают наши выпускники
-            </h3>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              Престижные высшие учебные заведения России
-            </p>
-          </div>
-
           {/* Graduate Photos Carousel - Infinite Premium Style */}
           <div className="mb-20">
             <div className="text-center mb-12">

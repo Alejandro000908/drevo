@@ -128,6 +128,7 @@ const VisitModal = ({ isOpen, onClose }) => {
 
       {/* Modal */}
       <div 
+        key={currentVariant}
         className="relative bg-white dark:bg-gray-900 rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden animate-scale-in"
         onClick={(e) => e.stopPropagation()}
       >
@@ -141,11 +142,11 @@ const VisitModal = ({ isOpen, onClose }) => {
 
         <div className="grid md:grid-cols-2 gap-0">
           {/* Left Side - Image */}
-          <div className="relative h-64 md:h-full overflow-hidden">
+          <div key={`image-${currentVariant}`} className="relative h-64 md:h-full overflow-hidden">
             <img
               src={variant.image}
               alt="Древо Познаний"
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 animate-fade-in"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/40"></div>
             
@@ -176,7 +177,7 @@ const VisitModal = ({ isOpen, onClose }) => {
                     Забронируйте визит в школу
                   </h2>
                   <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-                    Откройте для себя наши помещения, методы обучения и атмосферу лично
+                    Откройте для себя нашу школу: её методы обучения и уникальную атмосферу — лично
                   </p>
                 </div>
 

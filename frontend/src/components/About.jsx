@@ -26,8 +26,7 @@ const About = () => {
                   <Heart className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-[#414141]">240+</p>
-                  <p className="text-sm text-gray-600">Довольных выпускников</p>
+                  <p className="text-lg font-bold text-[#414141]">Обучение с уверенностью и вдохновением</p>
                 </div>
               </div>
             </div>
