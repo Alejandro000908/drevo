@@ -196,10 +196,12 @@ const InteractiveStory = () => {
                 </div>
               </div>
 
-              {/* Text Content */}
+              {/* Text Content - with extra bottom padding on last slide */}
               <div 
                 key={`content-${currentIndex}`}
-                className="space-y-4 md:space-y-6 animate-slide-up-fade"
+                className={`space-y-4 md:space-y-6 animate-slide-up-fade ${
+                  currentStory.isLast ? 'mb-20' : ''
+                }`}
               >
                 <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-3xl">
                   {currentStory.title}
@@ -209,9 +211,9 @@ const InteractiveStory = () => {
                 </p>
               </div>
 
-              {/* CTA Button on last slide - positioned bottom right */}
+              {/* CTA Button on last slide - positioned bottom right with more space */}
               {currentStory.isLast && (
-                <div className="absolute bottom-12 right-12 animate-fade-in" style={{ animationDelay: '400ms' }}>
+                <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 animate-fade-in" style={{ animationDelay: '400ms' }}>
                   <button className="px-10 py-5 bg-[#009479] hover:bg-[#00BFA5] text-white text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
                     Записаться на встречу
                   </button>
