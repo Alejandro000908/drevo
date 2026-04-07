@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle, Heart, Target } from 'lucide-react';
 import { ABOUT } from '../data/mock';
+import InteractiveStory from './InteractiveStory';
 
 const About = () => {
   return (
@@ -97,6 +98,9 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      {/* Interactive Story Section */}
+      <InteractiveStory />
     </section>
   );
 };
