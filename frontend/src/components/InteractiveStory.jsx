@@ -7,28 +7,32 @@ const STORIES = [
     number: '01',
     title: 'Ориентация на результат',
     description: 'Развиваем мышление, самостоятельность и уверенность.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/kady2jw3_1.jpg'
+    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/kady2jw3_1.jpg',
+    imagePosition: 'object-[center_40%]'
   },
   {
     id: 2,
     number: '02',
     title: 'Домашние задания в школе',
     description: 'Основная нагрузка — в школе, дома только закрепление.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jjyhwcrf_2.jpg'
+    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jjyhwcrf_2.jpg',
+    imagePosition: 'object-center'
   },
   {
     id: 3,
     number: '03',
     title: 'Практика через реальные проекты',
     description: 'Применение знаний через реальные кейсы и задачи.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/4hf80sng_3.jpg'
+    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/j4roy8ua_4.jpg',
+    imagePosition: 'object-center'
   },
   {
     id: 4,
     number: '04',
     title: 'Эффективная подготовка к экзаменам',
     description: 'Системная поддержка на всех этапах подготовки к ОГЭ и ЕГЭ.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/j4roy8ua_4.jpg'
+    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/4hf80sng_3.jpg',
+    imagePosition: 'object-center'
   },
   {
     id: 5,
@@ -36,6 +40,7 @@ const STORIES = [
     title: 'Готовим к жизни, а не только к экзаменам',
     description: 'Формируем ответственность, самостоятельность и уверенность в будущем.',
     image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/askslmy5_5.jpg',
+    imagePosition: 'object-[center_45%]',
     isLast: true
   }
 ];
@@ -160,7 +165,7 @@ const InteractiveStory = () => {
                   <img
                     src={story.image}
                     alt={story.title}
-                    className={`w-full h-full object-cover ${
+                    className={`w-full h-full object-cover ${story.imagePosition || 'object-center'} ${
                       index === currentIndex && !isPaused ? 'animate-ken-burns' : ''
                     }`}
                   />
@@ -202,16 +207,16 @@ const InteractiveStory = () => {
                 <p className="text-lg md:text-xl text-white/90 max-w-2xl font-light leading-relaxed">
                   {currentStory.description}
                 </p>
-
-                {/* CTA Button on last slide */}
-                {currentStory.isLast && (
-                  <div className="pt-6 animate-fade-in" style={{ animationDelay: '400ms' }}>
-                    <button className="px-8 py-4 bg-[#009479] hover:bg-[#00BFA5] text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                      Записаться на встречу
-                    </button>
-                  </div>
-                )}
               </div>
+
+              {/* CTA Button on last slide - positioned bottom right */}
+              {currentStory.isLast && (
+                <div className="absolute bottom-12 right-12 animate-fade-in" style={{ animationDelay: '400ms' }}>
+                  <button className="px-10 py-5 bg-[#009479] hover:bg-[#00BFA5] text-white text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                    Записаться на встречу
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Navigation Arrows (Desktop) */}

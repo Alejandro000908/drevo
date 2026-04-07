@@ -12,6 +12,7 @@ import FAQ from '../components/FAQ';
 import Contacts from '../components/Contacts';
 import VisitModal from '../components/VisitModal';
 import QuoteDivider from '../components/QuoteDivider';
+import InteractiveStory from '../components/InteractiveStory';
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -70,6 +71,9 @@ const HomePage = () => {
       />
       
       <Facilities />
+      
+      {/* Interactive Story Section */}
+      <InteractiveStory />
       
       {/* Quote 3 - About Personality */}
       <QuoteDivider 
