@@ -136,7 +136,7 @@ const HomePage = () => {
       
       <Contacts />
       
-      {/* <VisitModal isOpen={showModal} onClose={handleCloseModal} /> */}
+      <VisitModal isOpen={showModal} onClose={handleCloseModal} />
     </main>
   );
 };

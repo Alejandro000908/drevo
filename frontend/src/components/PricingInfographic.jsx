@@ -15,13 +15,14 @@ const PricingInfographic = () => {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -61,7 +62,7 @@ const PricingInfographic = () => {
       <div className="absolute top-20 left-10 w-96 h-96 bg-[#009479]/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#00BFA5]/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 relative z-10">
         {/* Hero Section */}
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
@@ -130,20 +131,24 @@ const PricingInfographic = () => {
 
             {/* Benefits in circular layout */}
             {benefits.map((benefit, index) => {
-              const angle = (360 / benefits.length) * index - 90;
+              const angle = (360 / benefits.length) * index - 90; // Start from top
               const radius = 480;
               const x = Math.cos(angle * (Math.PI / 180)) * radius;
               const y = Math.sin(angle * (Math.PI / 180)) * radius;
+              
+              // Calculate absolute position from container center
+              const containerCenterX = 700; // 1400px / 2
+              const containerCenterY = 600; // 1200px / 2
+              const cardLeft = containerCenterX + x - 112; // 112 = w-56 / 2
+              const cardTop = containerCenterY + y - 80; // approximate card height / 2
               
               return (
                 <div
                   key={index}
                   className="absolute group cursor-pointer"
                   style={{
-                    top: '50%',
-                    left: '50%',
-                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                    animation: `float-${index % 3} ${3 + (index % 3)}s ease-in-out infinite ${index * 0.15}s`
+                    left: `${cardLeft}px`,
+                    top: `${cardTop}px`,
                   }}
                 >
                   {/* Connection line to center */}
@@ -158,9 +163,9 @@ const PricingInfographic = () => {
                       transform: `rotate(${angle + 90}deg)`
                     }}
                   >
-                    <line x1="0" y1="1" x2={radius} y2="1" stroke="url(#gradient)" strokeWidth="1" />
+                    <line x1="0" y1="1" x2={radius} y2="1" stroke={`url(#gradient-${index})`} strokeWidth="1" />
                     <defs>
-                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="#00BFA5" stopOpacity="0" />
                         <stop offset="100%" stopColor="#00BFA5" stopOpacity="0.5" />
                       </linearGradient>
