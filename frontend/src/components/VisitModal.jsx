@@ -15,7 +15,7 @@ const MODAL_VARIANTS = [
   },
   {
     id: 3,
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/aoft9uwa_5240250668726029488.jpg",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/rq1e71js_5402477798309887218.jpg",
     quote: "Развиваем таланты с первых шагов в школе"
   }
 ];

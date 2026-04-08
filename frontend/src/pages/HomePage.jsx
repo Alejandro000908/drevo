@@ -4,6 +4,7 @@ import About from '../components/About';
 import Facilities from '../components/Facilities';
 import Advantages from '../components/Advantages';
 import Results from '../components/Results';
+import PricingInfographic from '../components/PricingInfographic';
 import SchoolLife from '../components/SchoolLife';
 import SchoolNews from '../components/SchoolNews';
 import Teachers from '../components/Teachers';
@@ -46,10 +47,10 @@ const HomePage = () => {
   const handleCloseModal = () => {
     setShowModal(false);
     
-    // Show modal again after 1 min 40 seconds (100 seconds)
+    // Show modal again after 2 minutes (120 seconds)
     setTimeout(() => {
       setShowModal(true);
-    }, 100000); // 100 seconds
+    }, 120000); // 120 seconds
   };
 
   return (
@@ -96,6 +97,9 @@ const HomePage = () => {
         quote="Образование здесь — это не только знания, но и культура мышления." 
         alignment="right" 
       />
+      
+      {/* Premium Pricing Infographic */}
+      <PricingInfographic />
       
       <SchoolLife />
       <SchoolNews />
