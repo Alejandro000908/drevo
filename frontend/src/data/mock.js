@@ -57,7 +57,7 @@ export const SCHOOL_LIFE = [
 },
 {
   id: 4,
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/u92f5sbz_5260422738545940501.jpg",
+  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/1y9s9f7e_5262964057810080295.jpg",
   title: "Более 20 элективных дисциплин",
   description: "Включая: кулинарную мастерскую, испанский язык, киноклуб на английском, интеллектуальный клуб, настольный теннис и другие",
   imagePosition: "object-center"
