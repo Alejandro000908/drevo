@@ -34,7 +34,11 @@ const PricingInfographic = () => {
     { icon: Check, text: 'Все домашние задания в школе под контролем' },
     { icon: Trophy, text: 'Подготовка к ОГЭ и ЕГЭ' },
     { icon: Globe, text: 'Английский язык с 1 класса + предметы на английском' },
-    { icon: Briefcase, text: 'Проектное обучение и развитие личности' }
+    { icon: Briefcase, text: 'Проектное обучение и развитие личности' },
+    { icon: Sparkles, text: 'Более 20 элективных курсов на выбор' },
+    { icon: Users, text: 'Современная академическая среда без буллинга' },
+    { icon: BookOpen, text: 'Персонализированный подход к каждому студенту' },
+    { icon: Sparkles, text: 'Свобода мышления и самовыражения' }
   ];
 
   return (
@@ -79,30 +83,134 @@ const PricingInfographic = () => {
           </div>
         </div>
 
-        {/* Benefits Section */}
+        {/* Benefits Section with Central Price */}
         <div className={`mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-16 text-center">
             <Sparkles className="inline-block w-8 h-8 text-[#00BFA5] mr-3" />
             Преимущества
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-[#00BFA5]/50 transition-all duration-500"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 rounded-xl border border-[#00BFA5]/30 group-hover:scale-110 transition-transform duration-300">
-                    <benefit.icon className="w-6 h-6 text-[#00BFA5]" />
+          {/* Desktop: Radial Layout */}
+          <div className="hidden lg:block relative" style={{ minHeight: '900px' }}>
+            {/* Central Price Hub */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="relative group">
+                {/* Pulsing rings */}
+                <div className="absolute inset-0 bg-[#00BFA5]/20 rounded-full animate-ping" style={{ animationDuration: '3s' }}></div>
+                <div className="absolute inset-0 bg-[#009479]/20 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }}></div>
+                
+                {/* Price card */}
+                <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-12 shadow-2xl shadow-[#00BFA5]/30 hover:scale-110 transition-all duration-500">
+                  <div className="text-center">
+                    <div className="text-6xl font-black text-white mb-2">
+                      65 000 ₽
+                    </div>
+                    <div className="text-xl text-[#00BFA5] font-semibold mb-4">
+                      в месяц
+                    </div>
+                    <div className="text-white/80 text-lg">
+                      Инвестиция в будущее
+                    </div>
+                    <div className="mt-4 text-sm text-white/60">
+                      12 преимуществ →
+                    </div>
                   </div>
-                  <p className="text-white/90 text-lg leading-relaxed pt-2">
-                    {benefit.text}
-                  </p>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Benefits in circular layout */}
+            {benefits.map((benefit, index) => {
+              const angle = (360 / benefits.length) * index;
+              const radius = 380;
+              const x = Math.cos((angle - 90) * (Math.PI / 180)) * radius;
+              const y = Math.sin((angle - 90) * (Math.PI / 180)) * radius;
+              
+              return (
+                <div
+                  key={index}
+                  className="absolute top-1/2 left-1/2 group"
+                  style={{
+                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                    animation: `float ${3 + (index % 3)}s ease-in-out infinite`,
+                    animationDelay: `${index * 0.15}s`
+                  }}
+                >
+                  {/* Connection line */}
+                  <div 
+                    className="absolute top-1/2 left-1/2 w-1 bg-gradient-to-r from-[#00BFA5]/30 to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      height: `${radius - 100}px`,
+                      transform: `rotate(${angle + 90}deg)`,
+                      transformOrigin: 'top center'
+                    }}
+                  ></div>
+
+                  {/* Benefit card */}
+                  <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 w-64 hover:bg-white/10 hover:border-[#00BFA5]/50 hover:scale-110 hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#00BFA5]/20"
+                    style={{
+                      transform: 'perspective(1000px) rotateX(0deg)',
+                      transition: 'all 0.5s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(5deg)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                    }}
+                  >
+                    <div className="flex flex-col items-center text-center gap-3">
+                      <div className="p-3 bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 rounded-xl border border-[#00BFA5]/30 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+                        <benefit.icon className="w-5 h-5 text-[#00BFA5]" />
+                      </div>
+                      <p className="text-white/90 text-sm leading-relaxed font-medium">
+                        {benefit.text}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile/Tablet: Grid Layout with Price on Top */}
+          <div className="lg:hidden">
+            {/* Price at top for mobile */}
+            <div className="mb-12 flex justify-center">
+              <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-8 shadow-2xl shadow-[#00BFA5]/30 w-full max-w-md">
+                <div className="text-center">
+                  <div className="text-5xl font-black text-white mb-2">
+                    65 000 ₽
+                  </div>
+                  <div className="text-lg text-[#00BFA5] font-semibold mb-2">
+                    в месяц
+                  </div>
+                  <div className="text-white/80 text-base">
+                    Инвестиция в будущее
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Benefits grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {benefits.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 hover:bg-white/10 hover:border-[#00BFA5]/50 transition-all duration-500"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="p-2.5 bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 rounded-lg border border-[#00BFA5]/30 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                      <benefit.icon className="w-5 h-5 text-[#00BFA5]" />
+                    </div>
+                    <p className="text-white/90 text-sm leading-relaxed pt-1">
+                      {benefit.text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -113,6 +221,18 @@ const PricingInfographic = () => {
           </button>
         </div>
       </div>
+
+      {/* Custom Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) translateY(0px);
+          }
+          50% {
+            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) translateY(-10px);
+          }
+        }
+      `}</style>
 
       {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
