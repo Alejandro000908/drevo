@@ -91,16 +91,25 @@ const PricingInfographic = () => {
           </h3>
           
           {/* Desktop: Radial Layout */}
-          <div className="hidden lg:block relative" style={{ minHeight: '900px' }}>
+          <div className="hidden lg:block relative mx-auto" style={{ width: '1200px', height: '900px' }}>
             {/* Central Price Hub */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+            <div 
+              className="absolute z-20"
+              style={{
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)'
+              }}
+            >
               <div className="relative group">
                 {/* Pulsing rings */}
-                <div className="absolute inset-0 bg-[#00BFA5]/20 rounded-full animate-ping" style={{ animationDuration: '3s' }}></div>
-                <div className="absolute inset-0 bg-[#009479]/20 rounded-full animate-ping" style={{ animationDuration: '4s', animationDelay: '1s' }}></div>
+                <div className="absolute inset-0 bg-[#00BFA5]/20 rounded-full" style={{ animation: 'pulse-ring 3s infinite' }}></div>
+                <div className="absolute inset-0 bg-[#009479]/20 rounded-full" style={{ animation: 'pulse-ring 4s infinite 1s' }}></div>
                 
                 {/* Price card */}
-                <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-12 shadow-2xl shadow-[#00BFA5]/30 hover:scale-110 transition-all duration-500">
+                <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-12 shadow-2xl shadow-[#00BFA5]/30 hover:scale-110 transition-all duration-500"
+                  style={{ width: '320px' }}
+                >
                   <div className="text-center">
                     <div className="text-6xl font-black text-white mb-2">
                       65 000 ₽
@@ -121,42 +130,51 @@ const PricingInfographic = () => {
 
             {/* Benefits in circular layout */}
             {benefits.map((benefit, index) => {
-              const angle = (360 / benefits.length) * index;
+              const angle = (360 / benefits.length) * index - 90;
               const radius = 380;
-              const x = Math.cos((angle - 90) * (Math.PI / 180)) * radius;
-              const y = Math.sin((angle - 90) * (Math.PI / 180)) * radius;
+              const x = Math.cos(angle * (Math.PI / 180)) * radius;
+              const y = Math.sin(angle * (Math.PI / 180)) * radius;
               
               return (
                 <div
                   key={index}
-                  className="absolute top-1/2 left-1/2 group"
+                  className="absolute group cursor-pointer"
                   style={{
+                    top: '50%',
+                    left: '50%',
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                    animation: `float ${3 + (index % 3)}s ease-in-out infinite`,
-                    animationDelay: `${index * 0.15}s`
+                    animation: `float-${index % 3} ${3 + (index % 3)}s ease-in-out infinite ${index * 0.15}s`
                   }}
                 >
-                  {/* Connection line */}
-                  <div 
-                    className="absolute top-1/2 left-1/2 w-1 bg-gradient-to-r from-[#00BFA5]/30 to-transparent opacity-30 group-hover:opacity-100 transition-opacity duration-500"
+                  {/* Connection line to center */}
+                  <svg 
+                    className="absolute opacity-20 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none"
                     style={{
-                      height: `${radius - 100}px`,
-                      transform: `rotate(${angle + 90}deg)`,
-                      transformOrigin: 'top center'
+                      width: `${radius}px`,
+                      height: '2px',
+                      top: '50%',
+                      right: '100%',
+                      transformOrigin: 'right center',
+                      transform: `rotate(${angle + 90}deg)`
                     }}
-                  ></div>
+                  >
+                    <line x1="0" y1="1" x2={radius} y2="1" stroke="url(#gradient)" strokeWidth="1" />
+                    <defs>
+                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#00BFA5" stopOpacity="0" />
+                        <stop offset="100%" stopColor="#00BFA5" stopOpacity="0.5" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
 
                   {/* Benefit card */}
-                  <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 w-64 hover:bg-white/10 hover:border-[#00BFA5]/50 hover:scale-110 hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#00BFA5]/20"
-                    style={{
-                      transform: 'perspective(1000px) rotateX(0deg)',
-                      transition: 'all 0.5s ease'
-                    }}
+                  <div 
+                    className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 w-64 hover:bg-white/10 hover:border-[#00BFA5]/50 hover:scale-110 hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#00BFA5]/20"
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(5deg)';
+                      e.currentTarget.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.1) translateY(-8px)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                      e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0)';
                     }}
                   >
                     <div className="flex flex-col items-center text-center gap-3">
@@ -224,12 +242,41 @@ const PricingInfographic = () => {
 
       {/* Custom Animations */}
       <style jsx>{`
-        @keyframes float {
+        @keyframes pulse-ring {
           0%, 100% {
-            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) translateY(0px);
+            transform: scale(1);
+            opacity: 1;
           }
           50% {
-            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) translateY(-10px);
+            transform: scale(1.1);
+            opacity: 0.5;
+          }
+        }
+
+        @keyframes float-0 {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(0, -12px);
+          }
+        }
+
+        @keyframes float-1 {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(0, -16px);
+          }
+        }
+
+        @keyframes float-2 {
+          0%, 100% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(0, -10px);
           }
         }
       `}</style>
