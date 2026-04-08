@@ -31,22 +31,7 @@ const PricingInfographic = () => {
     { icon: BookOpen, text: 'Персональный куратор с регулярной обратной связью' },
     { icon: Clock, text: 'Полный день: 9:00–16:30' },
     { icon: Coffee, text: 'Двухразовое питание (завтрак и обед)' },
-    { icon: Check, text: 'Все домашние задания в школе под контролем' }
-  ];
-
-  const opportunities = [
-    'Творческая мастерская',
-    'Английские игры',
-    'Теннис',
-    'Испанский язык',
-    'Английский в ИТ',
-    'Интеллектуальный клуб',
-    'Шахматы',
-    'GeoGuessr',
-    'Викторины'
-  ];
-
-  const academic = [
+    { icon: Check, text: 'Все домашние задания в школе под контролем' },
     { icon: Trophy, text: 'Подготовка к ОГЭ и ЕГЭ' },
     { icon: Globe, text: 'Английский язык с 1 класса + предметы на английском' },
     { icon: Briefcase, text: 'Проектное обучение и развитие личности' }
@@ -62,10 +47,10 @@ const PricingInfographic = () => {
         <img
           src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/dyecep4g_Foto%20escuela.webp"
           alt="School building"
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/95 via-[#1a2332]/90 to-[#009479]/20"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-gray-900/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/85 via-[#1a2332]/80 to-[#009479]/15"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-transparent to-gray-900/70"></div>
       </div>
 
       {/* Animated orbs */}
@@ -101,7 +86,7 @@ const PricingInfographic = () => {
             Преимущества
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
@@ -116,59 +101,6 @@ const PricingInfographic = () => {
                     {benefit.text}
                   </p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Opportunities Section */}
-        <div className={`mb-16 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
-            <Trophy className="inline-block w-8 h-8 text-[#00BFA5] mr-3" />
-            Возможности
-          </h3>
-          
-          <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {opportunities.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-3 text-white/90 text-lg group cursor-pointer"
-                >
-                  <div className="w-2 h-2 rounded-full bg-[#00BFA5] group-hover:scale-150 transition-transform duration-300"></div>
-                  <span className="group-hover:text-[#00BFA5] transition-colors duration-300">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Extras */}
-            <div className="mt-8 pt-8 border-t border-white/10">
-              <p className="text-white/70 text-center text-lg">
-                + Экскурсии в музеи, театры, парки, мастер-классы
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Academic Results */}
-        <div className={`transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-10 text-center">
-            <BookOpen className="inline-block w-8 h-8 text-[#00BFA5] mr-3" />
-            Академический результат
-          </h3>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {academic.map((item, index) => (
-              <div
-                key={index}
-                className="relative bg-gradient-to-br from-[#00BFA5]/10 to-[#009479]/10 backdrop-blur-xl border border-[#00BFA5]/30 rounded-2xl p-8 text-center hover:scale-105 transition-transform duration-500"
-              >
-                <div className="inline-flex p-4 bg-[#00BFA5]/20 rounded-2xl mb-6">
-                  <item.icon className="w-10 h-10 text-[#00BFA5]" />
-                </div>
-                <p className="text-white text-xl font-semibold leading-relaxed">
-                  {item.text}
-                </p>
               </div>
             ))}
           </div>
