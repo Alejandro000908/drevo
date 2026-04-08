@@ -91,7 +91,7 @@ const PricingInfographic = () => {
           </h3>
           
           {/* Desktop: Radial Layout */}
-          <div className="hidden lg:block relative mx-auto" style={{ width: '1200px', height: '900px' }}>
+          <div className="hidden lg:block relative mx-auto" style={{ width: '1400px', height: '1200px' }}>
             {/* Central Price Hub */}
             <div 
               className="absolute z-20"
@@ -131,7 +131,7 @@ const PricingInfographic = () => {
             {/* Benefits in circular layout */}
             {benefits.map((benefit, index) => {
               const angle = (360 / benefits.length) * index - 90;
-              const radius = 380;
+              const radius = 480;
               const x = Math.cos(angle * (Math.PI / 180)) * radius;
               const y = Math.sin(angle * (Math.PI / 180)) * radius;
               
@@ -169,7 +169,7 @@ const PricingInfographic = () => {
 
                   {/* Benefit card */}
                   <div 
-                    className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 w-64 hover:bg-white/10 hover:border-[#00BFA5]/50 hover:scale-110 hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#00BFA5]/20"
+                    className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 w-56 hover:bg-white/10 hover:border-[#00BFA5]/50 hover:scale-110 hover:-translate-y-2 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-[#00BFA5]/20"
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.1) translateY(-8px)';
                     }}
