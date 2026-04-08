@@ -129,20 +129,20 @@ const VisitModal = ({ isOpen, onClose }) => {
       {/* Modal */}
       <div 
         key={currentVariant}
-        className="relative bg-white dark:bg-gray-900 rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden animate-scale-in"
+        className="relative bg-white dark:bg-gray-900 rounded-3xl shadow-2xl max-w-5xl w-full max-h-[95vh] overflow-hidden animate-scale-in flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-20 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 shadow-lg"
+          className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 shadow-lg"
         >
           <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
         </button>
 
-        <div className="grid md:grid-cols-2 gap-0">
+        <div className="grid md:grid-cols-2 gap-0 overflow-y-auto">
           {/* Left Side - Image */}
-          <div key={`image-${currentVariant}`} className="relative h-64 md:h-full overflow-hidden">
+          <div key={`image-${currentVariant}`} className="relative h-48 md:h-auto md:min-h-[600px] overflow-hidden flex-shrink-0">
             <img
               src={variant.image}
               alt="Древо Познаний"
@@ -168,21 +168,21 @@ const VisitModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* Right Side - Form */}
-          <div className="p-8 md:p-12 flex flex-col justify-center">
+          <div className="p-6 md:p-12 flex flex-col justify-center">
             {!isSuccess ? (
               <>
                 {/* Header */}
-                <div className="mb-8">
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#414141] dark:text-white mb-4 leading-tight">
+                <div className="mb-6 md:mb-8">
+                  <h2 className="text-2xl md:text-4xl font-bold text-[#414141] dark:text-white mb-3 md:mb-4 leading-tight">
                     Забронируйте визит в школу
                   </h2>
-                  <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed">
                     Откройте для себя нашу школу: её методы обучения и уникальную атмосферу — лично
                   </p>
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5 pb-6">
                   {/* Full Name */}
                   <div className="relative">
                     <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
