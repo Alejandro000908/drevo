@@ -130,7 +130,7 @@ const PricingInfographic = () => {
             </div>
 
             {/* Benefits in circular layout */}
-            {benefits.map((benefit, index) => {
+            {benefits && benefits.length > 0 && benefits.map((benefit, index) => {
               const angle = (360 / benefits.length) * index - 90; // Start from top
               const radius = 480;
               const x = Math.cos(angle * (Math.PI / 180)) * radius;
@@ -217,7 +217,7 @@ const PricingInfographic = () => {
 
             {/* Benefits grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {benefits.map((benefit, index) => (
+              {benefits && benefits.length > 0 && benefits.map((benefit, index) => (
                 <div
                   key={index}
                   className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 hover:bg-white/10 hover:border-[#00BFA5]/50 transition-all duration-500"
@@ -225,7 +225,7 @@ const PricingInfographic = () => {
                 >
                   <div className="flex items-start gap-3">
                     <div className="p-2.5 bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 rounded-lg border border-[#00BFA5]/30 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
-                      <benefit.icon className="w-5 h-5 text-[#00BFA5]" />
+                      {benefit.icon && <benefit.icon className="w-5 h-5 text-[#00BFA5]" />}
                     </div>
                     <p className="text-white/90 text-sm leading-relaxed pt-1">
                       {benefit.text}
