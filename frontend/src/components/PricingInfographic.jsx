@@ -121,9 +121,6 @@ const PricingInfographic = () => {
                     <div className="text-white/80 text-lg">
                       Инвестиция в будущее
                     </div>
-                    <div className="mt-4 text-sm text-white/60">
-                      12 преимуществ →
-                    </div>
                   </div>
                 </div>
               </div>
