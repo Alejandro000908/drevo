@@ -175,22 +175,16 @@ const PricingInfographic = () => {
             })}
           </div>
 
-          {/* Mobile/Tablet: Grid Layout with Price on Top */}
+          {/* Mobile/Tablet: Grid Layout with Logo on Top */}
           <div className="lg:hidden">
-            {/* Price at top for mobile */}
+            {/* Logo at top for mobile */}
             <div className="mb-12 flex justify-center">
-              <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-8 shadow-2xl shadow-[#00BFA5]/30 w-full max-w-md">
-                <div className="text-center">
-                  <div className="text-5xl font-black text-white mb-2">
-                    65 000 ₽
-                  </div>
-                  <div className="text-lg text-[#00BFA5] font-semibold mb-2">
-                    в месяц
-                  </div>
-                  <div className="text-white/80 text-base">
-                    Инвестиция в будущее
-                  </div>
-                </div>
+              <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-12 shadow-2xl shadow-[#00BFA5]/30 w-full max-w-md">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/684dwfq7_%D0%BB%D0%BE%D0%B3%D0%BE.png" 
+                  alt="Древо Познаний"
+                  className="w-full h-auto object-contain"
+                />
               </div>
             </div>
 

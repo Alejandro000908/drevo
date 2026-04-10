@@ -71,7 +71,7 @@ const Hero = () => {
             </div>
             <div className="text-center border-l border-r border-white/20 dark:border-white/10 transition-transform duration-300 hover:scale-110">
               <div className="text-3xl sm:text-4xl font-bold text-[#009479] dark:text-[#00BFA5] mb-1 transition-colors">
-                95%
+                97%
               </div>
               <div className="text-sm text-gray-300">Поступили в вузы</div>
             </div>

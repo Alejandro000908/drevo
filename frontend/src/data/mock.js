@@ -131,24 +131,30 @@ export const STATS = [
 },
 {
   id: 2,
-  value: 95,
+  value: 4.68,
+  label: "Средний балл ОГЭ",
+  suffix: ""
+},
+{
+  id: 3,
+  value: 97,
   label: "Поступили в государственные вузы",
   suffix: "%"
 },
 {
-  id: 3,
+  id: 4,
   value: 3,
   label: "Поступили в международные вузы",
   suffix: "%"
 },
 {
-  id: 4,
+  id: 5,
   value: 12,
   label: "Медалистов за последние 3 года",
   suffix: ""
 },
 {
-  id: 5,
+  id: 6,
   value: 240,
   label: "Выпускников",
   suffix: "+"
