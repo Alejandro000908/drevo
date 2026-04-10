@@ -40,7 +40,7 @@ const STORIES = [
     title: 'Готовим к жизни, а не только к экзаменам',
     description: 'Формируем ответственность, самостоятельность и уверенность в будущем.',
     image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/2v7ueu64_5285284332832494100%20%281%29.jpg',
-    imagePosition: 'object-[50%_20%]',
+    imagePosition: 'object-[50%_65%]',
     isLast: true
   }
 ];
