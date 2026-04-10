@@ -7,12 +7,22 @@ const NEWS_CATEGORIES = [
   { id: 'all', label: 'Все', icon: null },
   { id: 'excursion', label: 'Экскурсии', icon: Camera },
   { id: 'achievement', label: 'Достижения', icon: Award },
+  { id: 'sports', label: 'Спортивные достижения', icon: Award },
   { id: 'event', label: 'Мероприятия', icon: Users },
 ];
 
 const SCHOOL_NEWS = [
   {
     id: 1,
+    title: "Золотые значки ГТО",
+    date: "2025-04-09",
+    category: "sports",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/39wteae4_5384152023265122377.jpg",
+    description: "Ученики 11 класса успешно прошли испытания Всероссийского физкультурно-спортивного комплекса «Готов к труду и обороне», завоевав золотые значки ГТО. Данная награда дает преимущества в виде дополнительных баллов при поступлении в университет, а также повышенную государственную академическую стипендию для студентов. Поздравляем!",
+    preview: "Гордимся спортивными достижениями наших выпускников"
+  },
+  {
+    id: 2,
     title: "Экскурсия в Московский планетарий",
     date: "2026-03-25",
     category: "excursion",
@@ -21,7 +31,7 @@ const SCHOOL_NEWS = [
     preview: "Незабываемое путешествие к звездам"
   },
   {
-    id: 2,
+    id: 3,
     title: "Победа в математической олимпиаде",
     date: "2026-03-20",
     category: "achievement",
@@ -30,7 +40,7 @@ const SCHOOL_NEWS = [
     preview: "Гордимся достижениями наших учеников"
   },
   {
-    id: 3,
+    id: 4,
     title: "День науки в школе",
     date: "2026-03-15",
     category: "event",
@@ -39,7 +49,7 @@ const SCHOOL_NEWS = [
     preview: "Наука - это увлекательно!"
   },
   {
-    id: 4,
+    id: 5,
     title: "Посещение музея изобразительных искусств",
     date: "2026-03-10",
     category: "excursion",
@@ -48,7 +58,7 @@ const SCHOOL_NEWS = [
     preview: "Искусство развивает душу"
   },
   {
-    id: 5,
+    id: 6,
     title: "Спортивные достижения",
     date: "2026-03-05",
     category: "achievement",
@@ -57,7 +67,7 @@ const SCHOOL_NEWS = [
     preview: "Спорт - это здоровье и победы"
   },
   {
-    id: 6,
+    id: 7,
     title: "Театральный фестиваль",
     date: "2026-02-28",
     category: "event",
