@@ -19,15 +19,6 @@ const CinematicVideoBlock = () => {
             {/* Left side - Text content with matching height */}
             <div className="flex flex-col justify-center p-8 lg:p-12 space-y-6 border-b lg:border-b-0 lg:border-r border-white/10">
               
-              {/* Badge with glow */}
-              <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#009479]/20 to-[#00BFA5]/20 backdrop-blur-xl border border-[#00BFA5]/30 px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg w-fit">
-                <div className="relative">
-                  <Play className="w-4 h-4 text-[#00BFA5]" fill="#00BFA5" />
-                  <div className="absolute inset-0 blur-sm bg-[#00BFA5]/50"></div>
-                </div>
-                <span className="text-white">Видеообзор школы</span>
-              </div>
-              
               {/* Main text with elegant typography */}
               <div className="space-y-4">
                 <p className="text-white/90 text-lg sm:text-xl leading-relaxed font-light">

@@ -14,7 +14,7 @@ const STORIES = [
     id: 2,
     number: '02',
     title: 'Домашние задания в школе',
-    description: 'Основная нагрузка — в школе, дома только закрепление.',
+    description: 'Наша школа высоко ценит ваше время.',
     image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jjyhwcrf_2.jpg',
     imagePosition: 'object-center'
   },
@@ -39,8 +39,8 @@ const STORIES = [
     number: '05',
     title: 'Готовим к жизни, а не только к экзаменам',
     description: 'Формируем ответственность, самостоятельность и уверенность в будущем.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/askslmy5_5.jpg',
-    imagePosition: 'object-[center_45%]',
+    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/orcp0g48_%D0%BB%D0%BE%D0%B3%D0%BE.png',
+    imagePosition: 'object-contain bg-black',
     isLast: true
   }
 ];

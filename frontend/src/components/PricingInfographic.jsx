@@ -66,22 +66,10 @@ const PricingInfographic = () => {
         {/* Hero Section */}
         <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">
-            Образование, которое формирует<br />
             <span className="bg-gradient-to-r from-[#00BFA5] to-[#009479] bg-clip-text text-transparent">
-              будущее вашего ребёнка
+              Образование — инвестиция в будущее
             </span>
           </h2>
-          
-          {/* Price Tag */}
-          <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl px-10 py-6 mt-8">
-            <div className="text-6xl md:text-7xl font-black text-white">
-              65 000 ₽
-            </div>
-            <div className="text-left">
-              <div className="text-sm text-white/60 uppercase tracking-wider">в месяц</div>
-              <div className="text-white/80 text-lg">Инвестиция в будущее</div>
-            </div>
-          </div>
         </div>
 
         {/* Benefits Section with Central Price */}
@@ -93,7 +81,7 @@ const PricingInfographic = () => {
           
           {/* Desktop: Radial Layout */}
           <div className="hidden lg:block relative mx-auto" style={{ width: '1400px', height: '1200px' }}>
-            {/* Central Price Hub */}
+            {/* Central Logo Hub */}
             <div 
               className="absolute z-20"
               style={{
@@ -107,21 +95,15 @@ const PricingInfographic = () => {
                 <div className="absolute inset-0 bg-[#00BFA5]/20 rounded-full" style={{ animation: 'pulse-ring 3s infinite' }}></div>
                 <div className="absolute inset-0 bg-[#009479]/20 rounded-full" style={{ animation: 'pulse-ring 4s infinite 1s' }}></div>
                 
-                {/* Price card */}
-                <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-12 shadow-2xl shadow-[#00BFA5]/30 hover:scale-110 transition-all duration-500"
-                  style={{ width: '320px' }}
+                {/* Logo card */}
+                <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-12 shadow-2xl shadow-[#00BFA5]/30 hover:scale-110 transition-all duration-500 flex items-center justify-center"
+                  style={{ width: '320px', height: '320px' }}
                 >
-                  <div className="text-center">
-                    <div className="text-6xl font-black text-white mb-2">
-                      65 000 ₽
-                    </div>
-                    <div className="text-xl text-[#00BFA5] font-semibold mb-4">
-                      в месяц
-                    </div>
-                    <div className="text-white/80 text-lg">
-                      Инвестиция в будущее
-                    </div>
-                  </div>
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/orcp0g48_%D0%BB%D0%BE%D0%B3%D0%BE.png" 
+                    alt="Древо Познаний"
+                    className="w-full h-full object-contain p-4"
+                  />
                 </div>
               </div>
             </div>

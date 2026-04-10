@@ -26,7 +26,7 @@ const Contacts = () => {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.name || !formData.phone || !formData.email || !formData.message) {
+    if (!formData.name || !formData.phone || !formData.message) {
       setStatus({
         type: 'error',
         message: 'Пожалуйста, заполните все поля'
@@ -53,7 +53,7 @@ const Contacts = () => {
           type: 'success',
           message: result.message
         });
-        setFormData({ name: '', phone: '', email: '', message: '' });
+        setFormData({ name: '', phone: '', message: '' });
       } else {
         setStatus({
           type: 'error',
@@ -267,22 +267,6 @@ const Contacts = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Email *
-                </label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="example@mail.ru"
-                  className="w-full"
-                  required
-                />
-              </div>
-
-              <div>
                 <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                   Сообщение *
                 </label>
@@ -343,3 +327,4 @@ const Contacts = () => {
 };
 
 export default Contacts;
+ts;

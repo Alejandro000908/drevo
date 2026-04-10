@@ -34,9 +34,15 @@ const FACILITIES = [
   },
   {
     id: 6,
+    title: "Зона для игр",
+    description: "Безопасное и яркое пространство для активного отдыха",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/w1ebr4yh_XXXL%20%289%29.webp"
+  },
+  {
+    id: 7,
     title: "Учебные аудитории",
     description: "Яркие и вдохновляющие пространства для обучения",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/soze5x7t_XXXL%20%288%29.webp"
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/tsv70ill_5303056761474453991.jpg"
   }
 ];
 

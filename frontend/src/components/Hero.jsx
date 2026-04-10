@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 import { Button } from './ui/button';
 import { HERO } from '../data/mock';
 import { useParallax } from '../hooks/useScrollAnimation';
@@ -51,7 +51,6 @@ const Hero = () => {
               onClick={() => scrollToSection('contacts')}
               className="bg-[#4CAF50] hover:bg-[#388E3C] dark:bg-[#009479] dark:hover:bg-[#007A64] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group button-hover ripple-effect">
               {HERO.ctaPrimary}
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               onClick={() => scrollToSection('about')}
@@ -80,7 +79,7 @@ const Hero = () => {
               <div className="text-3xl sm:text-4xl font-bold text-[#009479] mb-1">
                 12
               </div>
-              <div className="text-sm text-gray-300">Лет опыта</div>
+              <div className="text-sm text-gray-300">Лет успешной работы</div>
             </div>
           </div>
         </div>
