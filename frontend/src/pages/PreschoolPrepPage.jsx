@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, Clock, Users, Award, Languages, PenTool, Calculator, Book } from 'lucide-react';
-import Button from '../components/ui/Button';
+import { Button } from '../components/ui/button';
 
 const PreschoolPrepPage = () => {
   const [isVisible, setIsVisible] = useState(false);
