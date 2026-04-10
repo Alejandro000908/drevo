@@ -327,4 +327,3 @@ const Contacts = () => {
 };
 
 export default Contacts;
-ts;
