@@ -7,7 +7,7 @@ import Results from '../components/Results';
 import PricingInfographic from '../components/PricingInfographic';
 import SchoolLife from '../components/SchoolLife';
 import SchoolNews from '../components/SchoolNews';
-import CinematicTeacherGallery from '../components/CinematicTeacherGallery';
+import TeachersCarousel from '../components/TeachersCarousel';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import Contacts from '../components/Contacts';
@@ -110,7 +110,7 @@ const HomePage = () => {
         alignment="center" 
       />
       
-      <CinematicTeacherGallery />
+      <TeachersCarousel />
       
       {/* Quote 8 - About Daily Trust */}
       <QuoteDivider 

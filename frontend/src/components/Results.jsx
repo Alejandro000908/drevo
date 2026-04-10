@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, GraduationCap } from 'lucide-react';
 import { STATS } from '../data/mock';
+import CinematicVideoBlock from './CinematicVideoBlock';
 
 const UNIVERSITIES = [
   {
@@ -324,6 +325,9 @@ const Results = () => {
               </div>
             ))}
           </div>
+
+          {/* Cinematic Video Block */}
+          <CinematicVideoBlock />
         </div>
       </div>
 
