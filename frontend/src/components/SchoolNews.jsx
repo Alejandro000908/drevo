@@ -14,7 +14,7 @@ const SCHOOL_NEWS = [
   {
     id: 1,
     title: "Золотые значки ГТО",
-    date: "2025-04-09",
+    date: "2025-05-09",
     category: "achievement",
     image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/39wteae4_5384152023265122377.jpg",
     description: "Ученики 11 класса успешно прошли испытания Всероссийского физкультурно-спортивного комплекса «Готов к труду и обороне», завоевав золотые значки ГТО. Данная награда дает преимущества в виде дополнительных баллов при поступлении в университет, а также повышенную государственную академическую стипендию для студентов. Поздравляем!",
@@ -79,14 +79,16 @@ const SCHOOL_NEWS = [
 const SchoolNews = () => {
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const filteredNews = activeCategory === 'all' 
-    ? SCHOOL_NEWS 
-    : SCHOOL_NEWS.filter(news => news.category === activeCategory);
+  // Sort all news by date first (newest first)
+  const sortedNews = [...SCHOOL_NEWS].sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // Sort by date (newest first) and show only latest 6 news on homepage
-  const displayedNews = [...filteredNews]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 6);
+  // Filter by category if not 'all'
+  const filteredNews = activeCategory === 'all' 
+    ? sortedNews 
+    : sortedNews.filter(news => news.category === activeCategory);
+
+  // Show only latest 6 news
+  const displayedNews = filteredNews.slice(0, 6);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
