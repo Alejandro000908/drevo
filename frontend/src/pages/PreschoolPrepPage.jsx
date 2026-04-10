@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, Clock, Users, Award, Languages, PenTool, Calculator, Book } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import Contacts from '../components/Contacts';
 
 const PreschoolPrepPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -216,6 +217,9 @@ const PreschoolPrepPage = () => {
           </Button>
         </div>
       </section>
+
+      {/* Contact Form Section */}
+      <Contacts />
 
     </div>
   );
