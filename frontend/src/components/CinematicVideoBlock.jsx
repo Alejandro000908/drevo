@@ -15,12 +15,8 @@ const CinematicVideoBlock = () => {
               <span className="text-white">Видеообзор</span>
             </div>
             
-            <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
-              Как мы готовим будущих лидеров
-            </h3>
-            
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md">
-              Взгляните на атмосферу нашей школы и познакомьтесь с подходом, который формирует выдающихся выпускников
+            <p className="text-gray-200 text-base sm:text-lg leading-relaxed max-w-md">
+              Наша школа — это пространство, где раскрывается потенциал каждого ребёнка, где рост становится естественным процессом, а развитие — вдохновляющим путём. Растите и развивайтесь вместе с нами.
             </p>
           </div>
 
