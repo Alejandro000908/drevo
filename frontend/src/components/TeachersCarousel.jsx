@@ -1,7 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-// Real teacher photos
+// Teacher and school photos - combined old and new
 const TEACHER_PHOTOS = [
+  // Previous photos (restored)
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jw2dk7pg_5364074790618075524.jpg",
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/s0tjaeuq_5348232421494690536.jpg",
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/alfaxepp_5345980621681006082.jpg",
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/z0ui22mw_5303056761474453987%20%281%29.jpg",
+  // New photos (added)
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/smd7wtab_5222205668574565459.jpg",
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/3pve0no0_5303056761474453989.jpg",
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/z95v2txr_5201808950486497580.jpg",

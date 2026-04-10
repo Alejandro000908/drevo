@@ -275,7 +275,7 @@ const Contacts = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Расскажите, по какому предмету нужна подготовка и в какой класс идет ребенок..."
+                  placeholder=""
                   rows={5}
                   className="w-full resize-none"
                   required
