@@ -7,7 +7,6 @@ const NEWS_CATEGORIES = [
   { id: 'all', label: 'Все', icon: null },
   { id: 'excursion', label: 'Экскурсии', icon: Camera },
   { id: 'achievement', label: 'Достижения', icon: Award },
-  { id: 'sports', label: 'Спортивные достижения', icon: Award },
   { id: 'event', label: 'Мероприятия', icon: Users },
 ];
 
@@ -16,7 +15,7 @@ const SCHOOL_NEWS = [
     id: 1,
     title: "Золотые значки ГТО",
     date: "2025-04-09",
-    category: "sports",
+    category: "achievement",
     image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/39wteae4_5384152023265122377.jpg",
     description: "Ученики 11 класса успешно прошли испытания Всероссийского физкультурно-спортивного комплекса «Готов к труду и обороне», завоевав золотые значки ГТО. Данная награда дает преимущества в виде дополнительных баллов при поступлении в университет, а также повышенную государственную академическую стипендию для студентов. Поздравляем!",
     preview: "Гордимся спортивными достижениями наших выпускников"
