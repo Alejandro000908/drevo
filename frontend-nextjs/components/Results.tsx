@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { TrendingUp, GraduationCap } from 'lucide-react'
+import CinematicVideoBlock from '@/components/CinematicVideoBlock'
 
 const UNIVERSITIES = [
   {
@@ -80,6 +81,9 @@ const Results = () => {
             ))}
           </div>
         </div>
+
+        {/* Cinematic Video Block */}
+        <CinematicVideoBlock />
 
         {/* Graduate Photos */}
         <div>

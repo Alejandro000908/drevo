@@ -1,305 +1,237 @@
+'use client'
+
+import { useState } from 'react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { siteConfig } from '@/lib/config'
-import { generateBreadcrumbSchema } from '@/lib/schema'
+import { ArrowLeft, Download } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ProgramModal from '@/components/ProgramModal'
 
-export const metadata: Metadata = {
-  title: 'Образовательные программы — частная школа «Древо Познаний» в Раменском',
-  description: 'Программы обучения с 1 по 11 класс в частной школе Раменское. Углублённое изучение предметов, подготовка к ЕГЭ и ОГЭ, дополнительные занятия. ФГОС + авторские методики.',
-  keywords: [
-    'образовательные программы Раменское',
-    'обучение 1-11 класс',
-    'программы частной школы',
-    'углублённое обучение',
-    'подготовка к ЕГЭ программа',
-  ],
-  openGraph: {
-    title: 'Образовательные программы | Древо Познаний',
-    description: 'Комплексные программы обучения с 1 по 11 класс. Индивидуальный подход, ФГОС и современные методики.',
-    url: `${siteConfig.url}/programas/`,
+const PROGRAMS_DATA = [
+  {
+    id: 1,
+    title: "Первая ступень",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ohbxh19l_1.jpg",
+    downloadLink: "https://disk.yandex.ru/i/ODXvfrJgHAhDgg",
+    color: "from-[#00BFA5] to-[#009479]"
   },
-  alternates: {
-    canonical: `${siteConfig.url}/programas/`,
+  {
+    id: 2,
+    title: "Вторая ступень",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/u42g6231_2.jpg",
+    downloadLink: "https://disk.yandex.ru/i/xEpkg3aRnkvR0w",
+    color: "from-[#009479] to-[#00796B]"
   },
+  {
+    id: 3,
+    title: "3-я ступень",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/02a9k34g_3.jpg",
+    downloadLink: "https://disk.yandex.ru/i/FcCyotn0vdaMcA",
+    color: "from-[#00796B] to-[#00695C]"
+  }
+]
+
+const STUDY_PLAN = {
+  title: "Учебный план",
+  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ygpo1ron_4.jpg",
+  downloadLink: "https://disk.yandex.ru/i/o3CQh2POWPxTbw"
 }
 
 export default function ProgramsPage() {
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Главная', url: '/' },
-    { name: 'Программы', url: '/programas' },
-  ])
+  const [selectedProgram, setSelectedProgram] = useState<typeof PROGRAMS_DATA[0] | null>(null)
+  const [hoveredStep, setHoveredStep] = useState<number | string | null>(null)
+
+  const handleDownload = (link: string) => {
+    window.open(link, '_blank', 'noopener,noreferrer')
+  }
 
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-20">
-        {/* Breadcrumb Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
+      <main className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20 pb-20 overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6">
+          {/* Back Button */}
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-[#009479] dark:text-[#00BFA5] hover:text-[#007A64] dark:hover:text-[#009479] font-medium transition-all duration-300 group mb-8 hover:gap-3"
+          >
+            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            Вернуться на главную
+          </Link>
 
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-16">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <nav className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              <Link href="/" className="hover:text-[#009479]">Главная</Link>
-              <span className="mx-2">/</span>
-              <span>Программы</span>
-            </nav>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#414141] dark:text-white mb-6">
-              Образовательные программы частной школы в Раменском
+          {/* Header */}
+          <div className="text-center mb-16 animate-fadeIn">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#414141] dark:text-white mb-4">
+              Программы обучения
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl">
-              Комплексные программы обучения с 1 по 11 класс, сочетающие федеральные образовательные стандарты с авторскими методиками и индивидуальным подходом к каждому ученику
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Выберите уровень образования для просмотра программы
             </p>
           </div>
-        </section>
 
-        {/* Main Content */}
-        <section className="py-20 bg-white dark:bg-gray-800">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="prose prose-lg max-w-none dark:prose-invert mb-16">
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                В частной школе «Древо Познаний» мы предлагаем полный спектр образовательных программ для детей с 1 по 11 класс. Наше обучение в Раменском построено на принципах индивидуального подхода, качественного академического образования и всестороннего развития личности. Все программы соответствуют федеральным государственным образовательным стандартам (ФГОС) и дополнены авторскими методиками наших педагогов.
-              </p>
-            </div>
+          {/* 3D Staircase Container */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Учебный план - Top of Staircase */}
+            <div 
+              className="mb-20 flex justify-center animate-fadeIn"
+              style={{ animationDelay: '200ms' }}
+            >
+              <div
+                className="relative group cursor-pointer w-full max-w-2xl"
+                style={{
+                  transform: 'perspective(1500px) rotateX(5deg)',
+                  transformStyle: 'preserve-3d'
+                }}
+                onClick={() => handleDownload(STUDY_PLAN.downloadLink)}
+                onMouseEnter={() => setHoveredStep('plan')}
+                onMouseLeave={() => setHoveredStep(null)}
+              >
+                <div className={`relative bg-gradient-to-br from-[#00BFA5] to-[#009479] rounded-3xl p-6 shadow-2xl transition-all duration-700 ${
+                  hoveredStep === 'plan' ? 'scale-110 shadow-[#009479]/60' : ''
+                }`}>
+                  {/* 3D depth layers */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#009479] to-[#00796B] rounded-3xl transform translate-y-2 -z-10"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#00796B] to-[#00695C] rounded-3xl transform translate-y-4 -z-20"></div>
+                  
+                  <div className="relative z-10 flex items-center gap-6">
+                    <img
+                      src={STUDY_PLAN.image}
+                      alt={STUDY_PLAN.title}
+                      className="w-32 h-32 object-cover rounded-xl shadow-lg"
+                    />
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-white mb-2">{STUDY_PLAN.title}</h3>
+                      <div className="flex items-center gap-2 text-white font-semibold">
+                        <Download className="w-5 h-5" />
+                        <span>Скачать план</span>
+                      </div>
+                    </div>
+                  </div>
 
-            {/* Programs Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-              {/* Начальная школа */}
-              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
-                  1-4
-                </div>
-                <h2 className="text-2xl font-bold mb-4 text-[#414141] dark:text-white">
-                  Начальная школа
-                </h2>
-                <p className="text-gray-700 dark:text-gray-300 mb-6">
-                  Программа для учеников 1-4 классов. Формирование базовых навыков обучения, развитие познавательного интереса, адаптация к школьной жизни.
-                </p>
-                <h3 className="font-semibold text-[#009479] mb-3">Ключевые особенности:</h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Игровые методики обучения
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Развитие эмоционального интеллекта
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Английский язык с 1 класса
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Творческие мастер-классы
-                  </li>
-                </ul>
-              </div>
-
-              {/* Основная школа */}
-              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
-                  5-9
-                </div>
-                <h2 className="text-2xl font-bold mb-4 text-[#414141] dark:text-white">
-                  Основная школа
-                </h2>
-                <p className="text-gray-700 dark:text-gray-300 mb-6">
-                  Программа для 5-9 классов. Углублённое изучение предметов, подготовка к ОГЭ, профориентация, развитие критического мышления.
-                </p>
-                <h3 className="font-semibold text-[#009479] mb-3">Ключевые особенности:</h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Подготовка к ОГЭ с 8 класса
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Проектная деятельность
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Профориентационные курсы
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Олимпиадная подготовка
-                  </li>
-                </ul>
-              </div>
-
-              {/* Старшая школа */}
-              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-xl flex items-center justify-center text-white text-2xl font-bold mb-4">
-                  10-11
-                </div>
-                <h2 className="text-2xl font-bold mb-4 text-[#414141] dark:text-white">
-                  Старшая школа
-                </h2>
-                <p className="text-gray-700 dark:text-gray-300 mb-6">
-                  Программа для 10-11 классов. Профильное обучение, интенсивная подготовка к ЕГЭ, индивидуальные образовательные траектории.
-                </p>
-                <h3 className="font-semibold text-[#009479] mb-3">Ключевые особенности:</h3>
-                <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Углублённая подготовка к ЕГЭ
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Профильные направления
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Пробные ЕГЭ каждый месяц
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#009479] mr-2">•</span>
-                    Консультации по поступлению
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Detailed Description */}
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-12">
-              <h2 className="text-3xl font-bold mb-8 text-[#414141] dark:text-white">
-                Что включает обучение в частной школе «Древо Познаний»
-              </h2>
-              
-              <div className="grid md:grid-cols-2 gap-12">
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-[#009479]">
-                    Основная программа
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    Полный курс общеобразовательных предметов согласно ФГОС с углублённым изучением математики, русского языка, английского языка и естественных наук. Программа адаптирована под индивидуальные потребности учеников.
-                  </p>
-                  <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2 text-xl">✓</span>
-                      <span><strong>Малые классы</strong> — до 12 человек для максимального внимания каждому ученику</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2 text-xl">✓</span>
-                      <span><strong>Современные учебники</strong> и цифровые образовательные ресурсы</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2 text-xl">✓</span>
-                      <span><strong>Регулярная диагностика</strong> знаний и прогресса</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-2xl font-semibold mb-4 text-[#009479]">
-                    Дополнительные программы
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    Кроме основной программы, мы предлагаем широкий спектр дополнительных занятий для всестороннего развития учеников и реализации их талантов и интересов.
-                  </p>
-                  <ul className="space-y-3 text-gray-700 dark:text-gray-300">
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2 text-xl">✓</span>
-                      <span><strong>Робототехника</strong> и программирование</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2 text-xl">✓</span>
-                      <span><strong>Творческие мастерские</strong> (рисование, театр, музыка)</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2 text-xl">✓</span>
-                      <span><strong>Спортивные секции</strong> (шахматы, настольный теннис)</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2 text-xl">✓</span>
-                      <span><strong>Интеллектуальный клуб</strong> и киноклуб на английском</span>
-                    </li>
-                  </ul>
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 </div>
               </div>
             </div>
 
-            {/* CTA Section */}
-            <div className="mt-20 text-center bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-12 text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Хотите узнать больше о наших программах?
-              </h2>
-              <p className="text-xl mb-8 opacity-90">
-                Запишитесь на пробный день или консультацию с нашим методистом
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/admision"
-                  className="inline-block bg-white text-[#009479] px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg"
-                >
-                  Подать заявку на обучение
-                </Link>
-                <Link
-                  href="/#contacts"
-                  className="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-colors"
-                >
-                  Связаться с нами
-                </Link>
-              </div>
+            {/* 3D Staircase Steps */}
+            <div className="relative">
+              {PROGRAMS_DATA.map((program, index) => {
+                const stepNumber = index + 1
+                const isHovered = hoveredStep === stepNumber
+                
+                return (
+                  <div
+                    key={program.id}
+                    className="mb-12 animate-slideInStair"
+                    style={{
+                      animationDelay: `${(index + 1) * 200}ms`,
+                      marginLeft: `${index * 80}px`,
+                      transform: `perspective(1500px) rotateX(${5 - index * 2}deg) translateZ(${index * 20}px)`
+                    }}
+                  >
+                    <div
+                      className="relative group cursor-pointer"
+                      style={{
+                        transformStyle: 'preserve-3d',
+                        transition: 'all 0.7s cubic-bezier(0.23, 1, 0.32, 1)'
+                      }}
+                      onMouseEnter={() => setHoveredStep(stepNumber)}
+                      onMouseLeave={() => setHoveredStep(null)}
+                      onClick={() => setSelectedProgram(program)}
+                    >
+                      {/* Main step card */}
+                      <div 
+                        className={`relative bg-gradient-to-br ${program.color} rounded-3xl p-6 shadow-2xl transition-all duration-700 ${
+                          isHovered ? 'scale-105 shadow-[#009479]/60' : ''
+                        }`}
+                        style={{
+                          transform: isHovered ? 'translateY(-10px) translateZ(30px)' : 'translateY(0) translateZ(0)'
+                        }}
+                      >
+                        {/* 3D depth layers */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-80 rounded-3xl transform translate-y-2 translate-x-2 -z-10`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-60 rounded-3xl transform translate-y-4 translate-x-4 -z-20`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${program.color} opacity-40 rounded-3xl transform translate-y-6 translate-x-6 -z-30`}></div>
+
+                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                          <img
+                            src={program.image}
+                            alt={program.title}
+                            className="w-32 h-32 object-cover rounded-xl shadow-lg"
+                          />
+                          <div className="flex-1 text-center md:text-left">
+                            <h3 className="text-2xl font-bold text-white mb-2">{program.title}</h3>
+                            <p className="text-white/90 font-medium">Нажмите для просмотра программы</p>
+                          </div>
+                        </div>
+
+                        {/* Glow effect */}
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
-        </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#414141] dark:text-white">
-              Часто задаваемые вопросы об образовательных программах
-            </h2>
-            
-            <div className="space-y-6">
-              <details className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
-                <summary className="font-semibold text-lg text-[#414141] dark:text-white cursor-pointer">
-                  Соответствуют ли ваши программы ФГОС?
-                </summary>
-                <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Да, все наши образовательные программы полностью соответствуют федеральным государственным образовательным стандартам. При этом мы дополняем базовую программу авторскими методиками, углублённым изучением отдельных предметов и дополнительными занятиями. Это позволяет нашим ученикам получать более качественное образование, чем в обычных школах.
-                </p>
-              </details>
-
-              <details className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
-                <summary className="font-semibold text-lg text-[#414141] dark:text-white cursor-pointer">
-                  Как организована подготовка к ЕГЭ и ОГЭ?
-                </summary>
-                <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Подготовка к государственным экзаменам интегрирована в основную программу обучения. Для учеников 8-9 классов мы проводим регулярные занятия по подготовке к ОГЭ, а для 10-11 классов — углублённую подготовку к ЕГЭ. Каждый месяц проводятся пробные экзамены в формате ЕГЭ/ОГЭ, анализируются результаты и корректируется индивидуальная программа подготовки.
-                </p>
-              </details>
-
-              <details className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
-                <summary className="font-semibold text-lg text-[#414141] dark:text-white cursor-pointer">
-                  Можно ли выбрать профильное направление в старших классах?
-                </summary>
-                <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Да, в 10-11 классах мы предлагаем профильное обучение по нескольким направлениям: естественно-научное (физика, химия, биология), математическое, гуманитарное и социально-экономическое. Выбор профиля происходит с учётом интересов ученика, его планов на поступление в вуз и результатов профориентационного тестирования.
-                </p>
-              </details>
-
-              <details className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
-                <summary className="font-semibold text-lg text-[#414141] dark:text-white cursor-pointer">
-                  Входят ли дополнительные занятия в стоимость обучения?
-                </summary>
-                <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Большинство дополнительных занятий включены в стоимость обучения: английский клуб, математический кружок, робототехника, шахматы, театральная студия, изобразительное искусство, кулинарная мастерская, испанский язык, киноклуб на английском, интеллектуальный клуб и настольный теннис. Это делает частное образование в нашей школе особенно выгодным.
-                </p>
-              </details>
-            </div>
+          {/* SEO Content */}
+          <div className="mt-20 max-w-4xl mx-auto prose prose-lg dark:prose-invert">
+            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              Все образовательные программы частной школы «Древо Познаний» соответствуют федеральным государственным образовательным стандартам (ФГОС) и дополнены авторскими методиками для максимальной эффективности обучения.
+            </p>
           </div>
-        </section>
+        </div>
       </main>
       <Footer />
+
+      {/* Program Modal */}
+      <ProgramModal 
+        program={selectedProgram} 
+        onClose={() => setSelectedProgram(null)} 
+      />
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInStair {
+          from { opacity: 0; transform: perspective(1500px) rotateX(5deg) translateY(50px); }
+          to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease forwards;
+        }
+
+        .animate-slideInStair {
+          opacity: 0;
+          animation: slideInStair 1s ease forwards;
+        }
+
+        .animate-slideUp {
+          animation: slideUp 0.4s ease forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-fadeIn,
+          .animate-slideInStair,
+          .animate-slideUp {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
+        }
+      `}</style>
     </>
   )
 }
