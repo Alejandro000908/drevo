@@ -18,19 +18,13 @@ const TEACHER_IMAGES = [
   },
   {
     id: 3,
-    url: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/alfaxepp_5345980621681006082.jpg",
-    size: "medium",
-    aspectRatio: "portrait"
-  },
-  {
-    id: 4,
     url: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/z0ui22mw_5303056761474453987%20%281%29.jpg",
     size: "large",
     aspectRatio: "landscape"
   },
-  // Placeholder images for remaining teachers (16 more to reach ~20)
-  ...Array.from({ length: 16 }, (_, i) => ({
-    id: i + 5,
+  // Placeholder images for remaining teachers (17 more to reach ~20)
+  ...Array.from({ length: 17 }, (_, i) => ({
+    id: i + 4,
     url: `https://images.unsplash.com/photo-${1500000000000 + i * 100000}?w=800&h=1000&fit=crop`,
     size: i % 3 === 0 ? "large" : i % 2 === 0 ? "medium" : "small",
     aspectRatio: i % 2 === 0 ? "portrait" : i % 3 === 0 ? "landscape" : "square"
