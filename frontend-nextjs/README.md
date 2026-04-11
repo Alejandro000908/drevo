@@ -78,33 +78,41 @@ El comando `yarn export` ejecuta:
 
 ## 🌐 Deployment en Selectel
 
-### Paso 1: Build local
+**📖 Ver guía completa:** [`DEPLOYMENT.md`](./DEPLOYMENT.md)
+
+### Deploy Automático (Recomendado)
+
+Cada push a `main` ejecuta deployment automático vía GitHub Actions:
+
+```bash
+git add .
+git commit -m "Deploy changes"
+git push origin main
+```
+
+**Requisitos:**
+- Configurar GitHub Secrets (ver `DEPLOYMENT.md`)
+- Servidor Selectel configurado con SSH
+
+### Deploy Manual
+
 ```bash
 cd /app/frontend-nextjs
-yarn export
+
+# Configurar variables
+export SERVER_HOST="your-server.selectel.ru"
+export SERVER_USER="deploy"
+export DEPLOY_PATH="/var/www/drevoznanii"
+
+# Ejecutar deploy
+./scripts/deploy-selectel.sh
 ```
 
-### Paso 2: Subir `/out` a Selectel
+### Rollback
 
-**Opción A: Via FTP/SFTP**
 ```bash
-# Comprimir
-tar -czf drevoznanii-build.tar.gz out/
-
-# Subir a Selectel
-scp drevoznanii-build.tar.gz user@selectel-server:/var/www/drevoznanii/
-
-# En servidor Selectel
-ssh user@selectel-server
-cd /var/www/drevoznanii/
-tar -xzf drevoznanii-build.tar.gz
-mv out/* ./
+./scripts/rollback-selectel.sh
 ```
-
-**Opción B: Git + CI/CD**
-- Push a repositorio
-- Ejecutar build en servidor Selectel
-- Nginx sirve desde `/var/www/drevoznanii/`
 
 ### Paso 3: Configurar Nginx
 

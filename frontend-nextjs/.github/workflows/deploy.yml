@@ -1,0 +1,123 @@
+name: Deploy to Selectel
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          cache-dependency-path: frontend-nextjs/yarn.lock
+
+      - name: Install dependencies
+        working-directory: ./frontend-nextjs
+        run: yarn install --frozen-lockfile
+
+      - name: Build and export Next.js
+        working-directory: ./frontend-nextjs
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+        run: |
+          yarn build
+          yarn export
+          echo "✅ Build and export completed successfully"
+
+      - name: Verify export output
+        working-directory: ./frontend-nextjs
+        run: |
+          if [ ! -d "out" ]; then
+            echo "❌ ERROR: /out directory not found"
+            exit 1
+          fi
+          echo "✅ Export directory verified"
+          ls -lh out/
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.SERVER_PORT }} -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to Selectel
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          echo "🚀 Starting deployment to Selectel..."
+          
+          # Create backup of current deployment
+          ssh -i ~/.ssh/deploy_key -p $SERVER_PORT $SERVER_USER@$SERVER_HOST \
+            "if [ -d $DEPLOY_PATH ]; then \
+               cp -r $DEPLOY_PATH ${DEPLOY_PATH}_backup_$(date +%Y%m%d_%H%M%S); \
+               echo '✅ Backup created'; \
+             fi"
+          
+          # Create deploy directory if it doesn't exist
+          ssh -i ~/.ssh/deploy_key -p $SERVER_PORT $SERVER_USER@$SERVER_HOST \
+            "mkdir -p $DEPLOY_PATH"
+          
+          # Sync files using rsync
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p $SERVER_PORT" \
+            ./frontend-nextjs/out/ \
+            $SERVER_USER@$SERVER_HOST:$DEPLOY_PATH/
+          
+          echo "✅ Files synced successfully"
+
+      - name: Verify deployment
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p $SERVER_PORT $SERVER_USER@$SERVER_HOST \
+            "ls -lh $DEPLOY_PATH/ && \
+             if [ -f $DEPLOY_PATH/index.html ]; then \
+               echo '✅ Deployment verified: index.html found'; \
+             else \
+               echo '❌ ERROR: index.html not found'; \
+               exit 1; \
+             fi"
+
+      - name: Reload Nginx (optional)
+        continue-on-error: true
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p $SERVER_PORT $SERVER_USER@$SERVER_HOST \
+            "sudo nginx -t && sudo systemctl reload nginx && echo '✅ Nginx reloaded'"
+
+      - name: Cleanup
+        if: always()
+        run: |
+          rm -f ~/.ssh/deploy_key
+          echo "✅ Cleanup completed"
+
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "🎉 ====================================="
+          echo "🎉 DEPLOYMENT SUCCESSFUL"
+          echo "🎉 ====================================="
+          echo "📦 Deployed to: ${{ secrets.DEPLOY_PATH }}"
+          echo "🌐 Server: ${{ secrets.SERVER_HOST }}"
+          echo "⏰ Time: $(date)"
+          echo "🎉 ====================================="
