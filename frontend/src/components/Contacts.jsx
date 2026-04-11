@@ -233,7 +233,12 @@ const Contacts = () => {
               Записаться на пробный день
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+              data-email-form="true"
+              data-form-name="Formulario de contacto - Древо Познаний"
+            >
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                   Ваше имя *
