@@ -129,9 +129,18 @@ async def send_email(data: EmailFormData):
         msg.attach(MIMEText(html_body, 'html'))
         
         # Enviar email usando SMTP de Yandex
-        with smtplib.SMTP_SSL(smtp_host, smtp_port) as server:
-            server.login(smtp_user, smtp_pass)
-            server.send_message(msg)
+        # Intentar primero con SMTP_SSL (puerto 465)
+        try:
+            with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=10) as server:
+                server.login(smtp_user, smtp_pass)
+                server.send_message(msg)
+        except smtplib.SMTPAuthenticationError:
+            # Si falla SSL, intentar con TLS (puerto 587)
+            logger.warning("SSL falló, intentando con TLS en puerto 587")
+            with smtplib.SMTP(smtp_host, 587, timeout=10) as server:
+                server.starttls()
+                server.login(smtp_user, smtp_pass)
+                server.send_message(msg)
         
         logger.info(f"Email enviado exitosamente desde {data.formName}")
         
