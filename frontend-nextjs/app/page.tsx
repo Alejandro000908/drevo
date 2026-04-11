@@ -11,16 +11,18 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Частная школа «Древо Познаний» — индивидуальный подход и реальные результаты в Раменском',
-  description: 'Обучение с 1 по 11 класс. Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Небольшие классы до 12 человек. Опытные преподаватели. Записаться на пробный день.',
+  title: 'Частная школа в Раменском «Древо Познаний» — обучение с 1 по 11 класс',
+  description: 'Частная школа полного дня в Раменском. Индивидуальный подход, малые классы до 12 человек, подготовка к ЕГЭ и ОГЭ. Качественное образование и гарантированные результаты. Запись на 2026-2027 учебный год.',
   keywords: [
     'частная школа Раменское',
+    'обучение в Раменском',
     'Древо Познаний',
     'подготовка к ЕГЭ Раменское',
     'подготовка к ОГЭ',
-    'индивидуальный подход',
-    'малые классы',
-    'опытные педагоги',
+    'частное образование',
+    'индивидуальный подход обучение',
+    'малые классы школа',
+    'качественное образование Раменское',
   ],
   openGraph: {
     title: 'Частная школа «Древо Познаний» — индивидуальный подход в Раменском',
@@ -56,24 +58,92 @@ export default function HomePage() {
           <Programs />
         </section>
         
-        {/* Results Section */}
-        <section id="results" className="scroll-mt-20">
-          <div className="container mx-auto px-4 py-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-[#414141] dark:text-white">
-              Наши результаты
+        {/* About School Section - SEO Content */}
+        <section className="scroll-mt-20 py-20 bg-white dark:bg-gray-800">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 text-[#414141] dark:text-white">
+              Частная школа в Раменском с индивидуальным подходом
             </h2>
+            <div className="prose prose-lg max-w-none dark:prose-invert">
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                <strong>«Древо Познаний»</strong> — современная частная школа полного дня в городе Раменское, где каждый ребёнок получает качественное образование в комфортной атмосфере. Мы работаем с 2014 года и за это время наши выпускники показывают стабильно высокие результаты на государственных экзаменах.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-8 my-12">
+                <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-[#009479]">Наша методика обучения</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    В основе нашей образовательной программы лежит индивидуальный подход к каждому ученику. Классы до 12 человек позволяют преподавателям уделять внимание особенностям развития каждого ребёнка.
+                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-[#009479] mr-2">✓</span>
+                      Персональные образовательные траектории
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-[#009479] mr-2">✓</span>
+                      Современные методики преподавания
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-[#009479] mr-2">✓</span>
+                      Регулярная обратная связь родителям
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-[#009479]">Преимущества обучения</h3>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    Частное образование в «Древо Познаний» — это не просто освоение школьной программы. Мы развиваем критическое мышление, творческие способности и готовим учеников к успешному будущему.
+                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-[#009479] mr-2">✓</span>
+                      Углублённая подготовка к ЕГЭ и ОГЭ
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-[#009479] mr-2">✓</span>
+                      Дополнительные образовательные программы
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-[#009479] mr-2">✓</span>
+                      Психологическая поддержка учеников
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                Обучение в нашей частной школе в Раменском сочетает академическую строгость с творческой свободой. Мы следуем федеральным государственным образовательным стандартам (ФГОС), но дополняем программу авторскими методиками и современными образовательными технологиями. Каждый ученик получает возможность раскрыть свой потенциал через проектную деятельность, исследовательские работы и участие в олимпиадах.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Results Section */}
+        <section id="results" className="scroll-mt-20 py-16 bg-gray-50 dark:bg-gray-900">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-[#414141] dark:text-white">
+              Результаты наших учеников
+            </h2>
+            <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto text-lg">
+              Качественная подготовка к ЕГЭ и ОГЭ в Раменском — гарантированные результаты поступления в ведущие вузы России
+            </p>
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center">
+              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
                 <div className="text-5xl font-bold mb-2">87</div>
                 <div className="text-lg opacity-90">Средний балл ЕГЭ</div>
+                <p className="text-sm mt-3 opacity-80">выше среднего по России на 15 баллов</p>
               </div>
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center">
+              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
                 <div className="text-5xl font-bold mb-2">97%</div>
                 <div className="text-lg opacity-90">Поступили в государственные вузы</div>
+                <p className="text-sm mt-3 opacity-80">МГУ, МФТИ, ВШЭ, МГТУ</p>
               </div>
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center">
+              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
                 <div className="text-5xl font-bold mb-2">12</div>
                 <div className="text-lg opacity-90">Лет успешной работы</div>
+                <p className="text-sm mt-3 opacity-80">более 500 выпускников</p>
               </div>
             </div>
           </div>
