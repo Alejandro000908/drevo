@@ -4,13 +4,24 @@ import React, { useEffect, useRef, useState } from 'react'
 
 const Stats = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [counts, setCounts] = useState([0, 0, 0])
   const sectionRef = useRef<HTMLDivElement>(null)
+  const hasAnimated = useRef(false)
+
+  const stats = [
+    { value: 87, label: 'Средний балл ЕГЭ' },
+    { value: 97, suffix: '%', label: 'Поступили в вузы' },
+    { value: 12, label: 'Лет работы' }
+  ]
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated.current) {
           setIsVisible(true)
+          hasAnimated.current = true
         }
       },
       { threshold: 0.2 }
@@ -27,11 +38,48 @@ const Stats = () => {
     }
   }, [])
 
-  const stats = [
-    { value: '87', label: 'Средний балл ЕГЭ' },
-    { value: '97%', label: 'Поступили в вузы' },
-    { value: '12', label: 'Лет работы' }
-  ]
+  useEffect(() => {
+    if (!isVisible) return
+
+    const duration = 2000
+    const fps = 60
+    const frameTime = 1000 / fps
+    const totalFrames = Math.round(duration / frameTime)
+
+    const intervals: NodeJS.Timeout[] = []
+
+    stats.forEach((stat, index) => {
+      let currentFrame = 0
+
+      const interval = setInterval(() => {
+        currentFrame++
+        const progress = currentFrame / totalFrames
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+        const currentValue = Math.round(easeOutQuart * stat.value)
+        
+        setCounts(prev => {
+          const newCounts = [...prev]
+          newCounts[index] = currentValue
+          return newCounts
+        })
+
+        if (currentFrame >= totalFrames) {
+          clearInterval(interval)
+          setCounts(prev => {
+            const newCounts = [...prev]
+            newCounts[index] = stat.value
+            return newCounts
+          })
+        }
+      }, frameTime)
+
+      intervals.push(interval)
+    })
+
+    return () => {
+      intervals.forEach(interval => clearInterval(interval))
+    }
+  }, [isVisible])
 
   return (
     <section ref={sectionRef} className="py-12 sm:py-16 bg-gray-50 dark:bg-gray-900">
@@ -47,7 +95,9 @@ const Stats = () => {
                 animationDelay: `${index * 150}ms`
               }}
             >
-              <div className="text-4xl sm:text-5xl font-bold mb-2">{stat.value}</div>
+              <div className="text-4xl sm:text-5xl font-bold mb-2">
+                {counts[index]}{stat.suffix || ''}
+              </div>
               <div className="text-base sm:text-lg opacity-90">{stat.label}</div>
             </div>
           ))}

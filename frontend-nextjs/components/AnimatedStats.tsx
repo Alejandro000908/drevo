@@ -44,16 +44,20 @@ const AnimatedStats = ({ stats }: AnimatedStatsProps) => {
     if (!isVisible) return
 
     const duration = 2000 // 2 seconds
-    const frameRate = 1000 / 60 // 60fps
-    const totalFrames = Math.round(duration / frameRate)
+    const fps = 60
+    const frameTime = 1000 / fps
+    const totalFrames = Math.round(duration / frameTime)
+
+    const intervals: NodeJS.Timeout[] = []
 
     stats.forEach((stat, index) => {
-      let frame = 0
-      const increment = stat.value / totalFrames
+      let currentFrame = 0
 
-      const counter = setInterval(() => {
-        frame++
-        const progress = Math.min(frame / totalFrames, 1)
+      const interval = setInterval(() => {
+        currentFrame++
+        const progress = currentFrame / totalFrames
+        
+        // Easing function
         const easeOutQuart = 1 - Math.pow(1 - progress, 4)
         const currentValue = Math.round(easeOutQuart * stat.value)
         
@@ -63,16 +67,24 @@ const AnimatedStats = ({ stats }: AnimatedStatsProps) => {
           return newCounts
         })
 
-        if (frame >= totalFrames) {
-          clearInterval(counter)
+        if (currentFrame >= totalFrames) {
+          clearInterval(interval)
+          // Set final value
           setCounts(prev => {
             const newCounts = [...prev]
             newCounts[index] = stat.value
             return newCounts
           })
         }
-      }, frameRate)
+      }, frameTime)
+
+      intervals.push(interval)
     })
+
+    // Cleanup
+    return () => {
+      intervals.forEach(interval => clearInterval(interval))
+    }
   }, [isVisible, stats])
 
   return (
@@ -80,9 +92,11 @@ const AnimatedStats = ({ stats }: AnimatedStatsProps) => {
       {stats.map((stat, index) => (
         <div
           key={index}
-          className="text-center transition-transform duration-300 hover:scale-110"
+          className={`text-center transition-all duration-300 ${
+            index === 1 ? 'border-l border-r border-white/20 dark:border-white/10' : ''
+          }`}
         >
-          <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#009479] dark:text-[#00BFA5] mb-1 transition-colors">
+          <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#009479] dark:text-[#00BFA5] mb-1 transition-colors hover:scale-110 transform duration-300">
             {counts[index]}{stat.suffix || ''}
           </div>
           <div className="text-xs sm:text-sm text-gray-300">{stat.label}</div>
