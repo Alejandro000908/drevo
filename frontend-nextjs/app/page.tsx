@@ -9,6 +9,7 @@ import FAQ from '@/components/FAQ'
 import Contacts from '@/components/Contacts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ResultsStats from '@/components/ResultsStats'
 
 export const metadata: Metadata = {
   title: 'Частная школа в Раменском «Древо Познаний» — обучение с 1 по 11 класс',
@@ -129,23 +130,8 @@ export default function HomePage() {
             <p className="text-center text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
               Качественная подготовка к ЕГЭ и ОГЭ в Раменском — гарантированные результаты поступления в ведущие вузы России
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-6 sm:p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
-                <div className="text-4xl sm:text-5xl font-bold mb-2">87</div>
-                <div className="text-base sm:text-lg opacity-90">Средний балл ЕГЭ</div>
-                <p className="text-xs sm:text-sm mt-2 sm:mt-3 opacity-80">выше среднего по России на 15 баллов</p>
-              </div>
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-6 sm:p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
-                <div className="text-4xl sm:text-5xl font-bold mb-2">97%</div>
-                <div className="text-base sm:text-lg opacity-90">Поступили в вузы</div>
-                <p className="text-xs sm:text-sm mt-2 sm:mt-3 opacity-80">МГУ, МФТИ, ВШЭ, МГТУ</p>
-              </div>
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-6 sm:p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
-                <div className="text-4xl sm:text-5xl font-bold mb-2">12</div>
-                <div className="text-base sm:text-lg opacity-90">Лет работы</div>
-                <p className="text-xs sm:text-sm mt-2 sm:mt-3 opacity-80">más de 500 выпускников</p>
-              </div>
-            </div>
+            
+            <ResultsStats />
           </div>
         </section>
         

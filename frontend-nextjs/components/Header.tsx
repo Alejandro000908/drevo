@@ -84,11 +84,11 @@ const Header = () => {
                 priority
               />
             </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg sm:text-xl font-bold text-[#009479] dark:text-[#00BFA5] leading-tight transition-colors duration-300">
+            <div>
+              <h1 className="text-base sm:text-lg md:text-xl font-bold text-[#009479] dark:text-[#00BFA5] leading-tight transition-colors duration-300">
                 Древо Познаний
               </h1>
-              <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-300">Частная школа</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-300 hidden sm:block">Частная школа</p>
             </div>
           </Link>
 
@@ -140,7 +140,7 @@ const Header = () => {
         </div>
 
         {/* Quick Access Bar - Mobile Horizontal Scroll */}
-        <div className="lg:hidden border-t border-gray-200 dark:border-gray-800">
+        <div className="lg:hidden border-t border-gray-200 dark:border-gray-700">
           <div 
             className="flex gap-2 overflow-x-auto py-3 px-2 no-scrollbar snap-x snap-mandatory"
             style={{
@@ -154,7 +154,7 @@ const Header = () => {
                 <Link
                   key={link.id}
                   href={link.href}
-                  className="flex-shrink-0 snap-start px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-[#009479] hover:text-white dark:hover:bg-[#00BFA5] rounded-full transition-all duration-300 whitespace-nowrap"
+                  className="flex-shrink-0 snap-start px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 hover:bg-[#009479] hover:text-white dark:hover:bg-[#00BFA5] dark:hover:text-gray-900 rounded-full transition-all duration-300 whitespace-nowrap border border-transparent dark:border-gray-600"
                 >
                   {link.label}
                 </Link>
@@ -162,7 +162,7 @@ const Header = () => {
                 <button
                   key={link.id}
                   onClick={() => handleNavigation(link)}
-                  className="flex-shrink-0 snap-start px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-[#009479] hover:text-white dark:hover:bg-[#00BFA5] rounded-full transition-all duration-300 whitespace-nowrap"
+                  className="flex-shrink-0 snap-start px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 hover:bg-[#009479] hover:text-white dark:hover:bg-[#00BFA5] dark:hover:text-gray-900 rounded-full transition-all duration-300 whitespace-nowrap border border-transparent dark:border-gray-600"
                 >
                   {link.label}
                 </button>
@@ -173,7 +173,7 @@ const Header = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200 dark:border-gray-800">
+          <div className="lg:hidden py-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 link.external ? (
@@ -181,7 +181,7 @@ const Header = () => {
                     key={link.id}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300"
+                    className="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -189,7 +189,7 @@ const Header = () => {
                   <button
                     key={link.id}
                     onClick={() => handleNavigation(link)}
-                    className="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 text-left"
+                    className="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors duration-300 text-left"
                   >
                     {link.label}
                   </button>
