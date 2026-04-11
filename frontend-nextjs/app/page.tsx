@@ -10,6 +10,7 @@ import Contacts from '@/components/Contacts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ResultsStats from '@/components/ResultsStats'
+import FullStatsSection from '@/components/FullStatsSection'
 
 export const metadata: Metadata = {
   title: 'Частная школа в Раменском «Древо Познаний» — обучение с 1 по 11 класс',

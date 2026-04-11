@@ -17,6 +17,54 @@ export const SCHOOL_INFO = {
   }
 };
 
+// Основные статистики для Hero
+export const HERO_STATS = [
+  { value: 87, label: 'Средний балл ЕГЭ' },
+  { value: 97, suffix: '%', label: 'Поступили в вузы' },
+  { value: 12, label: 'Лет работы' }
+];
+
+// Полные статистики для секции "Результаты, которыми мы гордимся"
+export const FULL_STATS = [
+  {
+    id: 1,
+    value: 87,
+    label: "Средний балл ЕГЭ",
+    suffix: ""
+  },
+  {
+    id: 2,
+    value: 4.68,
+    label: "Средний балл ОГЭ",
+    suffix: "",
+    decimals: 2
+  },
+  {
+    id: 3,
+    value: 97,
+    label: "Поступили в государственные вузы",
+    suffix: "%"
+  },
+  {
+    id: 4,
+    value: 3,
+    label: "Поступили в международные вузы",
+    suffix: "%"
+  },
+  {
+    id: 5,
+    value: 12,
+    label: "Медалистов за последние 3 года",
+    suffix: ""
+  },
+  {
+    id: 6,
+    value: 240,
+    label: "Выпускников",
+    suffix: "+"
+  }
+];
+
 // Фотографии учителей и школы
 export const TEACHER_PHOTOS = [
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jw2dk7pg_5364074790618075524.jpg",
