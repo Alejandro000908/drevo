@@ -6,7 +6,6 @@ export const SCHOOL_INFO = {
   phone: "+7 (916) 122-21-12",
   whatsapp: "+79161222112",
   email: "Drevop@ya.ru",
-  emailSecondary: "Smunin@ya.ru",
   address: "г. Раменское, Красноармейская 105",
   schedule: "Понедельник - Пятница с 8:30 до 20:00",
   mapUrl: "https://yandex.ru/maps/10750/ramenskoe/house/krasnoarmeyskaya_ulitsa_105/Z0EYdAFiSEMAQFtvfXl3eX5kZw==/?ll=38.262168%2C55.568273&z=17",

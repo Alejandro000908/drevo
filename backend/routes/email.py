@@ -18,6 +18,11 @@ class EmailFormData(BaseModel):
     submittedAt: Optional[str] = ""
     fields: Dict[str, Any]
 
+class VisitRequestData(BaseModel):
+    fullName: str
+    phone: str
+    visitDate: str
+
 def sanitize_input(text: str) -> str:
     """Sanitiza el input para prevenir inyección de código"""
     if not isinstance(text, str):
@@ -160,3 +165,97 @@ async def send_email(data: EmailFormData):
         import traceback
         logger.error(traceback.format_exc())
         raise HTTPException(status_code=500, detail=f"Ошибка обработки запроса: {str(e)}")
+
+@router.post("/visit-request")
+async def send_visit_request(data: VisitRequestData):
+    """
+    Endpoint para procesar solicitudes de visita a la escuela desde el modal
+    """
+    try:
+        # Obtener configuración SMTP desde variables de entorno
+        smtp_host = os.getenv('SMTP_HOST')
+        smtp_port = int(os.getenv('SMTP_PORT', '465'))
+        smtp_user = os.getenv('SMTP_USER')
+        smtp_pass = os.getenv('SMTP_PASS')
+        mail_from = os.getenv('MAIL_FROM', smtp_user)
+        
+        # Validar que existan las credenciales
+        if not all([smtp_host, smtp_user, smtp_pass]):
+            logger.error(f"Faltan credenciales SMTP")
+            raise HTTPException(status_code=500, detail="Configuración de email incompleta")
+        
+        # Crear mensaje
+        msg = MIMEMultipart('alternative')
+        msg['From'] = mail_from
+        msg['To'] = smtp_user  # Enviar a la cuenta de la escuela
+        msg['Subject'] = "Новая заявка на пробный день"
+        
+        # Formatear cuerpo del email
+        html_body = f"""
+        <html>
+            <head>
+                <style>
+                    body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+                    .header {{ background: #009479; color: white; padding: 20px; border-radius: 5px; }}
+                    .info {{ background: #f5f5f5; padding: 15px; border-left: 4px solid #009479; margin: 20px 0; }}
+                    .field {{ margin: 10px 0; padding: 10px; background: white; border: 1px solid #ddd; }}
+                    .label {{ font-weight: bold; color: #009479; }}
+                    .value {{ margin-top: 5px; }}
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h2>📅 Новая заявка на пробный день</h2>
+                </div>
+                
+                <div class="info">
+                    <p><strong>🕐 Дата получения:</strong> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+                </div>
+                
+                <h3>📋 Информация о посетителе:</h3>
+                
+                <div class="field">
+                    <div class="label">👤 Имя:</div>
+                    <div class="value">{sanitize_input(data.fullName)}</div>
+                </div>
+                
+                <div class="field">
+                    <div class="label">📞 Телефон:</div>
+                    <div class="value">{sanitize_input(data.phone)}</div>
+                </div>
+                
+                <div class="field">
+                    <div class="label">📆 Желаемая дата визита:</div>
+                    <div class="value">{sanitize_input(data.visitDate)}</div>
+                </div>
+            </body>
+        </html>
+        """
+        
+        msg.attach(MIMEText(html_body, 'html'))
+        
+        # Enviar email usando SMTP de Yandex
+        try:
+            with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=10) as server:
+                server.login(smtp_user, smtp_pass)
+                server.send_message(msg)
+        except smtplib.SMTPAuthenticationError:
+            logger.warning("SSL falló, intentando con TLS en puerto 587")
+            with smtplib.SMTP(smtp_host, 587, timeout=10) as server:
+                server.starttls()
+                server.login(smtp_user, smtp_pass)
+                server.send_message(msg)
+        
+        logger.info(f"Solicitud de visita enviada exitosamente para {data.fullName}")
+        
+        return {"ok": True, "message": "Заявка успешно отправлена"}
+    
+    except smtplib.SMTPException as e:
+        logger.error(f"Error SMTP al enviar solicitud de visita: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Ошибка отправки заявки: {str(e)}")
+    
+    except Exception as e:
+        logger.error(f"Error inesperado al procesar solicitud de visita: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
+        raise HTTPException(status_code=500, detail=f"Ошибка обработки заявки: {str(e)}")

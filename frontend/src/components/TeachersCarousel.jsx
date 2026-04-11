@@ -13,7 +13,8 @@ const TEACHER_PHOTOS = [
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5y4xqzeu_IMG_4814.JPG",
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/i3qsr102_IMG_4837.JPG",
   "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/fnpc5psq_10%20%282%29.JPG",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/uf0or2vi_11.JPG"
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/uf0or2vi_11.JPG",
+  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/1qmbpzkd_ChatGPT%20Image%2011%20abr%202026%2C%2017_38_54.png"
 ];
 
 const TeachersCarousel = () => {
