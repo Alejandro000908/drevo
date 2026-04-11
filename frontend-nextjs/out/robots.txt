@@ -1,0 +1,27 @@
+# https://drevoznanii.ru/robots.txt
+
+# All bots
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /*.json$
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /api/
+Host: drevoznanii.ru
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://drevoznanii.ru/sitemap.xml

@@ -15,11 +15,6 @@ const nextConfig = {
     nextImageExportOptimizer_generateAndUseBlurImages: "true",
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001"
   },
-  // Optimizaciones para Rusia
-  i18n: {
-    locales: ['ru'],
-    defaultLocale: 'ru',
-  },
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
