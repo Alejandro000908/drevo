@@ -73,6 +73,51 @@ const SCHOOL_NEWS = [
     image: "https://images.unsplash.com/photo-1503095396549-807759245b35?w=800&q=80",
     description: "Школьный театральный кружок представил постановку 'Золушка'. Зрители были в восторге от игры юных актеров!",
     preview: "Театр объединяет и вдохновляет"
+  },
+  {
+    id: 8,
+    title: "Экскурсия в Третьяковскую галерею",
+    date: "2026-04-08",
+    category: "excursion",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/m52uu4z4_1%20%282%29.jpg",
+    description: "Ученики 2 класса посетили знаменитую Третьяковскую галерею, где познакомились с шедеврами русской живописи и узнали о великих художниках.",
+    preview: "Знакомство с сокровищами русского искусства"
+  },
+  {
+    id: 9,
+    title: "Экскурсия на съёмочные площадки",
+    date: "2026-04-09",
+    category: "excursion",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5buiqpwh_2%20%282%29.jpg",
+    description: "Ученики 8 класса посетили настоящие съёмочные площадки, где узнали о профессиях кино и телевидения и увидели процесс создания фильмов изнутри.",
+    preview: "За кулисами киноиндустрии"
+  },
+  {
+    id: 10,
+    title: "Празднование 8 марта и 23 февраля",
+    date: "2026-03-09",
+    category: "event",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/va4jqj30_3%20%282%29.jpg",
+    description: "В школе прошли праздничные мероприятия, посвящённые Международному женскому дню и Дню защитника Отечества. Ученики подготовили концерт и поздравления.",
+    preview: "Весенние праздники в нашей школе"
+  },
+  {
+    id: 11,
+    title: "Кулинарная мастерская 6 и 7 класс",
+    date: "2026-04-10",
+    category: "event",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ukgz455v_4%20%282%29.jpg",
+    description: "Ученики 6 и 7 классов приняли участие в кулинарной мастерской, где научились готовить вкусные и полезные блюда под руководством профессионального повара.",
+    preview: "Учимся готовить с удовольствием"
+  },
+  {
+    id: 12,
+    title: "Экскурсия в Сказочный Град Томилино",
+    date: "2026-02-23",
+    category: "excursion",
+    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/xl7qaxkx_5.jpg",
+    description: "Ученики 1 класса совершили волшебную поездку в Сказочный Град Томилино, где встретились с любимыми сказочными героями и приняли участие в интерактивных играх.",
+    preview: "Путешествие в мир сказки"
   }
 ];
 
