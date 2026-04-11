@@ -13,14 +13,20 @@ const Header = () => {
   const pathname = usePathname()
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-    window.addEventListener('scroll', handleScroll)
+    
+    handleScroll() // Set initial state
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const scrollToSection = (id: string) => {
+    if (typeof document === 'undefined') return
+    
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -33,7 +39,9 @@ const Header = () => {
       setIsMenuOpen(false)
     } else {
       if (pathname !== '/') {
-        window.location.href = '/#' + link.id
+        if (typeof window !== 'undefined') {
+          window.location.href = '/#' + link.id
+        }
       } else {
         scrollToSection(link.id)
       }

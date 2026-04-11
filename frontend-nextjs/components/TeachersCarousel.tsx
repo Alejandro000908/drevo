@@ -1,10 +1,19 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { TEACHER_PHOTOS } from '@/lib/data'
 
 const TeachersCarousel = () => {
   const [isPaused, setIsPaused] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  if (!isMounted) {
+    return null // Prevent hydration mismatch
+  }
 
   return (
     <section className="relative py-24 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
@@ -37,6 +46,8 @@ const TeachersCarousel = () => {
             className={`flex gap-8 ${isPaused ? '' : 'animate-infinite-scroll'}`}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
           >
             {/* First set of images */}
             {TEACHER_PHOTOS.map((photo, index) => (
