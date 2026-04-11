@@ -146,14 +146,17 @@ async def send_email(data: EmailFormData):
         
         return {"ok": True, "message": "Email enviado exitosamente"}
     
-    except smtplib.SMTPAuthenticationError:
-        logger.error("Error de autenticación SMTP")
-        raise HTTPException(status_code=500, detail="Error de autenticación con el servidor de correo")
+    except smtplib.SMTPAuthenticationError as e:
+        logger.error(f"Error de autenticación SMTP: {str(e)}")
+        logger.error(f"Detalles: Usuario={smtp_user}, Host={smtp_host}, Port={smtp_port}")
+        raise HTTPException(status_code=500, detail=f"Error de autenticación SMTP. Por favor habilita 'Acceso para clientes de correo' en la configuración de Yandex Mail. Error: {str(e)}")
     
     except smtplib.SMTPException as e:
         logger.error(f"Error SMTP: {str(e)}")
-        raise HTTPException(status_code=500, detail="Error al enviar el email")
+        raise HTTPException(status_code=500, detail=f"Error al enviar el email: {str(e)}")
     
     except Exception as e:
         logger.error(f"Error inesperado al enviar email: {str(e)}")
-        raise HTTPException(status_code=500, detail="Error al procesar la solicitud")
+        import traceback
+        logger.error(traceback.format_exc())
+        raise HTTPException(status_code=500, detail=f"Error al procesar la solicitud: {str(e)}")
