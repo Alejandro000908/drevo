@@ -47,7 +47,6 @@ const Header = () => {
     { id: 'news', label: 'Новости', external: false },
     { id: 'documents', label: 'Документы', path: '/documents', external: true },
     { id: 'vacancies', label: 'Вакансии', path: '/vacancies', external: true },
-    { id: 'faq', label: 'FAQ', external: false },
     { id: 'contacts', label: 'Контакты', external: false }
   ];
 
