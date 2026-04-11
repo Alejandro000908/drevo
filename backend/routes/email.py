@@ -122,7 +122,7 @@ async def send_email(data: EmailFormData):
         msg = MIMEMultipart('alternative')
         msg['From'] = mail_from
         msg['To'] = smtp_user  # Enviar a la cuenta de la escuela
-        msg['Subject'] = f"Nuevo mensaje: {data.formName}"
+        msg['Subject'] = f"Новое сообщение: {data.formName}"
         
         # Formatear cuerpo del email
         html_body = format_email_body(data, user_email)
@@ -144,19 +144,19 @@ async def send_email(data: EmailFormData):
         
         logger.info(f"Email enviado exitosamente desde {data.formName}")
         
-        return {"ok": True, "message": "Email enviado exitosamente"}
+        return {"ok": True, "message": "Сообщение успешно отправлено"}
     
     except smtplib.SMTPAuthenticationError as e:
         logger.error(f"Error de autenticación SMTP: {str(e)}")
         logger.error(f"Detalles: Usuario={smtp_user}, Host={smtp_host}, Port={smtp_port}")
-        raise HTTPException(status_code=500, detail=f"Error de autenticación SMTP. Por favor habilita 'Acceso para clientes de correo' en la configuración de Yandex Mail. Error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Ошибка аутентификации SMTP. Пожалуйста, проверьте настройки почты. Ошибка: {str(e)}")
     
     except smtplib.SMTPException as e:
         logger.error(f"Error SMTP: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Error al enviar el email: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Ошибка отправки email: {str(e)}")
     
     except Exception as e:
         logger.error(f"Error inesperado al enviar email: {str(e)}")
         import traceback
         logger.error(traceback.format_exc())
-        raise HTTPException(status_code=500, detail=f"Error al procesar la solicitud: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Ошибка обработки запроса: {str(e)}")
