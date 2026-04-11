@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './ui/button'
+import AnimatedStats from './AnimatedStats'
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -90,6 +91,23 @@ const Hero = () => {
             <p className="text-sm text-gray-600 dark:text-gray-300">
               <span className="font-bold text-[#009479]">Запись на 2026-2027 учебный год открыта</span>
             </p>
+          </MotionWrapper>
+
+          {/* Trust Indicators - Animated Stats */}
+          <MotionWrapper
+            {...(isMounted ? {
+              initial: { opacity: 0 },
+              animate: { opacity: 1 },
+              transition: { duration: 0.8, delay: 0.8 }
+            } : {})}
+          >
+            <AnimatedStats 
+              stats={[
+                { value: 87, label: 'Средний балл ЕГЭ' },
+                { value: 97, suffix: '%', label: 'Поступили в вузы' },
+                { value: 12, label: 'Лет работы' }
+              ]}
+            />
           </MotionWrapper>
         </div>
       </div>
