@@ -30,6 +30,16 @@
     text-wrap: balance;
   }
   
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
   @keyframes infinite-scroll {
     from {
       transform: translateX(0);

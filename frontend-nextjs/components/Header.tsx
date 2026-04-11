@@ -72,9 +72,9 @@ const Header = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center cursor-pointer group"
+            className="flex items-center cursor-pointer group flex-shrink-0"
           >
-            <div className="w-14 h-14 flex items-center justify-center mr-3 transition-transform duration-300 group-hover:scale-110">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center mr-2 sm:mr-3 transition-transform duration-300 group-hover:scale-110">
               <ExportedImage 
                 src="/images/logo.png"
                 alt="Древо Познаний - Частная школа в Раменском"
@@ -85,7 +85,7 @@ const Header = () => {
               />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-[#009479] dark:text-[#00BFA5] leading-tight transition-colors duration-300">
+              <h1 className="text-lg sm:text-xl font-bold text-[#009479] dark:text-[#00BFA5] leading-tight transition-colors duration-300">
                 Древо Познаний
               </h1>
               <p className="text-xs text-gray-600 dark:text-gray-400 transition-colors duration-300">Частная школа</p>
@@ -137,6 +137,38 @@ const Header = () => {
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
+        </div>
+
+        {/* Quick Access Bar - Mobile Horizontal Scroll */}
+        <div className="lg:hidden border-t border-gray-200 dark:border-gray-800">
+          <div 
+            className="flex gap-2 overflow-x-auto py-3 px-2 no-scrollbar snap-x snap-mandatory"
+            style={{
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
+          >
+            {navLinks.map((link) => (
+              link.external ? (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  className="flex-shrink-0 snap-start px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-[#009479] hover:text-white dark:hover:bg-[#00BFA5] rounded-full transition-all duration-300 whitespace-nowrap"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.id}
+                  onClick={() => handleNavigation(link)}
+                  className="flex-shrink-0 snap-start px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-[#009479] hover:text-white dark:hover:bg-[#00BFA5] rounded-full transition-all duration-300 whitespace-nowrap"
+                >
+                  {link.label}
+                </button>
+              )
+            ))}
+          </div>
         </div>
 
         {/* Mobile Menu */}

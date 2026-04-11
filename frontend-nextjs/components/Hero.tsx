@@ -36,10 +36,10 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           <MotionWrapper {...motionProps}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#414141] dark:text-white mb-6 leading-tight">
-              Частная школа «Древо Познаний» —<br />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#414141] dark:text-white mb-4 sm:mb-6 leading-tight px-2">
+              Частная школа <br className="hidden sm:inline"/>«Древо Познаний» —<br />
               <span className="bg-gradient-to-r from-[#009479] to-[#00BFA5] bg-clip-text text-transparent">
-                индивидуальный подход и реальные результаты
+                индивидуальный подход и&nbsp;реальные результаты
               </span>
             </h1>
           </MotionWrapper>
@@ -50,7 +50,7 @@ const Hero = () => {
               animate: { opacity: 1, y: 0 },
               transition: { duration: 0.8, delay: 0.2 }
             } : {})}
-            className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4"
           >
             Обучение с 1 по 11 класс. Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Небольшие классы до 12 человек. Опытные преподаватели.
           </MotionWrapper>
@@ -65,14 +65,14 @@ const Hero = () => {
           >
             <Button
               onClick={() => scrollToSection('contacts')}
-              className="bg-gradient-to-r from-[#009479] to-[#00BFA5] hover:from-[#007A64] hover:to-[#009479] text-white px-8 py-6 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 text-lg font-semibold"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#009479] to-[#00BFA5] hover:from-[#007A64] hover:to-[#009479] text-white px-6 sm:px-8 py-4 sm:py-6 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 text-base sm:text-lg font-semibold"
             >
-              Записаться на пробный день
+              <span className="block sm:inline">Записаться на пробный день</span>
             </Button>
             <Button
               onClick={() => scrollToSection('programs')}
               variant="outline"
-              className="border-2 border-[#009479] text-[#009479] hover:bg-[#009479] hover:text-white px-8 py-6 rounded-full transition-all duration-300 hover:scale-105 text-lg font-semibold"
+              className="w-full sm:w-auto border-2 border-[#009479] text-[#009479] hover:bg-[#009479] hover:text-white px-6 sm:px-8 py-4 sm:py-6 rounded-full transition-all duration-300 hover:scale-105 text-base sm:text-lg font-semibold"
             >
               Узнать больше
             </Button>

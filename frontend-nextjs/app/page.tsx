@@ -59,13 +59,13 @@ export default function HomePage() {
         </section>
         
         {/* About School Section - SEO Content */}
-        <section className="scroll-mt-20 py-20 bg-white dark:bg-gray-800">
+        <section className="scroll-mt-20 py-16 sm:py-20 bg-white dark:bg-gray-800">
           <div className="container mx-auto px-4 max-w-6xl">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 text-[#414141] dark:text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-8 text-[#414141] dark:text-white px-2">
               Частная школа в Раменском с индивидуальным подходом
             </h2>
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+            <div className="prose prose-base sm:prose-lg max-w-none dark:prose-invert">
+              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                 <strong>«Древо Познаний»</strong> — современная частная школа полного дня в городе Раменское, где каждый ребёнок получает качественное образование в комфортной атмосфере. Мы работаем с 2014 года и за это время наши выпускники показывают стабильно высокие результаты на государственных экзаменах.
               </p>
               
@@ -91,12 +91,12 @@ export default function HomePage() {
                   </ul>
                 </div>
                 
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-[#009479]">Преимущества обучения</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
+                <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 sm:p-8">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#009479]">Преимущества обучения</h3>
+                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4">
                     Частное образование в «Древо Познаний» — это не просто освоение школьной программы. Мы развиваем критическое мышление, творческие способности и готовим учеников к успешному будущему.
                   </p>
-                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
                     <li className="flex items-start">
                       <span className="text-[#009479] mr-2">✓</span>
                       Углублённая подготовка к ЕГЭ и ОГЭ
@@ -113,7 +113,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 Обучение в нашей частной школе в Раменском сочетает академическую строгость с творческой свободой. Мы следуем федеральным государственным образовательным стандартам (ФГОС), но дополняем программу авторскими методиками и современными образовательными технологиями. Каждый ученик получает возможность раскрыть свой потенциал через проектную деятельность, исследовательские работы и участие в олимпиадах.
               </p>
             </div>
@@ -121,29 +121,29 @@ export default function HomePage() {
         </section>
 
         {/* Results Section */}
-        <section id="results" className="scroll-mt-20 py-16 bg-gray-50 dark:bg-gray-900">
+        <section id="results" className="scroll-mt-20 py-12 sm:py-16 bg-gray-50 dark:bg-gray-900">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-[#414141] dark:text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 text-[#414141] dark:text-white px-2">
               Результаты наших учеников
             </h2>
-            <p className="text-center text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto text-lg">
+            <p className="text-center text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
               Качественная подготовка к ЕГЭ и ОГЭ в Раменском — гарантированные результаты поступления в ведущие вузы России
             </p>
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
-                <div className="text-5xl font-bold mb-2">87</div>
-                <div className="text-lg opacity-90">Средний балл ЕГЭ</div>
-                <p className="text-sm mt-3 opacity-80">выше среднего по России на 15 баллов</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-6 sm:p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
+                <div className="text-4xl sm:text-5xl font-bold mb-2">87</div>
+                <div className="text-base sm:text-lg opacity-90">Средний балл ЕГЭ</div>
+                <p className="text-xs sm:text-sm mt-2 sm:mt-3 opacity-80">выше среднего по России на 15 баллов</p>
               </div>
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
-                <div className="text-5xl font-bold mb-2">97%</div>
-                <div className="text-lg opacity-90">Поступили в государственные вузы</div>
-                <p className="text-sm mt-3 opacity-80">МГУ, МФТИ, ВШЭ, МГТУ</p>
+              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-6 sm:p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
+                <div className="text-4xl sm:text-5xl font-bold mb-2">97%</div>
+                <div className="text-base sm:text-lg opacity-90">Поступили в вузы</div>
+                <p className="text-xs sm:text-sm mt-2 sm:mt-3 opacity-80">МГУ, МФТИ, ВШЭ, МГТУ</p>
               </div>
-              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
-                <div className="text-5xl font-bold mb-2">12</div>
-                <div className="text-lg opacity-90">Лет успешной работы</div>
-                <p className="text-sm mt-3 opacity-80">более 500 выпускников</p>
+              <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-6 sm:p-8 text-white text-center shadow-xl hover:shadow-2xl transition-shadow">
+                <div className="text-4xl sm:text-5xl font-bold mb-2">12</div>
+                <div className="text-base sm:text-lg opacity-90">Лет работы</div>
+                <p className="text-xs sm:text-sm mt-2 sm:mt-3 opacity-80">más de 500 выпускников</p>
               </div>
             </div>
           </div>
