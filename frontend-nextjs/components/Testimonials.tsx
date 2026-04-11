@@ -1,129 +1,65 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
-import { TESTIMONIALS } from '../data/mock';
+'use client'
+
+import React from 'react'
+import { Star, Quote } from 'lucide-react'
+import { TESTIMONIALS } from '@/lib/data'
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
   return (
-    <section id="reviews" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block bg-[#009479]/10 text-[#009479] px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            ОТЗЫВЫ
+            ОТЗЫВЫ РОДИТЕЛЕЙ
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] dark:text-white mb-4">
             Что говорят о нас
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Истории успеха наших учеников и благодарные отзывы родителей
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Доверие родителей — наша главная ценность
           </p>
         </div>
 
-        {/* Carousel */}
-        <div className="relative max-w-5xl mx-auto">
-          <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden">
-            <div className="flex transition-transform duration-500 ease-in-out">
-              {TESTIMONIALS.map((testimonial, index) => (
-                <div
-                  key={testimonial.id}
-                  className={`w-full flex-shrink-0 transition-opacity duration-500 ${
-                    index === currentIndex ? 'opacity-100' : 'opacity-0 absolute inset-0'
-                  }`}
-                >
-                  <div className="grid md:grid-cols-5 gap-8 p-8 sm:p-12">
-                    {/* Image */}
-                    <div className="md:col-span-2 flex items-center justify-center">
-                      <div className="relative">
-                        <div className="absolute -inset-4 bg-[#009479]/20 rounded-full blur-2xl"></div>
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="relative w-48 h-48 rounded-full object-cover shadow-xl border-4 border-white"
-                        />
-                        <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-[#009479] rounded-full flex items-center justify-center shadow-lg">
-                          <Quote className="w-8 h-8 text-white" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="md:col-span-3 flex flex-col justify-center">
-                      {/* Stars */}
-                      <div className="flex gap-1 mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 fill-[#009479] text-[#009479]" />
-                        ))}
-                      </div>
-
-                      {/* Text */}
-                      <p className="text-xl text-gray-700 leading-relaxed mb-6 italic">
-                        "{testimonial.text}"
-                      </p>
-
-                      {/* Author */}
-                      <div>
-                        <h4 className="text-lg font-bold text-[#414141]">
-                          {testimonial.name}
-                        </h4>
-                        <p className="text-gray-600">{testimonial.role}</p>
-                      </div>
-                    </div>
-                  </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {TESTIMONIALS.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 relative"
+            >
+              <Quote className="absolute top-4 right-4 w-12 h-12 text-[#009479]/10" />
+              
+              {/* Rating */}
+              <div className="flex gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-[#009479] text-[#009479]" />
+                ))}
+              </div>
+              
+              {/* Text */}
+              <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed line-clamp-6">
+                {testimonial.text}
+              </p>
+              
+              {/* Author */}
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex-shrink-0">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              ))}
+                <div>
+                  <p className="font-semibold text-[#414141] dark:text-white">{testimonial.name}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
+                </div>
+              </div>
             </div>
-          </div>
-
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 w-12 h-12 bg-white rounded-full shadow-xl hover:bg-[#009479] text-gray-700 hover:text-white transition-all duration-300 flex items-center justify-center group"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 w-12 h-12 bg-white rounded-full shadow-xl hover:bg-[#009479] text-gray-700 hover:text-white transition-all duration-300 flex items-center justify-center group"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-3 mt-8">
-            {TESTIMONIALS.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex
-                    ? 'w-12 h-3 bg-[#009479]'
-                    : 'w-3 h-3 bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials

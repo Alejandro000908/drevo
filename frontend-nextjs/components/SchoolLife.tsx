@@ -1,10 +1,12 @@
-import React from 'react';
-import { Heart, Sparkles } from 'lucide-react';
-import { SCHOOL_LIFE } from '../data/mock';
+'use client'
+
+import React from 'react'
+import { Heart, Sparkles } from 'lucide-react'
+import { SCHOOL_LIFE } from '@/lib/data'
 
 const SchoolLife = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
@@ -12,21 +14,20 @@ const SchoolLife = () => {
             <Sparkles className="w-4 h-4" />
             <span>ЖИЗНЬ ШКОЛЫ</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] dark:text-white mb-4">
             Счастливые дети — успешные ученики
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             В «Древе Познаний» каждый день наполнен радостью открытий, творчеством и достижениями
           </p>
         </div>
 
         {/* Photo Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8">
           {SCHOOL_LIFE.map((item, index) => (
             <div
               key={item.id}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               {/* Image */}
               <div className="relative h-80 overflow-hidden">
@@ -51,15 +52,12 @@ const SchoolLife = () => {
                   </p>
                 </div>
               </div>
-
-              {/* Hover effect */}
-              <div className="absolute inset-0 border-2 border-[#009479] rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
             </div>
           ))}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default SchoolLife;
+export default SchoolLife

@@ -1,66 +1,60 @@
-import React from 'react';
-import { Users, Award, Trophy, Lightbulb } from 'lucide-react';
-import { ADVANTAGES } from '../data/mock';
+'use client'
+
+import React from 'react'
+import { Users, Award, Trophy, Lightbulb } from 'lucide-react'
+import { ADVANTAGES } from '@/lib/data'
 
 const iconMap = {
   users: Users,
   award: Award,
   trophy: Trophy,
   lightbulb: Lightbulb
-};
+}
 
 const Advantages = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block bg-[#009479]/10 text-[#009479] px-4 py-2 rounded-full text-sm font-semibold mb-4">
             НАШИ ПРЕИМУЩЕСТВА
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] mb-4">
-            Почему выбирают нас?
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#414141] dark:text-white mb-4">
+            Почему выбирают нас
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Мы создали идеальные условия для эффективного обучения и достижения высоких результатов
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Мы создаем условия для успешного обучения и развития каждого ученика
           </p>
         </div>
 
-        {/* Advantages Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {ADVANTAGES.map((advantage, index) => {
-            const Icon = iconMap[advantage.icon];
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {ADVANTAGES.map((advantage) => {
+            const Icon = iconMap[advantage.icon as keyof typeof iconMap]
             return (
               <div
                 key={advantage.id}
-                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="group relative bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
-                {/* Icon container */}
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-[#009479]/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-                  <div className="relative w-16 h-16 bg-gradient-to-br from-[#009479] to-[#007A64] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#009479]/10 to-[#00BFA5]/10 rounded-bl-[100px] -z-10"></div>
+                
+                <div className="w-16 h-16 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {Icon && <Icon className="w-8 h-8 text-white" />}
                 </div>
-
-                {/* Content */}
-                <h3 className="text-xl font-bold text-[#414141] mb-3 group-hover:text-[#009479] transition-colors duration-300">
+                
+                <h3 className="text-xl font-bold text-[#414141] dark:text-white mb-3">
                   {advantage.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {advantage.description}
                 </p>
-
-                {/* Hover border effect */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-[#009479] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Advantages;
+export default Advantages

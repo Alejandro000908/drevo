@@ -1,151 +1,147 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import type { Metadata } from 'next'
-import { siteConfig } from '@/lib/config'
 import Hero from '@/components/Hero'
-import Stats from '@/components/Stats'
-import Programs from '@/components/Programs'
+import QuoteDivider from '@/components/QuoteDivider'
+import About from '@/components/About'
+import Facilities from '@/components/Facilities'
+import InteractiveStory from '@/components/InteractiveStory'
+import Advantages from '@/components/Advantages'
+import Results from '@/components/Results'
+import PricingInfographic from '@/components/PricingInfographic'
+import SchoolLife from '@/components/SchoolLife'
 import SchoolNews from '@/components/SchoolNews'
 import TeachersCarousel from '@/components/TeachersCarousel'
+import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
 import Contacts from '@/components/Contacts'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import ResultsStats from '@/components/ResultsStats'
-import FullStatsSection from '@/components/FullStatsSection'
-
-export const metadata: Metadata = {
-  title: 'Частная школа в Раменском «Древо Познаний» — обучение с 1 по 11 класс',
-  description: 'Частная школа полного дня в Раменском. Индивидуальный подход, малые классы до 12 человек, подготовка к ЕГЭ и ОГЭ. Качественное образование и гарантированные результаты. Запись на 2026-2027 учебный год.',
-  keywords: [
-    'частная школа Раменское',
-    'обучение в Раменском',
-    'Древо Познаний',
-    'подготовка к ЕГЭ Раменское',
-    'подготовка к ОГЭ',
-    'частное образование',
-    'индивидуальный подход обучение',
-    'малые классы школа',
-    'качественное образование Раменское',
-  ],
-  openGraph: {
-    title: 'Частная школа «Древо Познаний» — индивидуальный подход в Раменском',
-    description: 'Обучение с 1 по 11 класс. Небольшие классы до 12 человек. Запись на пробный день.',
-    url: siteConfig.url,
-    images: [
-      {
-        url: `${siteConfig.url}/og-home.jpg`,
-        width: 1200,
-        height: 630,
-        alt: 'Частная школа Древо Познаний',
-      },
-    ],
-  },
-  alternates: {
-    canonical: siteConfig.url,
-  },
-}
+import VisitModal from '@/components/VisitModal'
 
 export default function HomePage() {
+  const [showModal, setShowModal] = useState(false)
+  const [hasShownInitially, setHasShownInitially] = useState(false)
+
+  useEffect(() => {
+    if (!hasShownInitially) {
+      const timer = setTimeout(() => {
+        setShowModal(true)
+        setHasShownInitially(true)
+      }, 5000)
+
+      const handleScroll = () => {
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+        if (scrollPercent > 50 && !showModal && !hasShownInitially) {
+          setShowModal(true)
+          setHasShownInitially(true)
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll)
+
+      return () => {
+        clearTimeout(timer)
+        window.removeEventListener('scroll', handleScroll)
+      }
+    }
+  }, [showModal, hasShownInitially])
+
+  const handleCloseModal = () => {
+    setShowModal(false)
+    
+    setTimeout(() => {
+      setShowModal(true)
+    }, 120000)
+  }
+
   return (
     <>
       <Header />
       <main className="min-h-screen">
-        {/* Hero Section */}
         <Hero />
         
-        {/* Stats Section */}
-        <Stats />
+        <QuoteDivider 
+          quote="Школа — это пространство, где формируется будущее лидеров." 
+          alignment="center" 
+        />
         
-        {/* Programs Section */}
-        <section id="programs" className="scroll-mt-20">
-          <Programs />
-        </section>
+        <About />
         
-        {/* About School Section - SEO Content */}
-        <section className="scroll-mt-20 py-16 sm:py-20 bg-white dark:bg-gray-800">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-6 sm:mb-8 text-[#414141] dark:text-white px-2">
-              Частная школа в Раменском с индивидуальным подходом
-            </h2>
-            <div className="prose prose-base sm:prose-lg max-w-none dark:prose-invert">
-              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                <strong>«Древо Познаний»</strong> — современная частная школа полного дня в городе Раменское, где каждый ребёнок получает качественное образование в комфортной атмосфере. Мы работаем с 2014 года и за это время наши выпускники показывают стабильно высокие результаты на государственных экзаменах.
-              </p>
-              
-              <div className="grid md:grid-cols-2 gap-8 my-12">
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-8">
-                  <h3 className="text-2xl font-bold mb-4 text-[#009479]">Наша методика обучения</h3>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    В основе нашей образовательной программы лежит индивидуальный подход к каждому ученику. Классы до 12 человек позволяют преподавателям уделять внимание особенностям развития каждого ребёнка.
-                  </p>
-                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2">✓</span>
-                      Персональные образовательные траектории
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2">✓</span>
-                      Современные методики преподавания
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2">✓</span>
-                      Регулярная обратная связь родителям
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 sm:p-8">
-                  <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#009479]">Преимущества обучения</h3>
-                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4">
-                    Частное образование в «Древо Познаний» — это не просто освоение школьной программы. Мы развиваем критическое мышление, творческие способности и готовим учеников к успешному будущему.
-                  </p>
-                  <ul className="space-y-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2">✓</span>
-                      Углублённая подготовка к ЕГЭ и ОГЭ
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2">✓</span>
-                      Дополнительные образовательные программы
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-[#009479] mr-2">✓</span>
-                      Психологическая поддержка учеников
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                Обучение в нашей частной школе в Раменском сочетает академическую строгость с творческой свободой. Мы следуем федеральным государственным образовательным стандартам (ФГОС), но дополняем программу авторскими методиками и современными образовательными технологиями. Каждый ученик получает возможность раскрыть свой потенциал через проектную деятельность, исследовательские работы и участие в олимпиадах.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Results Section - Full Stats with 6 metrics */}
-        <FullStatsSection />
+        <QuoteDivider 
+          quote="Выбирая сильную школу, вы закладываете фундамент выдающегося будущего." 
+          alignment="left" 
+        />
         
-        {/* School News Section */}
-        <section id="news" className="scroll-mt-20 bg-gray-50 dark:bg-gray-900">
+        <Facilities />
+        
+        <InteractiveStory />
+        
+        <QuoteDivider 
+          quote="Настоящее образование начинается там, где ценят личность каждого ребёнка." 
+          alignment="right" 
+        />
+        
+        <Advantages />
+        
+        <QuoteDivider 
+          quote="Мы создаём среду, в которой интеллект, характер и ценности развиваются гармонично." 
+          alignment="center" 
+        />
+        
+        <Results />
+        
+        <QuoteDivider 
+          quote="Образование здесь — это не только знания, но и культура мышления." 
+          alignment="right" 
+        />
+        
+        <PricingInfographic />
+        
+        <SchoolLife />
+        
+        <section id="news" className="scroll-mt-20">
           <SchoolNews />
         </section>
         
-        {/* Teachers Section */}
+        <QuoteDivider 
+          quote="Доверие родителей — наша главная ценность и ответственность." 
+          alignment="center" 
+        />
+        
         <section id="teachers" className="scroll-mt-20">
           <TeachersCarousel />
         </section>
         
-        {/* FAQ Section - SEO importante */}
-        <section id="faq" className="scroll-mt-20 bg-gray-50 dark:bg-gray-900">
+        <QuoteDivider 
+          quote="Вы доверяете нам самое важное — и мы оправдываем это доверие каждый день." 
+          alignment="right" 
+        />
+        
+        <Testimonials />
+        
+        <QuoteDivider 
+          quote="Каждый ученик раскрывает свой потенциал в атмосфере уважения и поддержки." 
+          alignment="center" 
+        />
+        
+        <section id="faq" className="scroll-mt-20">
           <FAQ />
         </section>
         
-        {/* Contacts Section */}
+        <QuoteDivider 
+          quote="Здесь формируются уверенность, лидерство и внутренняя культура личности." 
+          alignment="center" 
+        />
+        
         <section id="contacts" className="scroll-mt-20">
           <Contacts />
         </section>
       </main>
       <Footer />
+      
+      <VisitModal isOpen={showModal} onClose={handleCloseModal} />
     </>
   )
 }
