@@ -38,49 +38,37 @@ const Contacts = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      // Primero guardar en MongoDB (endpoint anterior que funciona)
-      const contactResponse = await fetch(`${API_URL}/api/contact`, {
+      // Enviar email usando el nuevo sistema
+      const emailData = {
+        formName: 'Formulario de contacto - Древо Познаний',
+        pageUrl: window.location.href,
+        submittedAt: new Date().toISOString(),
+        fields: {
+          'Имя': formData.name,
+          'Телефон': formData.phone,
+          'Сообщение': formData.message
+        }
+      };
+
+      const response = await fetch(`${API_URL}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(emailData),
       });
 
-      if (!contactResponse.ok) {
-        throw new Error('Error al guardar contacto');
-      }
-
-      // Intentar enviar email (no bloquear si falla)
-      try {
-        const emailData = {
-          formName: 'Formulario de contacto - Древо Познаний',
-          pageUrl: window.location.href,
-          submittedAt: new Date().toISOString(),
-          fields: {
-            'Имя': formData.name,
-            'Телефон': formData.phone,
-            'Сообщение': formData.message
-          }
-        };
-
-        await fetch(`${API_URL}/api/send-email`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(emailData),
+      const result = await response.json();
+      
+      if (response.ok && result.ok) {
+        setStatus({
+          type: 'success',
+          message: 'Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.'
         });
-      } catch (emailError) {
-        console.warn('Email no enviado, pero contacto guardado:', emailError);
+        setFormData({ name: '', phone: '', message: '' });
+      } else {
+        throw new Error(result.detail || result.error || 'Error al enviar');
       }
-
-      setStatus({
-        type: 'success',
-        message: 'Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.'
-      });
-      setFormData({ name: '', phone: '', message: '' });
-
     } catch (error) {
       console.error('Error submitting form:', error);
       setStatus({
