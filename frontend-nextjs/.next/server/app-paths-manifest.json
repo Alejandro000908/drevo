@@ -2,10 +2,10 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/contacto/page": "app/contacto/page.js",
   "/page": "app/page.js",
-  "/admision/page": "app/admision/page.js",
   "/preparacion-preescolar/page": "app/preparacion-preescolar/page.js",
+  "/admision/page": "app/admision/page.js",
   "/documentos/page": "app/documentos/page.js",
   "/programas/page": "app/programas/page.js",
-  "/vida-escolar/page": "app/vida-escolar/page.js",
-  "/vacantes/page": "app/vacantes/page.js"
+  "/vacantes/page": "app/vacantes/page.js",
+  "/vida-escolar/page": "app/vida-escolar/page.js"
 }

@@ -21,7 +21,7 @@
       "static/chunks/117-87a8caac955fb579.js",
       "static/chunks/main-app-24a93daa75daa83c.js",
       "static/chunks/300-ef9e0f876bfb3eb9.js",
-      "static/chunks/762-b48b8b9689c438e8.js",
+      "static/chunks/762-18b886a505099a64.js",
       "static/chunks/app/contacto/page-a00f46157ba91237.js"
     ],
     "/page": [
@@ -34,16 +34,8 @@
       "static/chunks/941-8f6704f69b2d3710.js",
       "static/chunks/759-58c411abad72889a.js",
       "static/chunks/730-e862af128a5c733e.js",
-      "static/chunks/762-b48b8b9689c438e8.js",
-      "static/chunks/app/page-45746ecc1f3b7f82.js"
-    ],
-    "/admision/page": [
-      "static/chunks/webpack-b2d1a3f7dd542205.js",
-      "static/chunks/fd9d1056-8e04dd2e9b1dd845.js",
-      "static/chunks/117-87a8caac955fb579.js",
-      "static/chunks/main-app-24a93daa75daa83c.js",
-      "static/chunks/972-8809606434fc2508.js",
-      "static/chunks/app/admision/page-a78d8393593bde89.js"
+      "static/chunks/762-18b886a505099a64.js",
+      "static/chunks/app/page-8b32ef74063107eb.js"
     ],
     "/preparacion-preescolar/page": [
       "static/chunks/webpack-b2d1a3f7dd542205.js",
@@ -55,6 +47,14 @@
       "static/chunks/941-8f6704f69b2d3710.js",
       "static/chunks/730-e862af128a5c733e.js",
       "static/chunks/app/preparacion-preescolar/page-7fc4f3e870b9f786.js"
+    ],
+    "/admision/page": [
+      "static/chunks/webpack-b2d1a3f7dd542205.js",
+      "static/chunks/fd9d1056-8e04dd2e9b1dd845.js",
+      "static/chunks/117-87a8caac955fb579.js",
+      "static/chunks/main-app-24a93daa75daa83c.js",
+      "static/chunks/972-8809606434fc2508.js",
+      "static/chunks/app/admision/page-a78d8393593bde89.js"
     ],
     "/documentos/page": [
       "static/chunks/webpack-b2d1a3f7dd542205.js",
@@ -78,17 +78,6 @@
       "static/chunks/730-e862af128a5c733e.js",
       "static/chunks/app/programas/page-ff8a34b57629e825.js"
     ],
-    "/vida-escolar/page": [
-      "static/chunks/webpack-b2d1a3f7dd542205.js",
-      "static/chunks/fd9d1056-8e04dd2e9b1dd845.js",
-      "static/chunks/117-87a8caac955fb579.js",
-      "static/chunks/main-app-24a93daa75daa83c.js",
-      "static/chunks/300-ef9e0f876bfb3eb9.js",
-      "static/chunks/972-8809606434fc2508.js",
-      "static/chunks/941-8f6704f69b2d3710.js",
-      "static/chunks/730-e862af128a5c733e.js",
-      "static/chunks/app/vida-escolar/page-8f7512dae30abcc6.js"
-    ],
     "/vacantes/page": [
       "static/chunks/webpack-b2d1a3f7dd542205.js",
       "static/chunks/fd9d1056-8e04dd2e9b1dd845.js",
@@ -99,6 +88,17 @@
       "static/chunks/941-8f6704f69b2d3710.js",
       "static/chunks/730-e862af128a5c733e.js",
       "static/chunks/app/vacantes/page-4174cf28baf33642.js"
+    ],
+    "/vida-escolar/page": [
+      "static/chunks/webpack-b2d1a3f7dd542205.js",
+      "static/chunks/fd9d1056-8e04dd2e9b1dd845.js",
+      "static/chunks/117-87a8caac955fb579.js",
+      "static/chunks/main-app-24a93daa75daa83c.js",
+      "static/chunks/300-ef9e0f876bfb3eb9.js",
+      "static/chunks/972-8809606434fc2508.js",
+      "static/chunks/941-8f6704f69b2d3710.js",
+      "static/chunks/730-e862af128a5c733e.js",
+      "static/chunks/app/vida-escolar/page-8f7512dae30abcc6.js"
     ]
   }
 }

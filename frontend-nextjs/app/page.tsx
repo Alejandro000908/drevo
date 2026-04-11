@@ -122,19 +122,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Results Section */}
-        <section id="results" className="scroll-mt-20 py-12 sm:py-16 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 sm:mb-4 text-[#414141] dark:text-white px-2">
-              Результаты наших учеников
-            </h2>
-            <p className="text-center text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
-              Качественная подготовка к ЕГЭ и ОГЭ в Раменском — гарантированные результаты поступления в ведущие вузы России
-            </p>
-            
-            <ResultsStats />
-          </div>
-        </section>
+        {/* Results Section - Full Stats with 6 metrics */}
+        <FullStatsSection />
         
         {/* School News Section */}
         <section id="news" className="scroll-mt-20 bg-gray-50 dark:bg-gray-900">
