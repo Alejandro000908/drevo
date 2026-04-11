@@ -40,7 +40,7 @@ const Contacts = () => {
     try {
       // Enviar email usando el nuevo sistema
       const emailData = {
-        formName: 'Formulario de contacto - Древо Познаний',
+        formName: 'Контактная форма - Древо Познаний',
         pageUrl: window.location.href,
         submittedAt: new Date().toISOString(),
         fields: {
@@ -246,7 +246,7 @@ const Contacts = () => {
               onSubmit={handleSubmit} 
               className="space-y-6"
               data-email-form="true"
-              data-form-name="Formulario de contacto - Древо Познаний"
+              data-form-name="Контактная форма - Древо Познаний"
             >
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
