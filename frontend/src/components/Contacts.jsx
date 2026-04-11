@@ -38,33 +38,45 @@ const Contacts = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch(`${API_URL}/api/contact`, {
+      // Usar el nuevo sistema de email
+      const emailData = {
+        formName: 'Formulario de contacto - Древо Познаний',
+        pageUrl: window.location.href,
+        submittedAt: new Date().toISOString(),
+        fields: {
+          'Имя': formData.name,
+          'Телефон': formData.phone,
+          'Сообщение': formData.message
+        }
+      };
+
+      const response = await fetch(`${API_URL}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(emailData),
       });
 
       const result = await response.json();
       
-      if (response.ok && result.success) {
+      if (response.ok && result.ok) {
         setStatus({
           type: 'success',
-          message: result.message
+          message: 'Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.'
         });
         setFormData({ name: '', phone: '', message: '' });
       } else {
         setStatus({
           type: 'error',
-          message: result.detail || 'Произошла ошибка. Попробуйте позже.'
+          message: result.detail || result.error || 'Произошла ошибка. Попробуйте позже.'
         });
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setStatus({
         type: 'error',
-        message: 'Произошла ошибка. Попробуйте позже.'
+        message: 'Произошла ошибка при отправке. Попробуйте позже.'
       });
     } finally {
       setIsSubmitting(false);

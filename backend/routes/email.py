@@ -110,9 +110,12 @@ async def send_email(data: EmailFormData):
         smtp_pass = os.getenv('SMTP_PASS')
         mail_from = os.getenv('MAIL_FROM', smtp_user)
         
+        # Log de configuración (sin password)
+        logger.info(f"SMTP Config: host={smtp_host}, port={smtp_port}, user={smtp_user}")
+        
         # Validar que existan las credenciales
         if not all([smtp_host, smtp_user, smtp_pass]):
-            logger.error("Faltan credenciales SMTP en variables de entorno")
+            logger.error(f"Faltan credenciales SMTP: host={smtp_host is not None}, user={smtp_user is not None}, pass={smtp_pass is not None}")
             raise HTTPException(status_code=500, detail="Configuración de email incompleta")
         
         # Crear mensaje
