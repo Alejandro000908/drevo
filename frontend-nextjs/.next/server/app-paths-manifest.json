@@ -4,8 +4,8 @@
   "/page": "app/page.js",
   "/preparacion-preescolar/page": "app/preparacion-preescolar/page.js",
   "/admision/page": "app/admision/page.js",
+  "/programas/page": "app/programas/page.js",
   "/documentos/page": "app/documentos/page.js",
   "/vacantes/page": "app/vacantes/page.js",
-  "/programas/page": "app/programas/page.js",
   "/vida-escolar/page": "app/vida-escolar/page.js"
 }

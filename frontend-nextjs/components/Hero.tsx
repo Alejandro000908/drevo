@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './ui/button'
-import AnimatedStats from './AnimatedStats'
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -29,106 +28,105 @@ const Hero = () => {
   } : {}
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pyjpj7ng_n3LEFeUqka_FyO2v4FHv_ehXQKcINz2u7xDZgeRYIDL_4WLprgjm86FlIyiF2ABWYPuo3-b__VV-C2nH3Ru0UwW7.jpg"
+          alt="Modern classroom"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#414141]/95 via-[#414141]/85 to-[#009479]/70 dark:from-[#0f172a]/95 dark:via-[#1e293b]/90 dark:to-[#009479]/80"></div>
+      </div>
       
       {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <MotionWrapper {...motionProps}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#414141] dark:text-white mb-4 sm:mb-6 leading-tight px-2">
-              Частная школа <br className="hidden sm:inline"/>«Древо Познаний» —<br />
-              <span className="bg-gradient-to-r from-[#009479] to-[#00BFA5] bg-clip-text text-transparent">
-                индивидуальный подход и&nbsp;реальные результаты
-              </span>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-4xl">
+          {/* Badge */}
+          <MotionWrapper 
+            {...motionProps}
+            className="inline-flex items-center gap-2 bg-[#009479]/20 dark:bg-[#009479]/30 backdrop-blur-sm border border-[#009479]/30 dark:border-[#009479]/50 rounded-full px-6 py-2 mb-8"
+          >
+            <div className="w-2 h-2 bg-[#009479] rounded-full animate-pulse"></div>
+            <span className="text-white font-medium text-sm">Запись на 2026-2027 учебный год открыта</span>
+          </MotionWrapper>
+
+          {/* Main Headline */}
+          <MotionWrapper 
+            {...(isMounted ? {
+              initial: { opacity: 0, y: 20 },
+              animate: { opacity: 1, y: 0 },
+              transition: { duration: 0.8, delay: 0.1 }
+            } : {})}
+          >
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Частная школа «Древо Познаний» — индивидуальный подход и реальные результаты
             </h1>
           </MotionWrapper>
 
+          {/* Subtext */}
           <MotionWrapper 
             {...(isMounted ? {
               initial: { opacity: 0, y: 20 },
               animate: { opacity: 1, y: 0 },
               transition: { duration: 0.8, delay: 0.2 }
             } : {})}
-            className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-4"
+            className="text-lg sm:text-xl text-gray-200 dark:text-gray-300 mb-10 max-w-2xl leading-relaxed"
           >
             Обучение с 1 по 11 класс. Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Небольшие классы до 12 человек. Опытные преподаватели.
           </MotionWrapper>
 
+          {/* CTA Buttons */}
           <MotionWrapper
             {...(isMounted ? {
               initial: { opacity: 0, y: 20 },
               animate: { opacity: 1, y: 0 },
-              transition: { duration: 0.8, delay: 0.4 }
+              transition: { duration: 0.8, delay: 0.3 }
             } : {})}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 mb-12"
           >
             <Button
               onClick={() => scrollToSection('contacts')}
-              className="w-full sm:w-auto bg-gradient-to-r from-[#009479] to-[#00BFA5] hover:from-[#007A64] hover:to-[#009479] text-white px-6 sm:px-8 py-4 sm:py-6 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 text-base sm:text-lg font-semibold"
+              className="bg-[#4CAF50] hover:bg-[#388E3C] dark:bg-[#009479] dark:hover:bg-[#007A64] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
-              <span className="block sm:inline">Записаться на пробный день</span>
+              Записаться на пробный день
             </Button>
             <Button
               onClick={() => scrollToSection('programs')}
               variant="outline"
-              className="w-full sm:w-auto border-2 border-[#009479] text-[#009479] hover:bg-[#009479] hover:text-white px-6 sm:px-8 py-4 sm:py-6 rounded-full transition-all duration-300 hover:scale-105 text-base sm:text-lg font-semibold"
+              className="bg-white/10 dark:bg-white/5 backdrop-blur-sm border-2 border-white/30 dark:border-white/20 hover:bg-white/20 dark:hover:bg-white/10 text-white font-semibold px-8 py-6 text-lg rounded-xl transition-all duration-300"
             >
               Узнать больше
             </Button>
           </MotionWrapper>
 
-          {/* Trust Badge */}
+          {/* Trust Indicators */}
           <MotionWrapper
             {...(isMounted ? {
               initial: { opacity: 0 },
               animate: { opacity: 1 },
-              transition: { duration: 0.8, delay: 0.6 }
+              transition: { duration: 0.8, delay: 0.4 }
             } : {})}
-            className="mt-12 inline-block bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-xl"
+            className="grid grid-cols-3 gap-6 max-w-2xl"
           >
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              <span className="font-bold text-[#009479]">Запись на 2026-2027 учебный год открыта</span>
-            </p>
-          </MotionWrapper>
-
-          {/* Trust Indicators - Animated Stats */}
-          <MotionWrapper
-            {...(isMounted ? {
-              initial: { opacity: 0 },
-              animate: { opacity: 1 },
-              transition: { duration: 0.8, delay: 0.8 }
-            } : {})}
-          >
-            <AnimatedStats 
-              stats={[
-                { value: 87, label: 'Средний балл ЕГЭ' },
-                { value: 97, suffix: '%', label: 'Поступили в вузы' },
-                { value: 12, label: 'Лет работы' }
-              ]}
-            />
+            <div className="text-center transition-transform duration-300 hover:scale-110">
+              <div className="text-3xl sm:text-4xl font-bold text-[#009479] dark:text-[#00BFA5] mb-1">87</div>
+              <div className="text-sm text-gray-300">Средний балл ЕГЭ</div>
+            </div>
+            <div className="text-center border-l border-r border-white/20 dark:border-white/10 transition-transform duration-300 hover:scale-110">
+              <div className="text-3xl sm:text-4xl font-bold text-[#009479] dark:text-[#00BFA5] mb-1">97%</div>
+              <div className="text-sm text-gray-300">Поступили в вузы</div>
+            </div>
+            <div className="text-center transition-transform duration-300 hover:scale-110">
+              <div className="text-3xl sm:text-4xl font-bold text-[#009479] dark:text-[#00BFA5] mb-1">12</div>
+              <div className="text-sm text-gray-300">Лет работы</div>
+            </div>
           </MotionWrapper>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      {isMounted && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="w-6 h-10 border-2 border-[#009479] rounded-full flex justify-center">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1.5 h-1.5 bg-[#009479] rounded-full mt-2"
-            />
-          </div>
-        </motion.div>
-      )}
+      {/* Decorative gradient at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-gray-900 to-transparent z-10"></div>
     </section>
   )
 }
