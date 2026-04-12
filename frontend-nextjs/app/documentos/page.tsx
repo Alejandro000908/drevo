@@ -1,292 +1,197 @@
-import type { Metadata } from 'next'
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
-import { siteConfig } from '@/lib/config'
-import { generateBreadcrumbSchema } from '@/lib/schema'
+import { ArrowLeft, Download, FileText } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { FileText, Download, Shield } from 'lucide-react'
 
-export const metadata: Metadata = {
-  title: 'Документы частной школы «Древо Познаний» — лицензия, устав, правила в Раменском',
-  description: 'Официальные документы частной школы Раменское: лицензия на образовательную деятельность, устав, правила внутреннего распорядка, договор обучения. Прозрачность и открытость для родителей.',
-  keywords: [
-    'документы школы Раменское',
-    'лицензия частной школы',
-    'устав школы',
-    'правила школы',
-    'договор обучения',
-    'информация для родителей',
-  ],
-  openGraph: {
-    title: 'Документы и лицензии | Древо Познаний',
-    description: 'Лицензия, устав, правила и договор обучения. Полная прозрачность для родителей.',
-    url: `${siteConfig.url}/documentos/`,
-  },
-  alternates: {
-    canonical: `${siteConfig.url}/documentos/`,
-  },
-}
+const DOCUMENTS = [
+  { id: 1, title: "Календарный учебный график", link: "https://disk.yandex.ru/i/CDdMZbxPDo8cLQ" },
+  { id: 2, title: "Правила внутреннего распорядка для обучающихся образовательной организации", link: "https://disk.yandex.ru/i/t60L48GoIWG5Zg" },
+  { id: 3, title: "Распоряжение о библиотеках", link: "https://disk.yandex.ru/i/XjDRCGuHuEHiMA" },
+  { id: 4, title: "Положение о защите персональных данных обучающихся, их законных представителей и работников организации", link: "https://disk.yandex.ru/i/facSwX99PlC8Bw" },
+  { id: 5, title: "Правила трудового распорядка для работников образовательной организации", link: "https://disk.yandex.ru/i/ommCBApaV_ZWLQ" },
+  { id: 6, title: "Положение о формах обучения", link: "https://disk.yandex.ru/i/8uUwr4HiUj-Gyg" },
+  { id: 7, title: "Устав", link: "https://disk.yandex.ru/i/9ghs09Q1DYhSaw" },
+  { id: 8, title: "Реестровая выписка", link: "https://disk.yandex.ru/i/4NwQug1SEs7tog" },
+  { id: 9, title: "Выписка из Единого государственного реестра индивидуальных предпринимателей", link: "https://disk.yandex.ru/i/lGl8tf7LggLvzw" },
+  { id: 10, title: "Лицензия", link: "https://disk.yandex.ru/i/tpilNFoRsoG5Vg" },
+  { id: 11, title: "Распоряжение об охране здоровья обучающихся", link: "https://disk.yandex.ru/i/CyGR-emcuJ3t3Q" },
+  { id: 12, title: "Распоряжение о порядке перевода, отчисления и восстановления обучающегося", link: "https://disk.yandex.ru/i/bq0oMu3Zso_5Xw" },
+  { id: 13, title: "Распоряжение о правах и обязанностях участников образовательного процесса", link: "https://disk.yandex.ru/i/Z6Vd1lVJXw45jg" },
+  { id: 14, title: "Распоряжение о режиме и форме проведения занятий", link: "https://disk.yandex.ru/i/ROvkEOKPc9oHMg" },
+  { id: 15, title: "Распоряжение о порядке и правилах зачисления на курсы", link: "https://disk.yandex.ru/i/r6dfjDDnGgTDrw" },
+  { id: 16, title: "Распоряжение о порядке бесплатного пользования педагогическими работниками образовательными и методическими услугами учреждения", link: "https://disk.yandex.ru/i/oL9LLjcs6LsE7A" },
+  { id: 17, title: "Положение о нормах профессиональной этики педагогических работников", link: "https://disk.yandex.ru/i/Iw-d_NSBG49Zfw" },
+  { id: 18, title: "Распоряжение о порядке обучения по индивидуальному плану", link: "https://disk.yandex.ru/i/9Q9_woZMmNvn2w" },
+  { id: 19, title: "Распоряжение о порядке создания, организации работы, принятия решений комиссией по урегулированию споров между участниками образовательных отношений и их исполнения", link: "https://disk.yandex.ru/i/mVTKdTJOxFUnyQ" },
+  { id: 20, title: "Распоряжение о порядке выдачи документов подтверждающих обучение по программам дополнительного образования", link: "https://disk.yandex.ru/i/GTwjcZkIyPn-lQ" },
+  { id: 21, title: "Распоряжение о порядке контроля успеваемости", link: "https://disk.yandex.ru/i/rPNnaXEf0XvvWA" },
+  { id: 22, title: "Распоряжение о языке при реализации образовательных программ", link: "https://disk.yandex.ru/i/594PI_nQSaHK1Q" },
+  { id: 23, title: "Положение о порядке оказания платных образовательных услуг", link: "https://disk.yandex.ru/i/WTflsizNB0O-Bw" },
+  { id: 24, title: "Стоимость платных образовательных услуг в 2025/2026 учебном году", link: "https://disk.yandex.ru/d/REkzrF9qNdFusg" }
+]
 
 export default function DocumentsPage() {
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Главная', url: '/' },
-    { name: 'Документы', url: '/documentos' },
-  ])
+  const [hoveredBranch, setHoveredBranch] = useState<number | null>(null)
+
+  const handleDownload = (link: string) => {
+    window.open(link, '_blank', 'noopener,noreferrer')
+  }
 
   return (
     <>
       <Header />
-      <main className="min-h-screen pt-20">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-        />
+      <main className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20 pb-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-[#009479] dark:text-[#00BFA5] hover:text-[#007A64] dark:hover:text-[#009479] font-medium transition-all duration-300 group mb-8 hover:gap-3"
+          >
+            <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
+            Вернуться на главную
+          </Link>
 
-        {/* Hero */}
-        <section className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-16">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <nav className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              <Link href="/" className="hover:text-[#009479]">Главная</Link>
-              <span className="mx-2">/</span>
-              <span>Документы</span>
-            </nav>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#414141] dark:text-white mb-6">
-              Документы частной школы «Древо Познаний»
+          <div className="text-center mb-16 animate-fadeIn">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#414141] dark:text-white mb-4">
+              Документы
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl">
-              Официальные документы, лицензии и правила нашей школы в Раменском. Мы работаем абсолютно прозрачно и открыто предоставляем всю необходимую информацию для родителей
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Нормативные документы и положения образовательной организации
             </p>
           </div>
-        </section>
 
-        {/* Main Content */}
-        <section className="py-20 bg-white dark:bg-gray-800">
-          <div className="container mx-auto px-4 max-w-6xl">
-            <div className="prose prose-lg max-w-none dark:prose-invert mb-16">
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                Частная школа «Древо Познаний» осуществляет образовательную деятельность на основании действующей лицензии и в полном соответствии с законодательством Российской Федерации в области образования. Мы придерживаемся принципов открытости и прозрачности, поэтому все ключевые документы школы доступны для ознакомления родителям наших учеников и всем заинтересованным лицам.
-              </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                На этой странице вы найдёте информацию об основных документах, регулирующих деятельность нашей частной школы в Раменском. Если у вас возникнут вопросы или вам потребуются дополнительные документы, вы всегда можете обратиться в администрацию школы. Мы готовы предоставить любую интересующую вас информацию о нашей образовательной организации.
-              </p>
-            </div>
-
-            {/* Documents Grid */}
-            <div className="grid md:grid-cols-2 gap-8 mb-20">
-              {/* Лицензия */}
-              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 border-2 border-[#009479] hover:shadow-2xl transition-shadow">
-                <div className="flex items-start mb-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-xl flex items-center justify-center text-white mr-4 flex-shrink-0">
-                    <Shield className="w-7 h-7" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#414141] dark:text-white mb-2">
-                      Лицензия на образовательную деятельность
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Документ подтверждает право школы на ведение образовательной деятельности</p>
-                  </div>
+          <div className="relative max-w-7xl mx-auto">
+            <div className="flex justify-center mb-8">
+              <div className="relative">
+                <div className="w-20 h-24 bg-gradient-to-b from-[#8B4513] to-[#654321] rounded-b-xl shadow-2xl relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+                  <div className="absolute top-4 left-3 w-10 h-2 bg-black/20 rounded-full"></div>
+                  <div className="absolute top-10 right-3 w-8 h-2 bg-black/20 rounded-full"></div>
+                  <div className="absolute top-16 left-4 w-9 h-2 bg-black/20 rounded-full"></div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                  Частная школа «Древо Познаний» имеет бессрочную лицензию на право осуществления образовательной деятельности по программам начального общего, основного общего и среднего общего образования, выданную Министерством образования Московской области.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Наличие лицензии гарантирует, что образовательный процесс в школе соответствует федеральным государственным образовательным стандартам, а наши выпускники получают документы государственного образца.
-                </p>
-                <Link
-                  href="/#contacts"
-                  className="inline-flex items-center text-[#009479] hover:text-[#007A64] font-semibold transition-colors"
-                >
-                  <FileText className="w-5 h-5 mr-2" />
-                  Запросить копию документа
-                </Link>
-              </div>
-
-              {/* Устав */}
-              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow">
-                <div className="flex items-start mb-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-xl flex items-center justify-center text-white mr-4 flex-shrink-0">
-                    <FileText className="w-7 h-7" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#414141] dark:text-white mb-2">
-                      Устав школы
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Основной документ, определяющий деятельность организации</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Устав частной школы «Древо Познаний» определяет правовой статус образовательного учреждения, цели и виды деятельности, организационную структуру, права и обязанности участников образовательного процесса, порядок управления школой и другие важные аспекты функционирования организации.
-                </p>
-                <Link
-                  href="/#contacts"
-                  className="inline-flex items-center text-[#009479] hover:text-[#007A64] font-semibold transition-colors"
-                >
-                  <FileText className="w-5 h-5 mr-2" />
-                  Ознакомиться с уставом
-                </Link>
-              </div>
-
-              {/* Правила внутреннего распорядка */}
-              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow">
-                <div className="flex items-start mb-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-xl flex items-center justify-center text-white mr-4 flex-shrink-0">
-                    <FileText className="w-7 h-7" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#414141] dark:text-white mb-2">
-                      Правила внутреннего распорядка
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Регламентируют режим работы и поведение в школе</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Правила внутреннего распорядка устанавливают режим занятий учащихся, порядок пребывания в школе, права и обязанности учеников, требования к внешнему виду, правила поведения на уроках и переменах. Документ помогает поддерживать дисциплину и создавать комфортную образовательную среду для всех участников процесса.
-                </p>
-                <Link
-                  href="/#contacts"
-                  className="inline-flex items-center text-[#009479] hover:text-[#007A64] font-semibold transition-colors"
-                >
-                  <FileText className="w-5 h-5 mr-2" />
-                  Получить правила
-                </Link>
-              </div>
-
-              {/* Договор об образовании */}
-              <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow">
-                <div className="flex items-start mb-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-xl flex items-center justify-center text-white mr-4 flex-shrink-0">
-                    <FileText className="w-7 h-7" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#414141] dark:text-white mb-2">
-                      Договор об оказании образовательных услуг
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Типовой договор между школой и родителями</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Договор об оказании платных образовательных услуг заключается между школой и родителями (законными представителями) ученика при зачислении в школу. В договоре указываются права и обязанности сторон, стоимость обучения, порядок оплаты, условия расторжения договора и другие важные условия.
-                </p>
-                <Link
-                  href="/admision"
-                  className="inline-flex items-center text-[#009479] hover:text-[#007A64] font-semibold transition-colors"
-                >
-                  <FileText className="w-5 h-5 mr-2" />
-                  Ознакомиться при поступлении
-                </Link>
+                
+                <svg className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-40 h-12 opacity-40" viewBox="0 0 160 50">
+                  <path d="M 80 0 Q 60 25, 40 50" stroke="#654321" strokeWidth="3" fill="none" className="animate-drawRoot" />
+                  <path d="M 80 0 Q 70 25, 55 50" stroke="#654321" strokeWidth="2" fill="none" className="animate-drawRoot" style={{ animationDelay: '0.1s' }} />
+                  <path d="M 80 0 Q 90 25, 105 50" stroke="#654321" strokeWidth="2" fill="none" className="animate-drawRoot" style={{ animationDelay: '0.2s' }} />
+                  <path d="M 80 0 Q 100 25, 120 50" stroke="#654321" strokeWidth="3" fill="none" className="animate-drawRoot" style={{ animationDelay: '0.3s' }} />
+                </svg>
               </div>
             </div>
 
-            {/* Transparency Section */}
-            <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-12 mb-20">
-              <h2 className="text-3xl font-bold mb-8 text-center text-[#414141] dark:text-white">
-                Открытость и доступность информации
-              </h2>
-              <div className="max-w-4xl mx-auto">
-                <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                  Мы понимаем, как важно для родителей иметь полную информацию о школе, в которую они доверяют обучение своих детей. Поэтому частная школа «Древо Познаний» придерживается политики максимальной открытости и прозрачности. Все ключевые документы доступны для ознакомления, а администрация школы всегда готова ответить на ваши вопросы.
-                </p>
-                <div className="grid md:grid-cols-3 gap-6 mt-8">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                      ✓
-                    </div>
-                    <h3 className="font-semibold text-lg text-[#414141] dark:text-white mb-2">Лицензирование</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Все лицензии и разрешения в наличии</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                      ✓
-                    </div>
-                    <h3 className="font-semibold text-lg text-[#414141] dark:text-white mb-2">Соответствие ФГОС</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Программы соответствуют стандартам</p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                      ✓
-                    </div>
-                    <h3 className="font-semibold text-lg text-[#414141] dark:text-white mb-2">Прозрачность</h3>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Открытость для родителей</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+              {DOCUMENTS.map((doc, index) => {
+                const isHovered = hoveredBranch === doc.id
+                
+                return (
+                  <div
+                    key={doc.id}
+                    className="relative group animate-fadeInCard"
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-0.5 h-8 bg-gradient-to-b from-[#654321] to-transparent animate-growDown" style={{ animationDelay: `${index * 0.05}s` }}></div>
+                    
+                    <div
+                      className={`relative bg-white dark:bg-gray-800 rounded-2xl p-5 border-2 transition-all duration-500 cursor-pointer ${
+                        isHovered 
+                          ? 'border-[#00BFA5] shadow-2xl shadow-[#009479]/40 scale-105 -translate-y-2' 
+                          : 'border-gray-200 dark:border-gray-700 shadow-lg hover:border-[#009479] hover:shadow-xl'
+                      }`}
+                      onMouseEnter={() => setHoveredBranch(doc.id)}
+                      onMouseLeave={() => setHoveredBranch(null)}
+                      onClick={() => handleDownload(doc.link)}
+                    >
+                      <div className="absolute -top-3 -left-3 w-10 h-10 bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-full flex items-center justify-center shadow-lg border-4 border-white dark:border-gray-900 z-10">
+                        <span className="text-white font-bold text-sm">{index + 1}</span>
+                      </div>
 
-            {/* CTA */}
-            <div className="bg-gradient-to-br from-[#009479] to-[#00BFA5] rounded-2xl p-12 text-white text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Остались вопросы о документах школы?
-              </h2>
-              <p className="text-xl mb-8 opacity-90">
-                Свяжитесь с нами для получения дополнительной информации
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/#contacts"
-                  className="inline-block bg-white text-[#009479] px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors shadow-lg"
-                >
-                  Связаться с администрацией
-                </Link>
-                <Link
-                  href="/admision"
-                  className="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition-colors"
-                >
-                  Подать заявку на обучение
-                </Link>
-              </div>
+                      <div className="flex items-start gap-4">
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md transition-all duration-300 ${
+                          isHovered 
+                            ? 'bg-gradient-to-br from-[#00BFA5] to-[#009479] scale-110' 
+                            : 'bg-gradient-to-br from-[#009479]/20 to-[#00BFA5]/20'
+                        }`}>
+                          <FileText className={`w-6 h-6 transition-colors ${isHovered ? 'text-white' : 'text-[#009479]'}`} />
+                        </div>
+
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm font-bold text-[#414141] dark:text-white mb-3 leading-tight">
+                            {doc.title}
+                          </h3>
+                          
+                          <button className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                            isHovered
+                              ? 'bg-gradient-to-r from-[#009479] to-[#00BFA5] text-white shadow-lg scale-105'
+                              : 'bg-gray-100 dark:bg-gray-700 text-[#009479] dark:text-[#00BFA5] hover:bg-gray-200 dark:hover:bg-gray-600'
+                          }`}>
+                            <Download className="w-4 h-4" />
+                            <span>Скачать</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#00BFA5]/5 to-transparent rounded-bl-full"></div>
+                      <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-[#009479]/5 to-transparent rounded-tr-full"></div>
+
+                      <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br from-[#00BFA5]/10 to-[#009479]/10 transition-opacity duration-500 -z-10 blur-xl ${
+                        isHovered ? 'opacity-100' : 'opacity-0'
+                      }`}></div>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-900">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#414141] dark:text-white">
-              Часто задаваемые вопросы о документах
-            </h2>
-
-            <div className="space-y-6">
-              <details className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
-                <summary className="font-semibold text-lg text-[#414141] dark:text-white cursor-pointer">
-                  Как получить копии документов школы?
-                </summary>
-                <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Копии уставных и других документов школы можно получить, обратившись в администрацию лично, по телефону {siteConfig.contact.phone} или по электронной почте {siteConfig.contact.email}. Мы предоставим вам необходимые документы в электронном виде или в виде заверенных копий.
-                </p>
-              </details>
-
-              <details className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
-                <summary className="font-semibold text-lg text-[#414141] dark:text-white cursor-pointer">
-                  Имеет ли школа право выдавать аттестаты государственного образца?
-                </summary>
-                <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Да, наша школа имеет лицензию на право ведения образовательной деятельности и выдаёт выпускникам аттестаты государственного образца об основном общем образовании (после 9 класса) и среднем общем образовании (после 11 класса). Эти документы признаются всеми российскими и международными образовательными учреждениями.
-                </p>
-              </details>
-
-              <details className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
-                <summary className="font-semibold text-lg text-[#414141] dark:text-white cursor-pointer">
-                  Какие документы нужны для заключения договора?
-                </summary>
-                <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Для заключения договора об оказании образовательных услуг потребуются: паспорт родителя (законного представителя), свидетельство о рождении ребёнка, медицинская карта, личное дело (при переводе из другой школы). Подробный список документов для поступления вы можете найти на странице <Link href="/admision" className="text-[#009479] hover:underline">«Поступление»</Link>.
-                </p>
-              </details>
-
-              <details className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md">
-                <summary className="font-semibold text-lg text-[#414141] dark:text-white cursor-pointer">
-                  Можно ли ознакомиться с документами до заключения договора?
-                </summary>
-                <p className="mt-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Конечно! Мы рекомендуем всем родителям ознакомиться с уставом школы, правилами внутреннего распорядка и типовым договором ещё до принятия решения о зачислении ребёнка. Это поможет вам лучше понять принципы работы школы и избежать недопонимания в будущем.
-                </p>
-              </details>
-            </div>
-          </div>
-        </section>
+        </div>
       </main>
       <Footer />
+
+      <style jsx global>{`
+        @keyframes fadeInCard {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes growDown {
+          from { height: 0; }
+          to { height: 2rem; }
+        }
+
+        @keyframes drawRoot {
+          from { stroke-dasharray: 100; stroke-dashoffset: 100; }
+          to { stroke-dasharray: 100; stroke-dashoffset: 0; }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInCard {
+          opacity: 0;
+          animation: fadeInCard 0.6s ease-out forwards;
+        }
+
+        .animate-growDown {
+          animation: growDown 0.8s ease-out forwards;
+        }
+
+        .animate-drawRoot {
+          animation: drawRoot 1.5s ease-out forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-fadeIn,
+          .animate-fadeInCard,
+          .animate-growDown,
+          .animate-drawRoot {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
+        }
+      `}</style>
     </>
   )
 }
