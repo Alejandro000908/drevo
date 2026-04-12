@@ -25,6 +25,9 @@ export default function HomePage() {
   const [hasShownInitially, setHasShownInitially] = useState(false)
 
   useEffect(() => {
+    // Disabled for development/testing
+    return
+    
     if (!hasShownInitially) {
       const timer = setTimeout(() => {
         setShowModal(true)

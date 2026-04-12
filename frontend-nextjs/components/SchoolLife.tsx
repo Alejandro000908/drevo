@@ -27,30 +27,28 @@ const SchoolLife = () => {
           {SCHOOL_LIFE.map((item, index) => (
             <div
               key={item.id}
-              className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 aspect-[4/3]"
             >
               {/* Image */}
-              <div className="relative h-80 overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className={`w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ${item.imagePosition || 'object-center'}`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                
-                {/* Content overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Heart className="w-5 h-5 fill-[#009479] text-[#009479]" />
-                    <span className="text-sm font-semibold text-[#009479]">Наши ученики</span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-200">
-                    {item.description}
-                  </p>
+              <img
+                src={item.image}
+                alt={item.title}
+                className={`absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ${item.imagePosition || 'object-center'}`}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              
+              {/* Content overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10">
+                <div className="flex items-center gap-2 mb-2">
+                  <Heart className="w-5 h-5 fill-[#009479] text-[#009479]" />
+                  <span className="text-sm font-semibold text-[#009479]">Наши ученики</span>
                 </div>
+                <h3 className="text-2xl font-bold mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-200">
+                  {item.description}
+                </p>
               </div>
             </div>
           ))}

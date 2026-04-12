@@ -70,12 +70,12 @@ const Results = () => {
             {UNIVERSITIES.map((uni) => (
               <div
                 key={uni.id}
-                className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center"
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-center aspect-square"
               >
                 <img
                   src={uni.logo}
                   alt={uni.name}
-                  className="max-w-full h-16 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                  className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             ))}

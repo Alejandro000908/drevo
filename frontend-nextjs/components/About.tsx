@@ -12,11 +12,11 @@ const About = () => {
           {/* Left: Image */}
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-r from-[#009479]/20 to-[#007A64]/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all duration-300"></div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
               <img
                 src={ABOUT.image}
                 alt="School interior"
-                className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700"
+                className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#414141]/50 to-transparent"></div>
             </div>
