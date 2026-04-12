@@ -1,232 +1,81 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import Dict, Any, Optional
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 import os
-import re
 import logging
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
-class EmailFormData(BaseModel):
-    formName: Optional[str] = "Formulario de contacto"
-    pageUrl: Optional[str] = ""
-    submittedAt: Optional[str] = ""
-    fields: Dict[str, Any]
-
-class VisitRequestData(BaseModel):
-    fullName: str
+class EmailRequest(BaseModel):
+    name: str
+    email: str
     phone: str
-    visitDate: str
-
-def sanitize_input(text: str) -> str:
-    """Sanitiza el input para prevenir inyección de código"""
-    if not isinstance(text, str):
-        text = str(text)
-    # Remover caracteres peligrosos
-    text = re.sub(r'[<>\'\"&]', '', text)
-    return text.strip()
-
-def detect_email_field(fields: Dict[str, Any]) -> Optional[str]:
-    """Detecta automáticamente el campo de email en el formulario"""
-    email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    
-    # Buscar por nombre de campo común
-    for key in ['email', 'correo', 'e-mail', 'mail']:
-        if key in fields and re.match(email_pattern, str(fields[key])):
-            return fields[key]
-    
-    # Buscar en todos los campos
-    for value in fields.values():
-        if isinstance(value, str) and re.match(email_pattern, value):
-            return value
-    
-    return None
-
-def format_email_body(data: EmailFormData, user_email: Optional[str]) -> str:
-    """Formatea el cuerpo del email de forma legible"""
-    html = f"""
-    <html>
-        <head>
-            <style>
-                body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
-                .header {{ background: #4CAF50; color: white; padding: 20px; border-radius: 5px; }}
-                .info {{ background: #f5f5f5; padding: 15px; border-left: 4px solid #4CAF50; margin: 20px 0; }}
-                .field {{ margin: 10px 0; padding: 10px; background: white; border: 1px solid #ddd; }}
-                .label {{ font-weight: bold; color: #4CAF50; }}
-                .value {{ margin-top: 5px; }}
-            </style>
-        </head>
-        <body>
-            <div class="header">
-                <h2>📧 {sanitize_input(data.formName)}</h2>
-            </div>
-            
-            <div class="info">
-                <p><strong>📍 Página:</strong> {sanitize_input(data.pageUrl)}</p>
-                <p><strong>🕐 Fecha y hora:</strong> {sanitize_input(data.submittedAt) or datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-                {f'<p><strong>✉️ Email del usuario:</strong> {sanitize_input(user_email)}</p>' if user_email else ''}
-            </div>
-            
-            <h3>📋 Datos del formulario:</h3>
-    """
-    
-    # Agregar todos los campos no vacíos
-    for key, value in data.fields.items():
-        if value and str(value).strip():
-            sanitized_key = sanitize_input(key)
-            sanitized_value = sanitize_input(str(value))
-            html += f"""
-            <div class="field">
-                <div class="label">{sanitized_key}:</div>
-                <div class="value">{sanitized_value}</div>
-            </div>
-            """
-    
-    html += """
-        </body>
-    </html>
-    """
-    
-    return html
+    message: str
 
 @router.post("/send-email")
-async def send_email(data: EmailFormData):
+async def send_email(data: EmailRequest):
     """
-    Endpoint global para enviar emails desde cualquier formulario
-    Solo procesa formularios marcados con data-email-form="true"
+    Send email via Yandex SMTP using SMTP_SSL
     """
     try:
-        # Validar que existan campos
-        if not data.fields:
-            raise HTTPException(status_code=400, detail="No hay campos para enviar")
-        
-        # Detectar email del usuario
-        user_email = detect_email_field(data.fields)
-        
-        # Obtener configuración SMTP desde variables de entorno
+        # Get SMTP configuration from environment
         smtp_host = os.getenv('SMTP_HOST')
         smtp_port = int(os.getenv('SMTP_PORT', '465'))
         smtp_user = os.getenv('SMTP_USER')
         smtp_pass = os.getenv('SMTP_PASS')
         mail_from = os.getenv('MAIL_FROM', smtp_user)
         
-        # Log de configuración (sin password)
-        logger.info(f"SMTP Config: host={smtp_host}, port={smtp_port}, user={smtp_user}")
-        
-        # Validar que existan las credenciales
+        # Validate credentials
         if not all([smtp_host, smtp_user, smtp_pass]):
-            logger.error(f"Faltan credenciales SMTP: host={smtp_host is not None}, user={smtp_user is not None}, pass={smtp_pass is not None}")
-            raise HTTPException(status_code=500, detail="Configuración de email incompleta")
+            logger.error("Missing SMTP credentials")
+            raise HTTPException(status_code=500, detail="Email configuration incomplete")
         
-        # Crear mensaje
+        # Create email message
         msg = MIMEMultipart('alternative')
         msg['From'] = mail_from
-        msg['To'] = smtp_user  # Enviar a la cuenta de la escuela
-        msg['Subject'] = f"Новое сообщение: {data.formName}"
+        msg['To'] = mail_from  # Send to self (school email)
+        msg['Subject'] = f"Новое сообщение от {data.name}"
         
-        # Formatear cuerpo del email
-        html_body = format_email_body(data, user_email)
-        msg.attach(MIMEText(html_body, 'html'))
-        
-        # Enviar email usando SMTP de Yandex
-        # Intentar primero con SMTP_SSL (puerto 465)
-        try:
-            with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=10) as server:
-                server.login(smtp_user, smtp_pass)
-                server.send_message(msg)
-        except smtplib.SMTPAuthenticationError:
-            # Si falla SSL, intentar con TLS (puerto 587)
-            logger.warning("SSL falló, intentando con TLS en puerto 587")
-            with smtplib.SMTP(smtp_host, 587, timeout=10) as server:
-                server.starttls()
-                server.login(smtp_user, smtp_pass)
-                server.send_message(msg)
-        
-        logger.info(f"Email enviado exitosamente desde {data.formName}")
-        
-        return {"ok": True, "message": "Сообщение успешно отправлено"}
-    
-    except smtplib.SMTPAuthenticationError as e:
-        logger.error(f"Error de autenticación SMTP: {str(e)}")
-        logger.error(f"Detalles: Usuario={smtp_user}, Host={smtp_host}, Port={smtp_port}")
-        raise HTTPException(status_code=500, detail=f"Ошибка аутентификации SMTP. Пожалуйста, проверьте настройки почты. Ошибка: {str(e)}")
-    
-    except smtplib.SMTPException as e:
-        logger.error(f"Error SMTP: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Ошибка отправки email: {str(e)}")
-    
-    except Exception as e:
-        logger.error(f"Error inesperado al enviar email: {str(e)}")
-        import traceback
-        logger.error(traceback.format_exc())
-        raise HTTPException(status_code=500, detail=f"Ошибка обработки запроса: {str(e)}")
-
-@router.post("/visit-request")
-async def send_visit_request(data: VisitRequestData):
-    """
-    Endpoint para procesar solicitudes de visita a la escuela desde el modal
-    """
-    try:
-        # Obtener configuración SMTP desde variables de entorno
-        smtp_host = os.getenv('SMTP_HOST')
-        smtp_port = int(os.getenv('SMTP_PORT', '465'))
-        smtp_user = os.getenv('SMTP_USER')
-        smtp_pass = os.getenv('SMTP_PASS')
-        mail_from = os.getenv('MAIL_FROM', smtp_user)
-        
-        # Validar que existan las credenciales
-        if not all([smtp_host, smtp_user, smtp_pass]):
-            logger.error(f"Faltan credenciales SMTP")
-            raise HTTPException(status_code=500, detail="Configuración de email incompleta")
-        
-        # Crear mensaje
-        msg = MIMEMultipart('alternative')
-        msg['From'] = mail_from
-        msg['To'] = smtp_user  # Enviar a la cuenta de la escuela
-        msg['Subject'] = "Новая заявка на пробный день"
-        
-        # Formatear cuerpo del email
+        # HTML email body
         html_body = f"""
         <html>
             <head>
                 <style>
                     body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
                     .header {{ background: #009479; color: white; padding: 20px; border-radius: 5px; }}
-                    .info {{ background: #f5f5f5; padding: 15px; border-left: 4px solid #009479; margin: 20px 0; }}
-                    .field {{ margin: 10px 0; padding: 10px; background: white; border: 1px solid #ddd; }}
+                    .field {{ margin: 15px 0; padding: 10px; background: #f5f5f5; border-left: 4px solid #009479; }}
                     .label {{ font-weight: bold; color: #009479; }}
-                    .value {{ margin-top: 5px; }}
                 </style>
             </head>
             <body>
                 <div class="header">
-                    <h2>📅 Новая заявка на пробный день</h2>
+                    <h2>📧 Новое сообщение с сайта</h2>
                 </div>
                 
-                <div class="info">
-                    <p><strong>🕐 Дата получения:</strong> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-                </div>
-                
-                <h3>📋 Информация о посетителе:</h3>
+                <p><strong>Дата:</strong> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
                 
                 <div class="field">
-                    <div class="label">👤 Имя:</div>
-                    <div class="value">{sanitize_input(data.fullName)}</div>
+                    <div class="label">Имя:</div>
+                    <div>{data.name}</div>
                 </div>
                 
                 <div class="field">
-                    <div class="label">📞 Телефон:</div>
-                    <div class="value">{sanitize_input(data.phone)}</div>
+                    <div class="label">Email:</div>
+                    <div>{data.email}</div>
                 </div>
                 
                 <div class="field">
-                    <div class="label">📆 Желаемая дата визита:</div>
-                    <div class="value">{sanitize_input(data.visitDate)}</div>
+                    <div class="label">Телефон:</div>
+                    <div>{data.phone}</div>
+                </div>
+                
+                <div class="field">
+                    <div class="label">Сообщение:</div>
+                    <div>{data.message}</div>
                 </div>
             </body>
         </html>
@@ -234,28 +83,28 @@ async def send_visit_request(data: VisitRequestData):
         
         msg.attach(MIMEText(html_body, 'html'))
         
-        # Enviar email usando SMTP de Yandex
-        try:
-            with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=10) as server:
-                server.login(smtp_user, smtp_pass)
-                server.send_message(msg)
-        except smtplib.SMTPAuthenticationError:
-            logger.warning("SSL falló, intentando con TLS en puerto 587")
-            with smtplib.SMTP(smtp_host, 587, timeout=10) as server:
-                server.starttls()
-                server.login(smtp_user, smtp_pass)
-                server.send_message(msg)
+        # Send email using SMTP_SSL (port 465)
+        logger.info(f"Connecting to {smtp_host}:{smtp_port}")
+        with smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=10) as server:
+            logger.info("Logging in...")
+            server.login(smtp_user, smtp_pass)
+            logger.info("Sending message...")
+            server.send_message(msg)
         
-        logger.info(f"Solicitud de visita enviada exitosamente para {data.fullName}")
+        logger.info(f"Email sent successfully from {data.name}")
         
-        return {"ok": True, "message": "Заявка успешно отправлена"}
+        return {"success": True, "message": "Email sent successfully"}
+    
+    except smtplib.SMTPAuthenticationError as e:
+        logger.error(f"SMTP authentication error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"SMTP authentication failed: {str(e)}")
     
     except smtplib.SMTPException as e:
-        logger.error(f"Error SMTP al enviar solicitud de visita: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Ошибка отправки заявки: {str(e)}")
+        logger.error(f"SMTP error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"SMTP error: {str(e)}")
     
     except Exception as e:
-        logger.error(f"Error inesperado al procesar solicitud de visita: {str(e)}")
+        logger.error(f"Unexpected error: {str(e)}")
         import traceback
         logger.error(traceback.format_exc())
-        raise HTTPException(status_code=500, detail=f"Ошибка обработки заявки: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
