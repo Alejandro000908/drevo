@@ -8,40 +8,40 @@ const UNIVERSITIES = [
   {
     id: 1,
     name: "МГУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/l4ie6wy2_rus_logo_0111ff8a858158750f01898bc480af25bebeea25.jpg"
+    logo: "/images/l4ie6wy2_rus_logo_0111ff8a858158750f01898bc480af25bebeea25.jpg"
   },
   {
     id: 2,
     name: "ВШЭ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/9rhfopw4_logoSVGblueWordnoColor.svg"
+    logo: "/images/9rhfopw4_logoSVGblueWordnoColor.svg"
   },
   {
     id: 3,
     name: "РХТУ им. Менделеева",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/lfig1zai_Mendeleev_University.jpg"
+    logo: "/images/lfig1zai_Mendeleev_University.jpg"
   },
   {
     id: 4,
     name: "МГТУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/xnbb4l82_513dcc22399ddea3cf9d0e6f712c93fb.jpg"
+    logo: "/images/xnbb4l82_513dcc22399ddea3cf9d0e6f712c93fb.jpg"
   },
   {
     id: 5,
     name: "РГУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5z2rreod_rgu_3_novoe.png"
+    logo: "/images/5z2rreod_rgu_3_novoe.png"
   },
   {
     id: 6,
     name: "Сеченовский Университет",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/p9nahwks_logo-sechenov-new-itog-03.png"
+    logo: "/images/p9nahwks_logo-sechenov-new-itog-03.png"
   }
 ]
 
 const GRADUATE_PHOTOS = [
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/wv4zfn6r_5350409351434725931.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/z8gvo7l0_5474537471111982456.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/gq4jy3fv_5377591903102112432.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pp1v51al_5350409351434725932.jpg"
+  "/images/wv4zfn6r_5350409351434725931.jpg",
+  "/images/z8gvo7l0_5474537471111982456.jpg",
+  "/images/gq4jy3fv_5377591903102112432.jpg",
+  "/images/pp1v51al_5350409351434725932.jpg"
 ]
 
 const Results = () => {

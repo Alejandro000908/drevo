@@ -22,41 +22,41 @@ export const HERO = {
   subtext: "Обучение с 1 по 11 класс. Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Небольшие классы до 12 человек. Опытные преподаватели.",
   ctaPrimary: "Записаться на пробный день",
   ctaSecondary: "Узнать больше",
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pyjpj7ng_n3LEFeUqka_FyO2v4FHv_ehXQKcINz2u7xDZgeRYIDL_4WLprgjm86FlIyiF2ABWYPuo3-b__VV-C2nH3Ru0UwW7.jpg"
+  image: "/images/pyjpj7ng_n3LEFeUqka_FyO2v4FHv_ehXQKcINz2u7xDZgeRYIDL_4WLprgjm86FlIyiF2ABWYPuo3-b__VV-C2nH3Ru0UwW7.jpg"
 };
 
 export const ABOUT = {
   title: "О нашей школе",
   mission: "Мы создаем образовательную среду, где каждый ученик получает персональное внимание и поддержку. Наша цель — не просто подготовить к экзаменам, но и воспитать любовь к знаниям.",
   vision: "«Древо Познаний» — это место, где дети учатся мыслить критически, работать самостоятельно и достигать высоких результатов. Мы верим, что качественное образование доступно каждому.",
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/icffr31q_wfz4G9l8D1kRgXvBvLqKu6o867WaKfxzZi73rVz_u3m7wF-vAxRMpkt_3zsx7qMNonzYzz_uuGuP1eKzFrBJIWH7.jpg"
+  image: "/images/icffr31q_wfz4G9l8D1kRgXvBvLqKu6o867WaKfxzZi73rVz_u3m7wF-vAxRMpkt_3zsx7qMNonzYzz_uuGuP1eKzFrBJIWH7.jpg"
 };
 
 export const SCHOOL_LIFE = [
   {
     id: 1,
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/k43iyvwv_QkZFmUsG6pNYjG2Wz_MFmu2IvwLcIeRC74V0yMPHv_lG71IUBE7nC2i1RXSS7iaQENWbbllX4CySCz40MfreszFR.jpg",
+    image: "/images/k43iyvwv_QkZFmUsG6pNYjG2Wz_MFmu2IvwLcIeRC74V0yMPHv_lG71IUBE7nC2i1RXSS7iaQENWbbllX4CySCz40MfreszFR.jpg",
     title: "Интерактивные занятия",
     description: "Современные методы обучения в малых группах",
     imagePosition: "object-center"
   },
   {
     id: 2,
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/iw6q8w5k_La1h7dhngnixBCecqSy88rhA4Ipo-EqgQyP9iyKGcWyqlDomJO18ZIzJNv9mINdXKNfVghbU9zudh9MYwJem_FHd.jpg",
+    image: "/images/iw6q8w5k_La1h7dhngnixBCecqSy88rhA4Ipo-EqgQyP9iyKGcWyqlDomJO18ZIzJNv9mINdXKNfVghbU9zudh9MYwJem_FHd.jpg",
     title: "Праздники и достижения",
     description: "Отмечаем успехи каждого ученика",
     imagePosition: "object-center"
   },
   {
     id: 3,
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/8t1ryxyc_KsuaN8x9fH_BROtidYdgXu5DV_dtGKFDTjSEVL4xdWMhaFl7I-GEEo7do8eRUhS3lLoZrOopEAbhG-fAvgk4d4Am.jpg",
+    image: "/images/8t1ryxyc_KsuaN8x9fH_BROtidYdgXu5DV_dtGKFDTjSEVL4xdWMhaFl7I-GEEo7do8eRUhS3lLoZrOopEAbhG-fAvgk4d4Am.jpg",
     title: "Творческое развитие",
     description: "Раскрываем потенциал через искусство",
     imagePosition: "object-[center_40%]"
   },
   {
     id: 4,
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/bcls7wmy_5242233904230952884.jpg",
+    image: "/images/bcls7wmy_5242233904230952884.jpg",
     title: "Более 20 элективных дисциплин",
     description: "Включая: кулинарную мастерскую, испанский язык, киноклуб на английском, интеллектуальный клуб, настольный теннис и другие",
     imagePosition: "object-center"
@@ -188,16 +188,16 @@ export const FULL_STATS = [
 
 // Фотографии учителей и школы
 export const TEACHER_PHOTOS = [
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jw2dk7pg_5364074790618075524.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/s0tjaeuq_5348232421494690536.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/smd7wtab_5222205668574565459.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/3pve0no0_5303056761474453989.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/z95v2txr_5201808950486497580.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5y4xqzeu_IMG_4814.JPG",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/i3qsr102_IMG_4837.JPG",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/fnpc5psq_10%20%282%29.JPG",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/uf0or2vi_11.JPG",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/1qmbpzkd_ChatGPT%20Image%2011%20abr%202026%2C%2017_38_54.png"
+  "/images/jw2dk7pg_5364074790618075524.jpg",
+  "/images/s0tjaeuq_5348232421494690536.jpg",
+  "/images/smd7wtab_5222205668574565459.jpg",
+  "/images/3pve0no0_5303056761474453989.jpg",
+  "/images/z95v2txr_5201808950486497580.jpg",
+  "/images/5y4xqzeu_IMG_4814.JPG",
+  "/images/i3qsr102_IMG_4837.JPG",
+  "/images/fnpc5psq_10%20%282%29.JPG",
+  "/images/uf0or2vi_11.JPG",
+  "/images/1qmbpzkd_ChatGPT%20Image%2011%20abr%202026%2C%2017_38_54.png"
 ];
 
 // FAQ данные
@@ -249,7 +249,7 @@ export const SCHOOL_NEWS = [
     title: "Золотые значки ГТО",
     date: "2026-05-09",
     category: "achievement",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/0482pkat_5384152023265122379.jpg",
+    image: "/images/0482pkat_5384152023265122379.jpg",
     description: "Ученики 11 класса успешно прошли испытания Всероссийского физкультурно-спортивного комплекса «Готов к труду и обороне», завоевав золотые значки ГТО. Данная награда дает преимущества в виде дополнительных баллов при поступлении в университет, а также повышенную государственную академическую стипендию для студентов. Поздравляем!",
     preview: "Гордимся спортивными достижениями наших выпускников"
   },
@@ -312,7 +312,7 @@ export const SCHOOL_NEWS = [
     title: "Экскурсия в Третьяковскую галерею",
     date: "2026-04-08",
     category: "excursion",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/m52uu4z4_1%20%282%29.jpg",
+    image: "/images/m52uu4z4_1%20%282%29.jpg",
     description: "Ученики 2 класса посетили знаменитую Третьяковскую галерею, где познакомились с шедеврами русской живописи и узнали о великих художниках.",
     preview: "Знакомство с сокровищами русского искусства"
   },
@@ -321,7 +321,7 @@ export const SCHOOL_NEWS = [
     title: "Экскурсия на съёмочные площадки",
     date: "2026-04-09",
     category: "excursion",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5buiqpwh_2%20%282%29.jpg",
+    image: "/images/5buiqpwh_2%20%282%29.jpg",
     description: "Ученики 8 класса посетили настоящие съёмочные площадки, где узнали о профессиях кино и телевидения и увидели процесс создания фильмов изнутри.",
     preview: "За кулисами киноиндустрии"
   },
@@ -330,7 +330,7 @@ export const SCHOOL_NEWS = [
     title: "Празднование 8 марта и 23 февраля",
     date: "2026-03-09",
     category: "event",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/va4jqj30_3%20%282%29.jpg",
+    image: "/images/va4jqj30_3%20%282%29.jpg",
     description: "В школе прошли праздничные мероприятия, посвящённые Международному женскому дню и Дню защитника Отечества. Ученики подготовили концерт и поздравления.",
     preview: "Весенние праздники в нашей школе"
   },
@@ -339,7 +339,7 @@ export const SCHOOL_NEWS = [
     title: "Кулинарная мастерская 6 и 7 класс",
     date: "2026-04-10",
     category: "event",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ukgz455v_4%20%282%29.jpg",
+    image: "/images/ukgz455v_4%20%282%29.jpg",
     description: "Ученики 6 и 7 классов приняли участие в кулинарной мастерской, где научились готовить вкусные и полезные блюда под руководством профессионального повара.",
     preview: "Учимся готовить с удовольствием"
   },
@@ -348,7 +348,7 @@ export const SCHOOL_NEWS = [
     title: "Экскурсия в Сказочный Град Томилино",
     date: "2026-02-23",
     category: "excursion",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/xl7qaxkx_5.jpg",
+    image: "/images/xl7qaxkx_5.jpg",
     description: "Ученики 1 класса совершили волшебную поездку в Сказочный Град Томилино, где встретились с любимыми сказочными героями и приняли участие в интерактивных играх.",
     preview: "Путешествие в мир сказки"
   },
@@ -357,7 +357,7 @@ export const SCHOOL_NEWS = [
     title: "Творческая мастерская: Миниатюра",
     date: "2026-04-01",
     category: "achievement",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/6rotccl3_1%20%283%29.jpg",
+    image: "/images/6rotccl3_1%20%283%29.jpg",
     description: "На занятиях «Творческой мастерской» учащиеся 3-го и 4-го классов объединились для совместного творчества, представив свою работу под названием «Миниатюра».",
     preview: "Совместное творчество младших школьников"
   },
@@ -366,7 +366,7 @@ export const SCHOOL_NEWS = [
     title: "Макраме: Искусство плетения",
     date: "2026-04-02",
     category: "achievement",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/x9oh2ilz_2%20%283%29.jpg",
+    image: "/images/x9oh2ilz_2%20%283%29.jpg",
     description: "Макраме — это не просто плетение, а настоящее медитативное искусство, не требующее инструментов. Оно развивает мелкую моторику, логическое мышление, внимание и даже включает элементы математики. На занятиях ребята создают стильные подсвечники, используя «плоский» узел.",
     preview: "Медитативное искусство развивает мышление"
   }
