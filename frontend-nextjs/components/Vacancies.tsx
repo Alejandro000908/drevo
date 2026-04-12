@@ -1,11 +1,42 @@
-import React, { useState } from 'react';
-import { Briefcase, GraduationCap, Clock, MapPin, Send, Upload, CheckCircle, AlertCircle, X } from 'lucide-react';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
+'use client'
 
-// Real job vacancies data
-const JOB_VACANCIES = [
+import React, { useState, ChangeEvent, FormEvent } from 'react'
+import { Briefcase, GraduationCap, Clock, MapPin, Send, Upload, CheckCircle, AlertCircle, X } from 'lucide-react'
+import { Button } from './ui/button'
+import { Input } from './ui/input'
+import { Textarea } from './ui/textarea'
+
+interface JobVacancy {
+  id: number
+  title: string
+  salary: string
+  salaryPeriod: string
+  payments?: string
+  experience: string
+  employment: string
+  schedule: string
+  workHours: string
+  location: string
+  responsibilities: string[]
+  requirements: string[]
+  conditions: string[]
+  keySkills: string[]
+}
+
+interface FormData {
+  name: string
+  email: string
+  phone: string
+  message: string
+  cv: File | null
+}
+
+interface StatusMessage {
+  type: 'success' | 'error' | ''
+  message: string
+}
+
+const JOB_VACANCIES: JobVacancy[] = [
   {
     id: 1,
     title: "Учитель начальных классов",
@@ -253,82 +284,79 @@ const JOB_VACANCIES = [
       "Обязательность"
     ]
   }
-];
+]
 
 const Vacancies = () => {
-  const [selectedJob, setSelectedJob] = useState(null);
-  const [formData, setFormData] = useState({
+  const [selectedJob, setSelectedJob] = useState<JobVacancy | null>(null)
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
     message: '',
     cv: null
-  });
-  const [status, setStatus] = useState({ type: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  })
+  const [status, setStatus] = useState<StatusMessage>({ type: '', message: '' })
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
     if (file) {
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      if (file.size > 5 * 1024 * 1024) {
         setStatus({
           type: 'error',
           message: 'Размер файла не должен превышать 5MB'
-        });
-        return;
+        })
+        return
       }
-      setFormData((prev) => ({ ...prev, cv: file }));
+      setFormData((prev) => ({ ...prev, cv: file }))
     }
-  };
+  }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setStatus({
         type: 'error',
         message: 'Пожалуйста, заполните все обязательные поля'
-      });
-      return;
+      })
+      return
     }
 
-    setIsSubmitting(true);
-    setStatus({ type: '', message: '' });
+    setIsSubmitting(true)
+    setStatus({ type: '', message: '' })
 
     try {
-      // TODO: Implement API call to submit application
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await new Promise(resolve => setTimeout(resolve, 1500))
       
       setStatus({
         type: 'success',
         message: 'Спасибо за вашу заявку! Мы свяжемся с вами в ближайшее время.'
-      });
-      setFormData({ name: '', email: '', phone: '', message: '', cv: null });
-      setSelectedJob(null);
+      })
+      setFormData({ name: '', email: '', phone: '', message: '', cv: null })
+      setSelectedJob(null)
       
-      // Reset file input
-      const fileInput = document.getElementById('cv-upload');
-      if (fileInput) fileInput.value = '';
+      const fileInput = document.getElementById('cv-upload') as HTMLInputElement
+      if (fileInput) fileInput.value = ''
       
     } catch (error) {
       setStatus({
         type: 'error',
         message: 'Произошла ошибка. Попробуйте позже.'
-      });
+      })
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
 
   return (
     <section id="vacancies" className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4 sm:px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-[#009479]/10 text-[#009479] px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <Briefcase className="w-4 h-4" />
@@ -342,7 +370,6 @@ const Vacancies = () => {
           </p>
         </div>
 
-        {/* Job Cards Grid */}
         <div className="grid lg:grid-cols-2 gap-6 mb-16">
           {JOB_VACANCIES.map((job, index) => (
             <div
@@ -354,7 +381,6 @@ const Vacancies = () => {
                 animationFillMode: 'both'
               }}
             >
-              {/* Job Header with Salary Highlight */}
               <div className="bg-gradient-to-r from-[#009479] to-[#00BFA5] p-6 text-white">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
@@ -377,7 +403,6 @@ const Vacancies = () => {
                   </div>
                 </div>
                 
-                {/* Salary */}
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
                   <div className="text-2xl md:text-3xl font-black mb-1">
                     {job.salary}
@@ -389,9 +414,7 @@ const Vacancies = () => {
                 </div>
               </div>
 
-              {/* Job Details */}
               <div className="p-6 space-y-4">
-                {/* Quick Info */}
                 <div className="grid grid-cols-2 gap-3 pb-4 border-b border-gray-100">
                   <div>
                     <div className="text-xs text-gray-500 mb-1">Опыт работы</div>
@@ -407,7 +430,6 @@ const Vacancies = () => {
                   </div>
                 </div>
 
-                {/* Responsibilities */}
                 {job.responsibilities && job.responsibilities.length > 0 && (
                   <div>
                     <h4 className="text-sm font-bold text-gray-900 mb-2 flex items-center gap-2">
@@ -430,7 +452,6 @@ const Vacancies = () => {
                   </div>
                 )}
 
-                {/* Requirements */}
                 {job.requirements && job.requirements.length > 0 && (
                   <div>
                     <h4 className="text-sm font-bold text-gray-900 mb-2 flex items-center gap-2">
@@ -453,7 +474,6 @@ const Vacancies = () => {
                   </div>
                 )}
 
-                {/* Conditions Highlight */}
                 {job.conditions && job.conditions.length > 0 && (
                   <div className="bg-gradient-to-br from-[#009479]/5 to-[#00BFA5]/5 rounded-xl p-4 border border-[#009479]/10">
                     <h4 className="text-sm font-bold text-gray-900 mb-2 flex items-center gap-2">
@@ -476,7 +496,6 @@ const Vacancies = () => {
                   </div>
                 )}
 
-                {/* Key Skills */}
                 {job.keySkills && job.keySkills.length > 0 && (
                   <div>
                     <h4 className="text-xs font-semibold text-gray-500 mb-2">Ключевые навыки:</h4>
@@ -494,7 +513,6 @@ const Vacancies = () => {
                 )}
               </div>
 
-              {/* Apply Button */}
               <div className="px-6 pb-6">
                 <button
                   onClick={() => setSelectedJob(job)}
@@ -508,7 +526,6 @@ const Vacancies = () => {
           ))}
         </div>
 
-        {/* Benefits Section */}
         <div className="bg-gradient-to-r from-[#009479] to-[#007A64] rounded-2xl p-8 text-white mb-16">
           <h3 className="text-2xl font-bold mb-6 text-center">Что мы предлагаем</h3>
           <div className="grid md:grid-cols-3 gap-6">
@@ -536,14 +553,12 @@ const Vacancies = () => {
           </div>
         </div>
 
-        {/* Application Modal */}
         {selectedJob && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
             <div 
               className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
               style={{ animation: 'scaleIn 0.3s ease-out' }}
             >
-              {/* Modal Header */}
               <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between">
                 <div>
                   <h3 className="text-2xl font-bold text-[#414141]">Отклик на вакансию</h3>
@@ -557,7 +572,6 @@ const Vacancies = () => {
                 </button>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleSubmit} className="p-6 space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -649,7 +663,6 @@ const Vacancies = () => {
                   </div>
                 </div>
 
-                {/* Status Message */}
                 {status.message && (
                   <div
                     className={`flex items-center gap-3 p-4 rounded-lg ${
@@ -713,7 +726,7 @@ const Vacancies = () => {
         }
       `}</style>
     </section>
-  );
-};
+  )
+}
 
-export default Vacancies;
+export default Vacancies
