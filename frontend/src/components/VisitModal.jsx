@@ -79,15 +79,22 @@ const VisitModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/visit-request`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email || 'no-email@provided.com',
+          phone: formData.phone,
+          message: `Запрос на визит в школу. Желаемая дата: ${formData.visitDate}`
+        })
       });
       
-      if (response.ok) {
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
         setIsSuccess(true);
         setFormData({ fullName: '', phone: '', email: '', visitDate: '' });
         
@@ -96,6 +103,8 @@ const VisitModal = ({ isOpen, onClose }) => {
           setIsSuccess(false);
           onClose();
         }, 3000);
+      } else {
+        throw new Error(result.detail || 'Error al enviar');
       }
     } catch (error) {
       console.error('Error submitting form:', error);

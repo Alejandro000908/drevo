@@ -26,7 +26,7 @@ const Contacts = () => {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.name || !formData.phone || !formData.message) {
+    if (!formData.name || !formData.phone || !formData.email || !formData.message) {
       setStatus({
         type: 'error',
         message: 'Пожалуйста, заполните все поля'
@@ -38,36 +38,29 @@ const Contacts = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      // Enviar email usando el nuevo sistema
-      const emailData = {
-        formName: 'Контактная форма - Древо Познаний',
-        pageUrl: window.location.href,
-        submittedAt: new Date().toISOString(),
-        fields: {
-          'Имя': formData.name,
-          'Телефон': formData.phone,
-          'Сообщение': formData.message
-        }
-      };
-
       const response = await fetch(`${API_URL}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(emailData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message
+        }),
       });
 
       const result = await response.json();
       
-      if (response.ok && result.ok) {
+      if (response.ok && result.success) {
         setStatus({
           type: 'success',
           message: 'Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.'
         });
-        setFormData({ name: '', phone: '', message: '' });
+        setFormData({ name: '', phone: '', email: '', message: '' });
       } else {
-        throw new Error(result.detail || result.error || 'Error al enviar');
+        throw new Error(result.detail || 'Error al enviar');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -275,6 +268,22 @@ const Contacts = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+7 (___) ___-__-__"
+                  className="w-full"
+                  required
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Email *
+                </label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="example@mail.ru"
                   className="w-full"
                   required
                 />
