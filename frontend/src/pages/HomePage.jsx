@@ -20,6 +20,13 @@ const HomePage = () => {
   const [hasShownInitially, setHasShownInitially] = useState(false);
 
   useEffect(() => {
+    // Listen for custom event to open visit modal
+    const handleOpenVisitModal = () => {
+      setShowModal(true);
+    };
+    
+    window.addEventListener('openVisitModal', handleOpenVisitModal);
+
     // Show modal initially after 5 seconds or on scroll past 50% of page
     if (!hasShownInitially) {
       const timer = setTimeout(() => {
@@ -40,8 +47,13 @@ const HomePage = () => {
       return () => {
         clearTimeout(timer);
         window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('openVisitModal', handleOpenVisitModal);
       };
     }
+    
+    return () => {
+      window.removeEventListener('openVisitModal', handleOpenVisitModal);
+    };
   }, [showModal, hasShownInitially]);
 
   const handleCloseModal = () => {

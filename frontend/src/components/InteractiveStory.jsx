@@ -214,7 +214,13 @@ const InteractiveStory = () => {
               {/* CTA Button on last slide - positioned bottom right with more space */}
               {currentStory.isLast && (
                 <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 animate-fade-in" style={{ animationDelay: '400ms' }}>
-                  <button className="px-10 py-5 bg-[#009479] hover:bg-[#00BFA5] text-white text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl">
+                  <button 
+                    onClick={() => {
+                      const event = new CustomEvent('openVisitModal');
+                      window.dispatchEvent(event);
+                    }}
+                    className="px-10 py-5 bg-[#009479] hover:bg-[#00BFA5] text-white text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl cursor-pointer"
+                  >
                     Записаться на встречу
                   </button>
                 </div>
