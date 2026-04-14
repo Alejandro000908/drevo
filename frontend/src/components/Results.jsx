@@ -160,7 +160,7 @@ const Results = () => {
                 {/* Content */}
                 <div className="relative z-10 text-center">
                   <div className="text-6xl sm:text-7xl font-black bg-gradient-to-br from-[#00BFA5] via-[#009479] to-[#00796B] bg-clip-text text-transparent mb-3 drop-shadow-lg">
-                    {counts[index]}
+                    {counts[index] || stat.value}
                     {stat.suffix}
                   </div>
                   <div className="text-white text-lg font-semibold tracking-wide">
