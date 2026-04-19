@@ -152,11 +152,11 @@ const VisitModal = ({ isOpen, onClose }) => {
 
         <div className="grid md:grid-cols-2 gap-0 overflow-y-auto">
           {/* Left Side - Image */}
-          <div key={`image-${currentVariant}`} className="relative h-64 sm:h-80 md:h-auto md:min-h-[600px] overflow-hidden flex-shrink-0">
+          <div key={`image-${currentVariant}`} className="relative h-80 sm:h-96 md:h-auto md:min-h-[600px] overflow-hidden flex-shrink-0 bg-gray-100 dark:bg-gray-800">
             <img
               src={variant.image}
               alt="Древо Познаний"
-              className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105 animate-fade-in"
+              className="w-full h-full object-contain transition-transform duration-700 hover:scale-105 animate-fade-in"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/40"></div>
             
