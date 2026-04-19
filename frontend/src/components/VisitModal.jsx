@@ -152,26 +152,26 @@ const VisitModal = ({ isOpen, onClose }) => {
 
         <div className="grid md:grid-cols-2 gap-0 overflow-y-auto">
           {/* Left Side - Image */}
-          <div key={`image-${currentVariant}`} className="relative h-48 md:h-auto md:min-h-[600px] overflow-hidden flex-shrink-0">
+          <div key={`image-${currentVariant}`} className="relative h-64 sm:h-80 md:h-auto md:min-h-[600px] overflow-hidden flex-shrink-0">
             <img
               src={variant.image}
               alt="Древо Познаний"
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 animate-fade-in"
+              className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105 animate-fade-in"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-black/40"></div>
             
             {/* School Logo Overlay */}
-            <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm rounded-2xl p-3 shadow-xl">
+            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-xl">
               <img 
                 src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/kep5ft9s_%D0%BB%D0%BE%D0%B3%D0%BE.png"
                 alt="Древо Познаний"
-                className="w-16 h-16 object-contain"
+                className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
               />
             </div>
             
             {/* Overlay Quote */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
-              <p className="text-white text-xl md:text-2xl font-light italic leading-relaxed">
+            <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+              <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-light italic leading-relaxed">
                 "{variant.quote}"
               </p>
             </div>
