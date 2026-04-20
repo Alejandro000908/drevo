@@ -9,13 +9,11 @@ import ProgramsPage from './pages/ProgramsPage';
 import DocumentsPage from './pages/DocumentsPage';
 import PreschoolPrepPage from './pages/PreschoolPrepPage';
 import DarkModeToggle from './components/DarkModeToggle';
-import MetrikaTracker from './components/MetrikaTracker';
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <MetrikaTracker />
       <div className="App page-fade-in">
         <Header />
         <Routes>
