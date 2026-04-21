@@ -9,16 +9,30 @@ const MetrikaTracker = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Check if Yandex Metrika is loaded
-    if (typeof window.ym === 'function') {
-      // Send page hit to Metrika
-      window.ym(94489622, 'hit', window.location.href, {
-        title: document.title,
-      });
-    }
+    // Wait for Metrika to be fully loaded
+    const sendHit = () => {
+      if (typeof window.ym === 'function') {
+        try {
+          window.ym(94489622, 'hit', window.location.href, {
+            title: document.title,
+            referer: document.referrer
+          });
+          console.log('✅ Metrika hit sent:', window.location.href);
+        } catch (error) {
+          console.error('❌ Metrika error:', error);
+        }
+      } else {
+        console.warn('⚠️ Metrika not loaded yet, retrying...');
+        // Retry after 500ms if not loaded
+        setTimeout(sendHit, 500);
+      }
+    };
+
+    // Small delay to ensure page is ready
+    setTimeout(sendHit, 100);
   }, [location]);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default MetrikaTracker;
