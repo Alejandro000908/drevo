@@ -9,7 +9,6 @@ const MetrikaTracker = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Wait for Metrika to be fully loaded
     const sendHit = () => {
       if (typeof window.ym === 'function') {
         try {
@@ -17,18 +16,15 @@ const MetrikaTracker = () => {
             title: document.title,
             referer: document.referrer
           });
-          console.log('✅ Metrika hit sent:', window.location.href);
         } catch (error) {
-          console.error('❌ Metrika error:', error);
+          // Silently handle errors to not break the app
         }
       } else {
-        console.warn('⚠️ Metrika not loaded yet, retrying...');
-        // Retry after 500ms if not loaded
+        // Retry if Metrika not loaded yet
         setTimeout(sendHit, 500);
       }
     };
 
-    // Small delay to ensure page is ready
     setTimeout(sendHit, 100);
   }, [location]);
 
