@@ -9,19 +9,27 @@ const MetrikaTracker = () => {
   const location = useLocation();
 
   useEffect(() => {
+    let attempts = 0;
+    const maxAttempts = 10;
+
     const sendHit = () => {
+      attempts++;
+      
       if (typeof window.ym === 'function') {
         try {
           window.ym(94489622, 'hit', window.location.href, {
             title: document.title,
             referer: document.referrer
           });
+          console.log('[Metrika] ✅ Hit enviado:', window.location.pathname);
         } catch (error) {
-          // Silently handle errors to not break the app
+          console.error('[Metrika] ❌ Error:', error);
         }
-      } else {
-        // Retry if Metrika not loaded yet
+      } else if (attempts < maxAttempts) {
+        console.warn(`[Metrika] ⏳ Esperando carga... (intento ${attempts}/${maxAttempts})`);
         setTimeout(sendHit, 500);
+      } else {
+        console.error('[Metrika] ❌ Script no cargó después de', maxAttempts, 'intentos');
       }
     };
 
