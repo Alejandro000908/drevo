@@ -81,7 +81,7 @@ const Teachers = () => {
           </p>
           <button
             onClick={() => {
-              const element = document.getElementById('contacts');
+              const element = document.getElementById('trial-form');
               if (element) element.scrollIntoView({ behavior: 'smooth' });
             }}
             className="bg-[#009479] hover:bg-[#007A64] text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"

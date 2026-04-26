@@ -141,11 +141,22 @@ Obtiene todos los contactos (endpoint de administración)
 ## Próximos pasos
 
 1. ✅ ~~Desarrollo de backend (API endpoints, MongoDB models)~~
-2. Integración de servicio de email (Resend, SendGrid, o Gmail SMTP)
-3. Testing completo con testing_agent_v3
-4. Panel de administración para gestionar contactos
-5. Optimización SEO y performance
+2. ✅ ~~Integración Yandex SMTP para envío de emails~~
+3. ✅ ~~Yandex Metrika tracking para SPA~~
+4. ✅ ~~Botones "Контакты"/"Записаться" redirigen al formulario "Записаться на пробный день" (id=trial-form)~~
+5. (Opcional) Descargar imágenes externas a /app/frontend/public/images
+6. (Opcional) Optimización SEO y performance
+
+## Changelog reciente
+
+### Feb 2026
+- Eliminada migración Next.js, se mantiene React SPA en /app/frontend
+- Backend reducido a único endpoint `/api/send-email` con Yandex SMTP (smtplib.SMTP_SSL)
+- Yandex Metrika integrado vía MetrikaTracker.js + index.html
+- Fix mobile stats "0" en Results.jsx
+- Fix imágenes recortadas en VisitModal (object-cover -> object-contain)
+- **Fix navegación**: agregado `id="trial-form"` al formulario de contacto. Todos los botones "Контакты", "Записаться", "Записаться на пробный день", "Записаться на курс" en Header, Footer, Hero, Teachers, PricingInfographic, FAQ, Courses, PreschoolPrepPage ahora hacen scroll directamente al formulario en lugar de a la sección completa.
 
 ---
 
-**Última actualización:** 31 marzo 2026
+**Última actualización:** Feb 2026

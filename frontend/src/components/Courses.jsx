@@ -12,7 +12,7 @@ const iconMap = {
 
 const Courses = () => {
   const scrollToContacts = () => {
-    const element = document.getElementById('contacts');
+    const element = document.getElementById('trial-form');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

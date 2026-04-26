@@ -220,7 +220,7 @@ const PricingInfographic = () => {
         {/* CTA Button */}
         <div className={`text-center mt-16 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <button 
-            onClick={() => scrollToSection('contacts')}
+            onClick={() => scrollToSection('trial-form')}
             className="px-12 py-6 bg-gradient-to-r from-[#00BFA5] to-[#009479] text-white text-xl font-bold rounded-full hover:shadow-2xl hover:shadow-[#00BFA5]/50 hover:scale-105 transition-all duration-300">
             Записаться на пробный день
           </button>

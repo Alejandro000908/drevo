@@ -125,7 +125,7 @@ const FAQ = () => {
             </a>
             <button
               onClick={() => {
-                const contactSection = document.getElementById('contacts');
+                const contactSection = document.getElementById('trial-form');
                 if (contactSection) {
                   contactSection.scrollIntoView({ behavior: 'smooth' });
                 }

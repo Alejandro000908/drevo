@@ -44,7 +44,7 @@ const Footer = () => {
                 { id: 'courses', label: 'Курсы' },
                 { id: 'results', label: 'Результаты' },
                 { id: 'reviews', label: 'Отзывы' },
-                { id: 'contacts', label: 'Контакты' }
+                { id: 'trial-form', label: 'Контакты' }
               ].map((link) => (
                 <li key={link.id}>
                   <button

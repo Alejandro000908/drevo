@@ -48,7 +48,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12 scroll-animate animate-fade-up stagger-delay-3 visible">
             <Button
-              onClick={() => scrollToSection('contacts')}
+              onClick={() => scrollToSection('trial-form')}
               className="bg-[#4CAF50] hover:bg-[#388E3C] dark:bg-[#009479] dark:hover:bg-[#007A64] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group button-hover ripple-effect">
               {HERO.ctaPrimary}
             </Button>

@@ -211,7 +211,7 @@ const PreschoolPrepPage = () => {
           </p>
           
           <Button
-            onClick={() => scrollToSection('contacts')}
+            onClick={() => scrollToSection('trial-form')}
             className="bg-[#4CAF50] hover:bg-[#388E3C] dark:bg-[#009479] dark:hover:bg-[#007A64] text-white font-semibold px-12 py-6 text-xl rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
             Записаться на курс
           </Button>

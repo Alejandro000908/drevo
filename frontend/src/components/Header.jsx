@@ -29,12 +29,13 @@ const Header = () => {
       // External page navigation will be handled by Link component
       setIsMenuOpen(false);
     } else {
-      // Scroll to section on current page
+      // Scroll to section on current page (use target if provided, fallback to id)
+      const targetId = link.target || link.id;
       if (location.pathname !== '/') {
         // If not on home page, navigate to home first
-        window.location.href = '/#' + link.id;
+        window.location.href = '/#' + targetId;
       } else {
-        scrollToSection(link.id);
+        scrollToSection(targetId);
       }
     }
   };
@@ -47,7 +48,7 @@ const Header = () => {
     { id: 'news', label: 'Новости', external: false },
     { id: 'documents', label: 'Документы', path: '/documents', external: true },
     { id: 'vacancies', label: 'Вакансии', path: '/vacancies', external: true },
-    { id: 'contacts', label: 'Контакты', external: false }
+    { id: 'contacts', label: 'Контакты', external: false, target: 'trial-form' }
   ];
 
   return (
@@ -117,9 +118,9 @@ const Header = () => {
             <Button
               onClick={() => {
                 if (location.pathname !== '/') {
-                  window.location.href = '/#contacts';
+                  window.location.href = '/#trial-form';
                 } else {
-                  scrollToSection('contacts');
+                  scrollToSection('trial-form');
                 }
               }}
               className="bg-[#009479] hover:bg-[#007A64] dark:bg-[#00BFA5] dark:hover:bg-[#009479] text-white font-medium px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 button-hover glow-on-hover"
@@ -180,9 +181,9 @@ const Header = () => {
               <Button
                 onClick={() => {
                   if (location.pathname !== '/') {
-                    window.location.href = '/#contacts';
+                    window.location.href = '/#trial-form';
                   } else {
-                    scrollToSection('contacts');
+                    scrollToSection('trial-form');
                   }
                 }}
                 className="w-full bg-[#009479] hover:bg-[#007A64] text-white font-medium py-3 rounded-lg shadow-md"
