@@ -14,6 +14,7 @@ import Contacts from '../components/Contacts';
 import VisitModal from '../components/VisitModal';
 import QuoteDivider from '../components/QuoteDivider';
 import InteractiveStory from '../components/InteractiveStory';
+import Seo from '../components/Seo';
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -67,6 +68,10 @@ const HomePage = () => {
 
   return (
     <main>
+      <Seo
+        title="Частная школа «Древо Познаний» — индивидуальное обучение и подготовка к ЕГЭ"
+        description="Частная школа «Древо Познаний» в Подмосковье: обучение с 1 по 11 класс, подготовка к ЕГЭ и ОГЭ с гарантированным результатом, классы до 12 человек и опытные преподаватели."
+      />
       <Hero />
       
       {/* Quote 1 - About Leadership */}

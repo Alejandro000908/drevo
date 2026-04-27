@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Camera, Award, Users, ArrowLeft, ChevronLeft, ChevronRight, Search, X } from 'lucide-react';
+import Seo from '../components/Seo';
 
 // News Categories
 const NEWS_CATEGORIES = [
@@ -262,6 +263,10 @@ const SchoolLifePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 pt-20">
+      <Seo
+        title="Жизнь школы и новости — Частная школа «Древо Познаний»"
+        description="События, экскурсии, достижения и мероприятия частной школы «Древо Познаний»: фотогалерея, календарь школьных новостей и яркие моменты учебной жизни."
+      />
       <div className="container mx-auto px-4 sm:px-6 py-12">
         {/* Back Button with animation */}
         <Link

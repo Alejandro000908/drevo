@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Vacancies from '../components/Vacancies';
+import Seo from '../components/Seo';
 import { ArrowLeft } from 'lucide-react';
 
 const VacanciesPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      <Seo
+        title="Вакансии — Частная школа «Древо Познаний»"
+        description="Открытые вакансии частной школы «Древо Познаний»: учителя начальных классов, преподаватели-предметники и педагоги дополнительного образования. Достойные условия и дружный коллектив."
+      />
       {/* Back to Home Button */}
       <div className="container mx-auto px-4 sm:px-6 pt-24 pb-8">
         <Link

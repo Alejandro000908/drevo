@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Download, X, ChevronRight } from 'lucide-react';
+import Seo from '../components/Seo';
 
 const PROGRAMS_DATA = [
   {
@@ -42,6 +43,10 @@ const ProgramsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20 pb-20 overflow-hidden">
+      <Seo
+        title="Образовательные программы — Частная школа «Древо Познаний»"
+        description="Образовательные программы частной школы «Древо Познаний»: первая, вторая и третья ступени обучения с подробным учебным планом. Скачайте программы и узнайте о подходе к обучению."
+      />
       <div className="container mx-auto px-4 sm:px-6">
         {/* Back Button */}
         <Link

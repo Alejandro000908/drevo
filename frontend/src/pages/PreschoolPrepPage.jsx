@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BookOpen, Clock, Users, Award, Languages, PenTool, Calculator, Book } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import Contacts from '../components/Contacts';
+import Seo from '../components/Seo';
 
 const PreschoolPrepPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,6 +42,10 @@ const PreschoolPrepPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <Seo
+        title="Подготовка к школе — Частная школа «Древо Познаний»"
+        description="Курсы подготовки к школе в частной школе «Древо Познаний»: русский язык, чтение, математика, каллиграфия и английский. Небольшие группы до 8 детей и опытные педагоги."
+      />
       
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">

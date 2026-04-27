@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Download, FileText } from 'lucide-react';
+import Seo from '../components/Seo';
 
 const DOCUMENTS = [
   { id: 1, title: "Календарный учебный график", link: "https://disk.yandex.ru/i/CDdMZbxPDo8cLQ" },
@@ -38,6 +39,10 @@ const DocumentsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 pt-20 pb-20">
+      <Seo
+        title="Документы школы — Частная школа «Древо Познаний»"
+        description="Официальные документы частной школы «Древо Познаний»: лицензия, устав, учебный график, положения и распоряжения. Полный перечень документов для родителей и учеников."
+      />
       <div className="container mx-auto px-4 sm:px-6">
         {/* Back Button */}
         <Link
