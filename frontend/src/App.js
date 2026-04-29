@@ -8,6 +8,8 @@ import SchoolLifePage from './pages/SchoolLifePage';
 import ProgramsPage from './pages/ProgramsPage';
 import DocumentsPage from './pages/DocumentsPage';
 import PreschoolPrepPage from './pages/PreschoolPrepPage';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import DarkModeToggle from './components/DarkModeToggle';
 import MetrikaTracker from './components/MetrikaTracker';
 import './App.css';
@@ -25,6 +27,8 @@ function App() {
           <Route path="/programs" element={<ProgramsPage />} />
           <Route path="/documents" element={<DocumentsPage />} />
           <Route path="/preschool-prep" element={<PreschoolPrepPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
         </Routes>
         <Footer />
         <DarkModeToggle />

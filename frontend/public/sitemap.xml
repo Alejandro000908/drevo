@@ -21,6 +21,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://drevopoznaniy.ru/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://drevopoznaniy.ru/blog/kak-vybrat-chastnuyu-shkolu-ramenskoe</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://drevopoznaniy.ru/blog/podgotovka-k-ege-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://drevopoznaniy.ru/blog/vneurochnaya-deyatelnost-v-shkole</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://drevopoznaniy.ru/documents</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

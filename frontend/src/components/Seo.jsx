@@ -4,8 +4,9 @@ import { useEffect } from 'react';
  * Componente SEO dinámico para SPA React.
  * Actualiza document.title y <meta name="description"> en cada página.
  * Opcionalmente actualiza og:title, og:description y twitter:* para mejor preview en redes.
+ * Opcionalmente acepta `breadcrumbs` (array de {name, url}) e inyecta JSON-LD BreadcrumbList.
  */
-function Seo({ title, description }) {
+function Seo({ title, description, breadcrumbs }) {
   useEffect(() => {
     if (title) {
       document.title = title;
@@ -59,7 +60,34 @@ function Seo({ title, description }) {
       );
       twTitle.setAttribute('content', title);
     }
-  }, [title, description]);
+
+    // BreadcrumbList JSON-LD (opcional)
+    const BREADCRUMB_ID = 'seo-breadcrumb-jsonld';
+    const existing = document.getElementById(BREADCRUMB_ID);
+    if (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) {
+      const data = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((item, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          name: item.name,
+          item: item.url,
+        })),
+      };
+      let script = existing;
+      if (!script) {
+        script = document.createElement('script');
+        script.id = BREADCRUMB_ID;
+        script.type = 'application/ld+json';
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(data);
+    } else if (existing) {
+      // Si esta página NO trae breadcrumbs, removemos el JSON-LD anterior
+      existing.remove();
+    }
+  }, [title, description, breadcrumbs]);
 
   return null;
 }
