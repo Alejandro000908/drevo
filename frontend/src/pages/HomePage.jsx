@@ -14,6 +14,7 @@ import Contacts from '../components/Contacts';
 import VisitModal from '../components/VisitModal';
 import QuoteDivider from '../components/QuoteDivider';
 import InteractiveStory from '../components/InteractiveStory';
+import BlogPreview from '../components/BlogPreview';
 import Seo from '../components/Seo';
 
 const HomePage = () => {
@@ -150,6 +151,8 @@ const HomePage = () => {
         quote="Здесь формируются уверенность, лидерство и внутренняя культура личности." 
         alignment="center" 
       />
+      
+      <BlogPreview />
       
       <Contacts />
       

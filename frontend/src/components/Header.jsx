@@ -44,7 +44,7 @@ const Header = () => {
     { id: 'home', label: 'Главная', external: false },
     { id: 'preschool-prep', label: 'Подготовка к школе', path: '/preschool-prep', external: true },
     { id: 'programs', label: 'Программы', path: '/programs', external: true },
-    { id: 'results', label: 'Результаты', external: false },
+    { id: 'blog', label: 'Наш блог', path: '/blog', external: true },
     { id: 'news', label: 'Новости', external: false },
     { id: 'documents', label: 'Документы', path: '/documents', external: true },
     { id: 'vacancies', label: 'Вакансии', path: '/vacancies', external: true },
