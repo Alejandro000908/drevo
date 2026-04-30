@@ -44,10 +44,11 @@ const Header = () => {
     { id: 'home', label: 'Главная', external: false },
     { id: 'preschool-prep', label: 'Подготовка к школе', path: '/preschool-prep', external: true },
     { id: 'programs', label: 'Программы', path: '/programs', external: true },
-    { id: 'blog', label: 'Наш блог', path: '/blog', external: true },
+    { id: 'results', label: 'Результаты', external: false },
     { id: 'news', label: 'Новости', external: false },
     { id: 'documents', label: 'Документы', path: '/documents', external: true },
     { id: 'vacancies', label: 'Вакансии', path: '/vacancies', external: true },
+    { id: 'blog', label: 'Наш блог', path: '/blog', external: true },
     { id: 'contacts', label: 'Контакты', external: false, target: 'trial-form' }
   ];
 
@@ -88,7 +89,7 @@ const Header = () => {
                 <Link
                   key={link.id}
                   to={link.path}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#009479] dark:hover:text-[#00BFA5] transition-all duration-300 relative group"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#009479] dark:hover:text-[#00BFA5] transition-all duration-300 relative group whitespace-nowrap"
                 >
                   {link.label}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#009479] dark:bg-[#00BFA5] transition-all duration-300 group-hover:w-full"></span>
@@ -97,7 +98,7 @@ const Header = () => {
                 <button
                   key={link.id}
                   onClick={() => handleNavigation(link)}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#009479] dark:hover:text-[#00BFA5] transition-all duration-300 relative group"
+                  className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-[#009479] dark:hover:text-[#00BFA5] transition-all duration-300 relative group whitespace-nowrap"
                 >
                   {link.label}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#009479] dark:bg-[#00BFA5] transition-all duration-300 group-hover:w-full"></span>
@@ -110,7 +111,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:+79161222112"
-              className="flex items-center gap-2 text-[#009479] dark:text-[#00BFA5] hover:text-[#007A64] dark:hover:text-[#009479] transition-all duration-300 group"
+              className="flex items-center gap-2 text-[#009479] dark:text-[#00BFA5] hover:text-[#007A64] dark:hover:text-[#009479] transition-all duration-300 group whitespace-nowrap"
             >
               <Phone className="w-4 h-4 transition-transform group-hover:rotate-12" />
               <span className="text-sm font-medium">+7 (916) 122-21-12</span>
