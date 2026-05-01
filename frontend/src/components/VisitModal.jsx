@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, User, Phone, Calendar, CheckCircle } from 'lucide-react';
+import { SEND_EMAIL_ENDPOINT } from '../lib/api';
 
 // Array of modal variants with different images and quotes
 const MODAL_VARIANTS = [
@@ -78,23 +79,34 @@ const VisitModal = ({ isOpen, onClose }) => {
     
     setIsSubmitting(true);
     
+    const payload = {
+      name: formData.fullName,
+      email: formData.email || 'no-email@provided.com',
+      phone: formData.phone,
+      message: `Запрос на визит в школу. Желаемая дата: ${formData.visitDate}`,
+    };
+
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/send-email`, {
+      console.log('[VisitModal] POST', SEND_EMAIL_ENDPOINT, payload);
+      const response = await fetch(SEND_EMAIL_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.fullName,
-          email: formData.email || 'no-email@provided.com',
-          phone: formData.phone,
-          message: `Запрос на визит в школу. Желаемая дата: ${formData.visitDate}`
-        })
+        body: JSON.stringify(payload),
       });
-      
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
+
+      let result = null;
+      const text = await response.text();
+      try {
+        result = text ? JSON.parse(text) : null;
+      } catch (parseErr) {
+        console.warn('[VisitModal] Non-JSON response body:', text);
+      }
+
+      console.log('[VisitModal] response', response.status, result);
+
+      if (response.ok && result && result.success) {
         setIsSuccess(true);
         setFormData({ fullName: '', phone: '', email: '', visitDate: '' });
         
@@ -104,11 +116,14 @@ const VisitModal = ({ isOpen, onClose }) => {
           onClose();
         }, 3000);
       } else {
-        throw new Error(result.detail || 'Error al enviar');
+        const serverMsg =
+          (result && (result.detail || result.message)) ||
+          `HTTP ${response.status} ${response.statusText}`;
+        throw new Error(serverMsg);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Произошла ошибка. Пожалуйста, попробуйте позже.');
+      console.error('[VisitModal] submit error:', error);
+      alert(`Ошибка при отправке: ${error.message}. Попробуйте позже.`);
     } finally {
       setIsSubmitting(false);
     }

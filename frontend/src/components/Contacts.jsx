@@ -4,8 +4,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { SCHOOL_INFO } from '../data/mock';
-
-const API_URL = process.env.REACT_APP_BACKEND_URL;
+import { SEND_EMAIL_ENDPOINT } from '../lib/api';
 
 const Contacts = () => {
   const [formData, setFormData] = useState({
@@ -37,36 +36,51 @@ const Contacts = () => {
     setIsSubmitting(true);
     setStatus({ type: '', message: '' });
 
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    };
+
     try {
-      const response = await fetch(`${API_URL}/api/send-email`, {
+      console.log('[Contacts] POST', SEND_EMAIL_ENDPOINT, payload);
+      const response = await fetch(SEND_EMAIL_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message
-        }),
+        body: JSON.stringify(payload),
       });
 
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
+      // Leer cuerpo de forma segura aunque no sea JSON
+      let result = null;
+      const text = await response.text();
+      try {
+        result = text ? JSON.parse(text) : null;
+      } catch (parseErr) {
+        console.warn('[Contacts] Non-JSON response body:', text);
+      }
+
+      console.log('[Contacts] response', response.status, result);
+
+      if (response.ok && result && result.success) {
         setStatus({
           type: 'success',
-          message: 'Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.'
+          message: 'Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.',
         });
         setFormData({ name: '', phone: '', email: '', message: '' });
       } else {
-        throw new Error(result.detail || 'Error al enviar');
+        const serverMsg =
+          (result && (result.detail || result.message)) ||
+          `HTTP ${response.status} ${response.statusText}`;
+        throw new Error(serverMsg);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('[Contacts] submit error:', error);
       setStatus({
         type: 'error',
-        message: 'Произошла ошибка при отправке. Попробуйте позже.'
+        message: `Ошибка при отправке: ${error.message}. Попробуйте позже или позвоните нам.`,
       });
     } finally {
       setIsSubmitting(false);
@@ -238,8 +252,6 @@ const Contacts = () => {
             <form 
               onSubmit={handleSubmit} 
               className="space-y-6"
-              data-email-form="true"
-              data-form-name="Контактная форма - Древо Познаний"
             >
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
