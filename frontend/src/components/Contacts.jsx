@@ -5,7 +5,7 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { SCHOOL_INFO } from '../data/mock';
 
-const API_URL = process.env.REACT_APP_BACKEND_URL;
+const API_URL = '';
 
 const Contacts = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ const Contacts = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch(`${API_URL}/api/send-email`, {
+      const response = await fetch(`/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

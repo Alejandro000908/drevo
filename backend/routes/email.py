@@ -28,6 +28,7 @@ async def send_email(data: EmailRequest):
         smtp_user = os.getenv('SMTP_USER')
         smtp_pass = os.getenv('SMTP_PASS')
         mail_from = os.getenv('MAIL_FROM', smtp_user)
+        mail_to = os.getenv('MAIL_TO', mail_from)
         
         # Validate credentials
         if not all([smtp_host, smtp_user, smtp_pass]):
@@ -37,7 +38,8 @@ async def send_email(data: EmailRequest):
         # Create email message
         msg = MIMEMultipart('alternative')
         msg['From'] = mail_from
-        msg['To'] = mail_from  # Send to self (school email)
+        msg['To'] = mail_to
+        msg['Reply-To'] = data.email
         msg['Subject'] = f"Новое сообщение от {data.name}"
         
         # HTML email body
@@ -80,8 +82,8 @@ async def send_email(data: EmailRequest):
             </body>
         </html>
         """
+        msg.attach(MIMEText(html_body, 'html', 'utf-8'))
         
-        msg.attach(MIMEText(html_body, 'html'))
         
         # Send email using SMTP_SSL (port 465)
         logger.info(f"Connecting to {smtp_host}:{smtp_port}")
@@ -89,7 +91,7 @@ async def send_email(data: EmailRequest):
             logger.info("Logging in...")
             server.login(smtp_user, smtp_pass)
             logger.info("Sending message...")
-            server.send_message(msg)
+            server.sendmail(mail_from, [mail_to], msg.as_string())
         
         logger.info(f"Email sent successfully from {data.name}")
         
