@@ -57,7 +57,7 @@ const PricingInfographic = () => {
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0">
         <img
-          src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/dyecep4g_Foto%20escuela.webp"
+          src="/images/pricing/pricing-school.webp"
           alt="School building"
           className="w-full h-full object-cover opacity-40"
         />
@@ -107,7 +107,7 @@ const PricingInfographic = () => {
                   style={{ width: '320px', height: '320px' }}
                 >
                   <img 
-                    src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/orcp0g48_%D0%BB%D0%BE%D0%B3%D0%BE.png" 
+                    src="/images/pricing/pricing-logo-1.png" 
                     alt="Древо Познаний"
                     className="w-full h-full object-contain p-4"
                   />
@@ -188,7 +188,7 @@ const PricingInfographic = () => {
             <div className="mb-12 flex justify-center">
               <div className="relative bg-gradient-to-br from-[#00BFA5]/20 to-[#009479]/20 backdrop-blur-2xl border-4 border-[#00BFA5]/50 rounded-3xl p-12 shadow-2xl shadow-[#00BFA5]/30 w-full max-w-md">
                 <img 
-                  src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/684dwfq7_%D0%BB%D0%BE%D0%B3%D0%BE.png" 
+                  src="/images/pricing/pricing-logo-2.png" 
                   alt="Древо Познаний"
                   className="w-full h-auto object-contain"
                 />

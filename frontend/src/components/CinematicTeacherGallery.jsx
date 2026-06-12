@@ -6,19 +6,19 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 const TEACHER_IMAGES = [
   {
     id: 1,
-    url: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jw2dk7pg_5364074790618075524.jpg",
+    url: "/images/teachers/teacher-1.jpg",
     size: "large", // Hero image
     aspectRatio: "portrait"
   },
   {
     id: 2,
-    url: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/s0tjaeuq_5348232421494690536.jpg",
+    url: "/images/teachers/teacher-2.jpg",
     size: "medium",
     aspectRatio: "landscape"
   },
   {
     id: 3,
-    url: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/z0ui22mw_5303056761474453987%20%281%29.jpg",
+    url: "/images/teachers/cinematic-3.jpg",
     size: "large",
     aspectRatio: "landscape"
   },

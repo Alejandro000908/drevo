@@ -7,7 +7,7 @@ const STORIES = [
     number: '01',
     title: 'Ориентация на результат',
     description: 'Развиваем мышление, самостоятельность и уверенность.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/kady2jw3_1.jpg',
+    image: '/images/story/story-1.jpg',
     imagePosition: 'object-[center_40%]'
   },
   {
@@ -15,7 +15,7 @@ const STORIES = [
     number: '02',
     title: 'Домашние задания в школе',
     description: 'Наша школа высоко ценит ваше время.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jjyhwcrf_2.jpg',
+    image: '/images/story/story-2.jpg',
     imagePosition: 'object-center'
   },
   {
@@ -23,7 +23,7 @@ const STORIES = [
     number: '03',
     title: 'Практика через реальные проекты',
     description: 'Применение знаний через реальные кейсы и задачи.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/j4roy8ua_4.jpg',
+    image: '/images/story/story-3.jpg',
     imagePosition: 'object-center'
   },
   {
@@ -31,7 +31,7 @@ const STORIES = [
     number: '04',
     title: 'Эффективная подготовка к экзаменам',
     description: 'Системная поддержка на всех этапах подготовки к ОГЭ и ЕГЭ.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/4hf80sng_3.jpg',
+    image: '/images/story/story-4.jpg',
     imagePosition: 'object-center'
   },
   {
@@ -39,7 +39,7 @@ const STORIES = [
     number: '05',
     title: 'Готовим к жизни, а не только к экзаменам',
     description: 'Формируем ответственность, самостоятельность и уверенность в будущем.',
-    image: 'https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/2v7ueu64_5285284332832494100%20%281%29.jpg',
+    image: '/images/story/story-5.jpg',
     imagePosition: 'object-[50%_65%]',
     isLast: true
   }

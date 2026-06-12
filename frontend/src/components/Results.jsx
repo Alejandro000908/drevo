@@ -7,44 +7,44 @@ const UNIVERSITIES = [
   {
     id: 1,
     name: "МГУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/l4ie6wy2_rus_logo_0111ff8a858158750f01898bc480af25bebeea25.jpg"
+    logo: "/images/results/logo-1.jpg"
   },
   {
     id: 2,
     name: "ВШЭ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/9rhfopw4_logoSVGblueWordnoColor.svg"
+    logo: "/images/results/logo-2.svg"
   },
   {
     id: 3,
     name: "РХТУ им. Менделеева",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/lfig1zai_Mendeleev_University.jpg"
+    logo: "/images/results/logo-3.jpg"
   },
   {
     id: 4,
     name: "МГТУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/xnbb4l82_513dcc22399ddea3cf9d0e6f712c93fb.jpg"
+    logo: "/images/results/logo-4.jpg"
   },
   {
     id: 5,
     name: "РГУ",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5z2rreod_rgu_3_novoe.png"
+    logo: "/images/results/logo-5.png"
   },
   {
     id: 6,
     name: "Сеченовский Университет",
-    logo: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/p9nahwks_logo-sechenov-new-itog-03.png"
+    logo: "/images/results/logo-6.png"
   }
 ];
 
 const GRADUATE_PHOTOS = [
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/wv4zfn6r_5350409351434725931.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/z8gvo7l0_5474537471111982456.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/gq4jy3fv_5377591903102112432.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pp1v51al_5350409351434725932.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/7i0eq0q4_5350409351434725921.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/aazsg4cp_5377591903102112444.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/gki4d06w_5303499907606375226.jpg",
-  "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/35xsctr2_5303499907606375283.jpg"
+  "/images/results/result-1.jpg",
+  "/images/results/result-2.jpg",
+  "/images/results/result-3.jpg",
+  "/images/results/result-4.jpg",
+  "/images/results/result-5.jpg",
+  "/images/results/result-6.jpg",
+  "/images/results/result-7.jpg",
+  "/images/results/result-8.jpg"
 ];
 
 const Results = () => {

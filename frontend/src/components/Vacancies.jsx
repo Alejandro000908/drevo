@@ -9,8 +9,8 @@ const JOB_VACANCIES = [
   {
     id: 1,
     title: "Учитель начальных классов",
-    salary: "70 000 – 110 000 ₽",
-    salaryPeriod: "за месяц, на руки",
+    salary: "Зарплата по результатам собеседования",
+    salaryPeriod: "",
     payments: "два раза в месяц",
     experience: "1–3 года",
     employment: "Полная занятость",
@@ -49,8 +49,8 @@ const JOB_VACANCIES = [
   {
     id: 2,
     title: "Учитель русского языка и литературы",
-    salary: "70 000 – 95 000 ₽",
-    salaryPeriod: "за месяц, на руки",
+    salary: "Зарплата по результатам собеседования",
+    salaryPeriod: "",
     experience: "1–3 года",
     employment: "Полная занятость",
     schedule: "5/2",
@@ -95,8 +95,8 @@ const JOB_VACANCIES = [
   {
     id: 3,
     title: "Учитель Истории/обществознания",
-    salary: "50 000 – 95 000 ₽",
-    salaryPeriod: "за месяц, на руки",
+    salary: "Зарплата по результатам собеседования",
+    salaryPeriod: "",
     experience: "1–3 года",
     employment: "Частичная занятость",
     schedule: "5/2",
@@ -130,8 +130,8 @@ const JOB_VACANCIES = [
   {
     id: 4,
     title: "Учитель математики",
-    salary: "70 000 – 125 000 ₽",
-    salaryPeriod: "за месяц на руки",
+    salary: "Зарплата по результатам собеседования",
+    salaryPeriod: "",
     experience: "3–6 лет",
     employment: "Полная занятость",
     schedule: "5/2",
@@ -174,8 +174,8 @@ const JOB_VACANCIES = [
   {
     id: 5,
     title: "Учитель информатики",
-    salary: "80 000 – 125 000 ₽",
-    salaryPeriod: "за месяц на руки",
+    salary: "Зарплата по результатам собеседования",
+    salaryPeriod: "",
     payments: "два раза в месяц",
     experience: "3–6 лет",
     employment: "Полная занятость",
@@ -219,8 +219,8 @@ const JOB_VACANCIES = [
   {
     id: 6,
     title: "Учитель химии/биологии",
-    salary: "60 000 – 90 000 ₽",
-    salaryPeriod: "за месяц на руки",
+    salary: "Зарплата по результатам собеседования",
+    salaryPeriod: "",
     experience: "1–3 года",
     employment: "Частичная занятость",
     schedule: "5/2 или свободный",
@@ -382,7 +382,9 @@ const Vacancies = () => {
                   <div className="text-2xl md:text-3xl font-black mb-1">
                     {job.salary}
                   </div>
-                  <div className="text-sm text-white/90">{job.salaryPeriod}</div>
+                  {job.salaryPeriod && (
+                     <div className="text-sm text-white/90">{job.salaryPeriod}</div>
+)}
                   {job.payments && (
                     <div className="text-xs text-white/80 mt-1">Выплаты: {job.payments}</div>
                   )}

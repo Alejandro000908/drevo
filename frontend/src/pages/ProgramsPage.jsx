@@ -7,21 +7,21 @@ const PROGRAMS_DATA = [
   {
     id: 1,
     title: "Первая ступень",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ohbxh19l_1.jpg",
+    image: "/images/programs/program-1.jpg",
     downloadLink: "https://disk.yandex.ru/i/ODXvfrJgHAhDgg",
     color: "from-[#00BFA5] to-[#009479]"
   },
   {
     id: 2,
     title: "Вторая ступень",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/u42g6231_2.jpg",
+    image: "/images/programs/program-2.jpg",
     downloadLink: "https://disk.yandex.ru/i/xEpkg3aRnkvR0w",
     color: "from-[#009479] to-[#00796B]"
   },
   {
     id: 3,
     title: "3-я ступень",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/02a9k34g_3.jpg",
+    image: "/images/programs/program-3.jpg",
     downloadLink: "https://disk.yandex.ru/i/FcCyotn0vdaMcA",
     color: "from-[#00796B] to-[#00695C]"
   }
@@ -29,7 +29,7 @@ const PROGRAMS_DATA = [
 
 const STUDY_PLAN = {
   title: "Учебный план",
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ygpo1ron_4.jpg",
+  image: "/images/programs/program-4.jpg",
   downloadLink: "https://disk.yandex.ru/i/o3CQh2POWPxTbw"
 };
 

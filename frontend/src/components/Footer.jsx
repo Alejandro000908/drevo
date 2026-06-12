@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="flex items-center mb-4">
               <div className="w-14 h-14 flex items-center justify-center mr-3">
                 <img 
-                  src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/jnyen9xy_diploma.jpg" 
+                  src="/images/diploma.jpg" 
                   alt="Древо Познаний Logo"
                   className="w-14 h-14 object-contain"
                 />

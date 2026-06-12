@@ -22,41 +22,41 @@ export const HERO = {
   subtext: "Обучение с 1 по 11 класс. Подготовка к ЕГЭ и ОГЭ с гарантированным результатом. Небольшие классы до 12 человек. Опытные преподаватели.",
   ctaPrimary: "Записаться на пробный день",
   ctaSecondary: "Узнать больше",
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/pyjpj7ng_n3LEFeUqka_FyO2v4FHv_ehXQKcINz2u7xDZgeRYIDL_4WLprgjm86FlIyiF2ABWYPuo3-b__VV-C2nH3Ru0UwW7.jpg"
+  image: "/images/home/hero-school.webp"
 };
 
 export const ABOUT = {
   title: "О нашей школе",
   mission: "Мы создаем образовательную среду, где каждый ученик получает персональное внимание и поддержку. Наша цель — не просто подготовить к экзаменам, но и воспитать любовь к знаниям.",
   vision: "«Древо Познаний» — это место, где дети учатся мыслить критически, работать самостоятельно и достигать высоких результатов. Мы верим, что качественное образование доступно каждому.",
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/icffr31q_wfz4G9l8D1kRgXvBvLqKu6o867WaKfxzZi73rVz_u3m7wF-vAxRMpkt_3zsx7qMNonzYzz_uuGuP1eKzFrBJIWH7.jpg"
+  image: "/images/home/about-school.webp"
 };
 
 export const SCHOOL_LIFE = [
 {
   id: 1,
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/k43iyvwv_QkZFmUsG6pNYjG2Wz_MFmu2IvwLcIeRC74V0yMPHv_lG71IUBE7nC2i1RXSS7iaQENWbbllX4CySCz40MfreszFR.jpg",
+  image: "/images/mock/mock-1.jpg",
   title: "Интерактивные занятия",
   description: "Современные методы обучения в малых группах",
   imagePosition: "object-center"
 },
 {
   id: 2,
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/iw6q8w5k_La1h7dhngnixBCecqSy88rhA4Ipo-EqgQyP9iyKGcWyqlDomJO18ZIzJNv9mINdXKNfVghbU9zudh9MYwJem_FHd.jpg",
+  image: "/images/mock/mock-2.jpg",
   title: "Праздники и достижения",
   description: "Отмечаем успехи каждого ученика",
   imagePosition: "object-center"
 },
 {
   id: 3,
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/8t1ryxyc_KsuaN8x9fH_BROtidYdgXu5DV_dtGKFDTjSEVL4xdWMhaFl7I-GEEo7do8eRUhS3lLoZrOopEAbhG-fAvgk4d4Am.jpg",
+  image: "/images/mock/mock-3.jpg",
   title: "Творческое развитие",
   description: "Раскрываем потенциал через искусство",
   imagePosition: "object-[center_40%]"
 },
 {
   id: 4,
-  image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/bcls7wmy_5242233904230952884.jpg",
+  image: "/images/mock/mock-4.jpg",
   title: "Более 20 элективных дисциплин",
   description: "Включая: кулинарную мастерскую, испанский язык, киноклуб на английском, интеллектуальный клуб, настольный теннис и другие",
   imagePosition: "object-center"

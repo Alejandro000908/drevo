@@ -16,7 +16,7 @@ const SCHOOL_NEWS = [
     title: "Золотые значки ГТО",
     date: "2026-05-09",
     category: "achievement",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/0482pkat_5384152023265122379.jpg",
+    image: "/images/news/news-1.jpg",
     description: "Ученики 11 класса успешно прошли испытания Всероссийского физкультурно-спортивного комплекса «Готов к труду и обороне», завоевав золотые значки ГТО. Данная награда дает преимущества в виде дополнительных баллов при поступлении в университет, а также повышенную государственную академическую стипендию для студентов. Поздравляем!",
     preview: "Гордимся спортивными достижениями наших выпускников"
   },
@@ -79,7 +79,7 @@ const SCHOOL_NEWS = [
     title: "Экскурсия в Третьяковскую галерею",
     date: "2026-04-08",
     category: "excursion",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/m52uu4z4_1%20%282%29.jpg",
+    image: "/images/news/news-2.jpg",
     description: "Ученики 2 класса посетили знаменитую Третьяковскую галерею, где познакомились с шедеврами русской живописи и узнали о великих художниках.",
     preview: "Знакомство с сокровищами русского искусства"
   },
@@ -88,7 +88,7 @@ const SCHOOL_NEWS = [
     title: "Экскурсия на съёмочные площадки",
     date: "2026-04-09",
     category: "excursion",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/5buiqpwh_2%20%282%29.jpg",
+    image: "/images/news/news-3.jpg",
     description: "Ученики 8 класса посетили настоящие съёмочные площадки, где узнали о профессиях кино и телевидения и увидели процесс создания фильмов изнутри.",
     preview: "За кулисами киноиндустрии"
   },
@@ -97,7 +97,7 @@ const SCHOOL_NEWS = [
     title: "Празднование 8 марта и 23 февраля",
     date: "2026-03-09",
     category: "event",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/va4jqj30_3%20%282%29.jpg",
+    image: "/images/news/news-4.jpg",
     description: "В школе прошли праздничные мероприятия, посвящённые Международному женскому дню и Дню защитника Отечества. Ученики подготовили концерт и поздравления.",
     preview: "Весенние праздники в нашей школе"
   },
@@ -106,7 +106,7 @@ const SCHOOL_NEWS = [
     title: "Кулинарная мастерская 6 и 7 класс",
     date: "2026-04-10",
     category: "event",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ukgz455v_4%20%282%29.jpg",
+    image: "/images/news/news-5.jpg",
     description: "Ученики 6 и 7 классов приняли участие в кулинарной мастерской, где научились готовить вкусные и полезные блюда под руководством профессионального повара.",
     preview: "Учимся готовить с удовольствием"
   },
@@ -115,7 +115,7 @@ const SCHOOL_NEWS = [
     title: "Экскурсия в Сказочный Град Томилино",
     date: "2026-02-23",
     category: "excursion",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/xl7qaxkx_5.jpg",
+    image: "/images/news/news-6.jpg",
     description: "Ученики 1 класса совершили волшебную поездку в Сказочный Град Томилино, где встретились с любимыми сказочными героями и приняли участие в интерактивных играх.",
     preview: "Путешествие в мир сказки"
   },
@@ -124,7 +124,7 @@ const SCHOOL_NEWS = [
     title: "Творческая мастерская: Миниатюра",
     date: "2026-04-01",
     category: "achievement",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/6rotccl3_1%20%283%29.jpg",
+    image: "/images/news/news-7.jpg",
     description: "На занятиях «Творческой мастерской» учащиеся 3-го и 4-го классов объединились для совместного творчества, представив свою работу под названием «Миниатюра».",
     preview: "Совместное творчество младших школьников"
   },
@@ -133,7 +133,7 @@ const SCHOOL_NEWS = [
     title: "Макраме: Искусство плетения",
     date: "2026-04-02",
     category: "achievement",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/x9oh2ilz_2%20%283%29.jpg",
+    image: "/images/news/news-8.jpg",
     description: "Макраме — это не просто плетение, а настоящее медитативное искусство, не требующее инструментов. Оно развивает мелкую моторику, логическое мышление, внимание и даже включает элементы математики. На занятиях ребята создают стильные подсвечники, используя «плоский» узел.",
     preview: "Медитативное искусство развивает мышление"
   }

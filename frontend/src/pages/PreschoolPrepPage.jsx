@@ -35,9 +35,9 @@ const PreschoolPrepPage = () => {
   ];
 
   const galleryPhotos = [
-    "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/f4nx0mou_IMG_5054.JPG",
-    "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/9z3p8nbe_5287380238214492974.jpg",
-    "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/6g6hoh1a_5388691421444905284.jpg"
+    "/images/preschool/preschool-1.jpg",
+    "/images/preschool/preschool-2.jpg",
+    "/images/preschool/preschool-3.jpg"
   ];
 
   return (

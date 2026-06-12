@@ -5,17 +5,17 @@ import { X, User, Phone, Calendar, CheckCircle } from 'lucide-react';
 const MODAL_VARIANTS = [
   {
     id: 1,
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/x3b01hae_5240250668726029486.jpg",
+    image: "/images/visit-modal/visit-1.jpg",
     quote: "Дайте вашему ребенку возможность учиться с улыбкой"
   },
   {
     id: 2,
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/ei0pscay_5350409351434725926.jpg",
+    image: "/images/visit-modal/visit-2.jpg",
     quote: "Вместе мы создаём будущее, полное возможностей"
   },
   {
     id: 3,
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/rq1e71js_5402477798309887218.jpg",
+    image: "/images/visit-modal/visit-3.jpg",
     quote: "Развиваем таланты с первых шагов в школе"
   }
 ];
@@ -163,7 +163,7 @@ const VisitModal = ({ isOpen, onClose }) => {
             {/* School Logo Overlay */}
             <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-3 shadow-xl">
               <img 
-                src="https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/kep5ft9s_%D0%BB%D0%BE%D0%B3%D0%BE.png"
+                src="/images/visit-modal/visit-logo.png"
                 alt="Древо Познаний"
                 className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
               />

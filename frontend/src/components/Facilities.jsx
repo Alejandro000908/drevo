@@ -6,43 +6,43 @@ const FACILITIES = [
     id: 1,
     title: "Здание школы",
     description: "Современное здание школы с уникальной архитектурой и комфортной территорией",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/760heqc0_XXXL.jpg"
+    image: "/images/home/facility-1.jpg"
   },
   {
     id: 2,
     title: "Зона ресепшн",
     description: "Уютная зона входа с символом нашей школы - Древом Познаний",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/6p6nx1b0_XXXL%20%282%29.webp"
+    image: "/images/home/facility-2.webp"
   },
   {
     id: 3,
     title: "Современные классы",
     description: "Просторные классы с креативным дизайном и комфортными рабочими местами",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/0d3q6v41_XXXL%20%283%29.webp"
+    image: "/images/home/facility-3.webp"
   },
   {
     id: 4,
     title: "Столовая",
     description: "Светлая столовая с атмосферой уюта и домашнего тепла",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/qmi9ges8_XXXL%20%285%29.webp"
+    image: "/images/home/facility-4.webp"
   },
   {
     id: 5,
     title: "Зона отдыха",
     description: "Комфортное пространство для отдыха и общения учеников",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/0zta6bn2_XXXL%20%287%29.webp"
+    image: "/images/home/facility-5.webp"
   },
   {
     id: 6,
     title: "Зона для игр",
     description: "Безопасное и яркое пространство для активного отдыха",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/w1ebr4yh_XXXL%20%289%29.webp"
+    image: "/images/home/facility-6.webp"
   },
   {
     id: 7,
     title: "Учебные аудитории",
     description: "Яркие и вдохновляющие пространства для обучения",
-    image: "https://customer-assets.emergentagent.com/job_drevoznanie/artifacts/tsv70ill_5303056761474453991.jpg"
+    image: "/images/home/facility-7.jpg"
   }
 ];
 
